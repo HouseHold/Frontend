@@ -54,7 +54,7 @@
 </template>
 
 <script>
-    import * as HH from 'house_hold/src/index';
+    import * as HH from '@household/api-client';
     import Autocomplete from '../../shared/Autocomplete';
     import gql from 'graphql-tag';
 

@@ -51,7 +51,7 @@
 </template>
 
 <script>
-    import * as HH from 'house_hold/src/index';
+    import * as HH from '@household/api-client';
 
     const fields = [
         {key: 'name', _style: 'width:40%'},
