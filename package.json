@@ -37,7 +37,7 @@
         "sass-loader": "^7.0.1",
         "webpack-notifier": "^1.6.0"
     },
-    "license": "BSL 1.1",
+    "license": "LicenseRef-LICENSE.md",
     "scripts": {
         "dev-server": "encore dev-server",
         "dev": "encore dev",
