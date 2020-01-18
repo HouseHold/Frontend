@@ -52,6 +52,7 @@
 
 <script>
     import * as HH from '@household/api-client';
+    import gql from 'graphql-tag';
 
     const fields = [
         {key: 'name', _style: 'width:40%'},
@@ -90,48 +91,105 @@
                 const position = this.details.indexOf(index);
                 position !== -1 ? this.details.splice(position, 1) : this.details.push(index)
             },
-            getInStockItems() {
-                const productApi = new HH.ProductApi();
-                const stockApi = new HH.ProductStockApi();
+            getInStockItems: async function() {
+                const query = {
+                    query: gql`
+                        query listAll {
+                            products(name: "")
+                            {
+                                edges
+                                {
+                                    node
+                                    {
+                                        id,
+                                        collection
+                                        {
+                                            id,
+                                            name,
+                                            category {
+                                                id,
+                                                name,
+                                            }
+                                        }
+                                        name,
+                                        ean,
+                                        price,
+                                        expiring,
+                                        stocks
+                                        {
+                                            edges
+                                            {
+                                                node
+                                                {
+                                                    id,
+                                                    quantity,
+                                                    bestBefore
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                `};
+                let data = (await this.$apollo.query(query))['data']['products']['edges'];
+                console.log(data);
                 let results = [];
-                productApi.getProductCollection()
-                    .then((data) => {
-                        data = data['hydra:member'];
-
-                        data.forEach((item, index) => {
-                            let quantityApiCalls = item['stocks'].map((stockId) => {
-                                return stockApi.getProductStockItem(/[^/]*$/.exec(stockId)[0])
-                                    .then((stockItem) => {
-                                        return {total: stockItem['quantity']};
-                                    });
+                data.forEach((item, index) => {
+                    item = item['node'];
+                    let totalStock = 0;
+                    let bestBefore = null;
+                    let bestBeforeAll = {};
+                    let stocks = [];
+                    item['stocks']['edges'].forEach((stockItem, index) => {
+                        stockItem = stockItem['node'];
+                        stocks.push(stockItem['id']);
+                        totalStock += stockItem['quantity'];
+                        if (item['expiring'] === true) {
+                            console.log(stockItem['bestBefore']);
+                            Object.keys(stockItem['bestBefore']).forEach((bestBeforeDate) => {
+                                if (bestBeforeDate in bestBeforeAll) {
+                                    bestBeforeAll[bestBeforeDate] += stockItem['bestBefore'][bestBeforeDate];
+                                } else {
+                                    bestBeforeAll[bestBeforeDate] = stockItem['bestBefore'][bestBeforeDate];
+                                }
                             });
-
-                            Promise.all(quantityApiCalls).then((quantity) => {
-                                let totalQuantity = 0;
-                                quantity.forEach((obj) => {
-                                    totalQuantity += obj.total;
-                                });
-
-                                let result = {
-                                    name: item['name'],
-                                    ean: item['ean'],
-                                    price: item['price'],
-                                    expiring: item['expiring'],
-                                    bestBefore: (new Date(item['bestBefore'])).toLocaleDateString(),
-                                    collection: item['collection'],
-                                    location: item['location'],
-                                    inStock: totalQuantity,
-                                    stocks: item['stocks'],
-                                    id: item['id']
-                                };
-
-                                results.push(result);
+                            let dates = Object.keys(stockItem['bestBefore']);
+                            dates.sort((a, b) => {
+                                return Date.parse(a) > Date.parse(b);
                             });
-                        });
-                    }).then(() => {
-                    this.items = results || [];
-                    this.loading = false;
+                            if (bestBefore === null) {
+                                bestBefore = Date.parse(dates[0]);
+                            } else {
+                                let parsedDate = Date.parse(dates[0]);
+                                if (bestBefore > parsedDate) {
+                                    bestBefore = parsedDate;
+                                }
+                            }
+                        }
+                    });
+
+                    console.log(bestBefore);
+                    let result = {
+                        id: item['id'],
+                        name: item['name'],
+                        ean: item['ean'],
+                        price: item['price'],
+                        expiring: item['expiring'],
+                        location: item['location'],
+                        inStock: totalStock,
+                        stocks: stocks,
+                        collection: {name: item['collection']['name'], id: item['collection']['id']},
+                        category: {name: item['collection']['category']['name'], id: item['collection']['category']['id']},
+                        bestBefore: bestBefore === null ? 'Not expiring.' : (new Date(bestBefore)).toLocaleDateString(),
+                        bestBeforeAll: bestBeforeAll
+
+                    };
+                    results.push(result);
                 });
+
+                this.items = results;
+                this.loading = false;
             }
         }
     }
