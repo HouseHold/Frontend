@@ -41,7 +41,7 @@
     "scripts": {
         "dev-server": "encore dev-server",
         "dev": "encore dev",
-        "watch": "encore dev --watch",
+        "watch": "encore dev --port 8880 --disable-host-check --hot --progress --watch --cache --hot-only --liveReload",
         "build": "encore production --progress"
     },
     "browserslist": [
