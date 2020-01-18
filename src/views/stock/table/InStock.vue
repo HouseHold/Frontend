@@ -133,7 +133,6 @@
                         }
                 `};
                 let data = (await this.$apollo.query(query))['data']['products']['edges'];
-                console.log(data);
                 let results = [];
                 data.forEach((item, index) => {
                     item = item['node'];
@@ -146,7 +145,6 @@
                         stocks.push(stockItem['id']);
                         totalStock += stockItem['quantity'];
                         if (item['expiring'] === true) {
-                            console.log(stockItem['bestBefore']);
                             Object.keys(stockItem['bestBefore']).forEach((bestBeforeDate) => {
                                 if (bestBeforeDate in bestBeforeAll) {
                                     bestBeforeAll[bestBeforeDate] += stockItem['bestBefore'][bestBeforeDate];
@@ -169,7 +167,6 @@
                         }
                     });
 
-                    console.log(bestBefore);
                     let result = {
                         id: item['id'],
                         name: item['name'],
