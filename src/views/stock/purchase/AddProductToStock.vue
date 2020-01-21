@@ -46,7 +46,7 @@
                         :value.sync="form.location"
                 />
                 <hr>
-                <CButton block color="success" type="submit" >Submit</CButton>
+                <CButton block color="success" type="submit">Submit</CButton>
                 <CButton block color="danger" v-on:click="returnToStock">Cancel</CButton>
             </CForm>
         </CCardBody>
@@ -91,7 +91,6 @@
                 return Number(val) > 0;
             },
             addToStock: function (event) {
-
             },
             getAutocompleteResult: function (result) {
                 this.form.product = result;
@@ -112,8 +111,7 @@
                 }
                 `};
 
-                let data = await this.$apollo.query(query);
-                data = data['data']['products']['edges'];
+                let data = (await this.$apollo.query(query))['data']['products']['edges'];
                 let results = [];
                 data.forEach((item ,index) => {
                     results.push(item['node']['name'])
