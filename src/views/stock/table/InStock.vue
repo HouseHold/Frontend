@@ -91,12 +91,17 @@
                 const position = this.details.indexOf(index);
                 position !== -1 ? this.details.splice(position, 1) : this.details.push(index)
             },
-            getInStockItems: async function() {
-                const query = {
+            _createStockQuery: function(cursor = null) {
+                let pos = cursor === null ? 'LTE=' : cursor;
+                return {
                     query: gql`
                         query listAll {
-                            products(name: "")
+                            products(name: "", after: "${pos}")
                             {
+                                pageInfo {
+                                    hasNextPage,
+                                    endCursor,
+                                },
                                 edges
                                 {
                                     node
@@ -132,8 +137,8 @@
                             }
                         }
                 `};
-                let data = (await this.$apollo.query(query))['data']['products']['edges'];
-                let results = [];
+            },
+            _processStockEdges: function(data) {
                 data.forEach((item, index) => {
                     item = item['node'];
                     let totalStock = 0;
@@ -178,15 +183,29 @@
                         stocks: stocks,
                         collection: {name: item['collection']['name'], id: item['collection']['id']},
                         category: {name: item['collection']['category']['name'], id: item['collection']['category']['id']},
-                        bestBefore: bestBefore === null ? 'Not expiring.' : (new Date(bestBefore)).toLocaleDateString(),
+                        bestBefore: bestBefore === null ? 'Not expiring' : (new Date(bestBefore)).toLocaleDateString(),
                         bestBeforeAll: bestBeforeAll
 
                     };
-                    results.push(result);
+                    this.items.push(result);
+                    if (this.loading === true) {
+                        this.loading = false;
+                    }
                 });
-
-                this.items = results;
-                this.loading = false;
+            },
+            getInStockItems: async function() {
+                let data = await this.$apollo.query(this._createStockQuery());
+                this._processStockEdges(data['data']['products']['edges']);
+                if (data['data']['products']['pageInfo']['hasNextPage']) {
+                    let hasNextPage = true;
+                    let endCursor = data['data']['products']['pageInfo']['endCursor'];
+                    while (hasNextPage) {
+                        let data = await this.$apollo.query(this._createStockQuery(endCursor));
+                        this._processStockEdges(data['data']['products']['edges']);
+                        hasNextPage = data['data']['products']['pageInfo']['hasNextPage'];
+                        endCursor = data['data']['products']['pageInfo']['endCursor'];
+                    }
+                }
             }
         }
     }
