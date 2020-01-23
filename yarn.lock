@@ -879,10 +879,10 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
-"@household/api-client@^0.0.4":
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/@household/api-client/-/api-client-0.0.4.tgz#b5b3c3ed0b6d46ccb5e95577278097ea73f170d8"
-  integrity sha512-HTZ3R89CJja6EiCuVGZR8ZtMznCejzcfZQ75vD3GEoJ5Xe3kBE5YPoS3n6B8tOnLrwRmVrRFEj5QuurXdfmfOQ==
+"@household/api-client@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@household/api-client/-/api-client-0.0.5.tgz#7ff07719fbe8a6d19618fa22199d1e38ee3f5cba"
+  integrity sha512-+3LDF0fGmKra0IBN74PAWi0l1ba1Q+9/YQ5b80+MEDLPps88USiu0FLRuwasWYK2cwLzhD3OeqYexhZjCnnbKg==
   dependencies:
     "@babel/cli" "^7.0.0"
     superagent "3.7.0"
