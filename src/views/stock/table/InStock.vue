@@ -16,11 +16,16 @@
                             sorter
                             pagination
                     >
-                        <template #status="{item}">
-                            <td>
-                                <CBadge :color="getBadge(item.status)">
-                                    {{item.status}}
-                                </CBadge>
+                        <template #consume="{item, index}">
+                            <td class="py-2">
+                                <CButton
+                                        color="danger"
+                                        variant="outline"
+                                        square
+                                        size="sm"
+                                        @click="consumeProduct(index)"
+                                >Consume
+                                </CButton>
                             </td>
                         </template>
                         <template #show_details="{item, index}">
@@ -51,22 +56,16 @@
 </template>
 
 <script>
+    import inStock from '../../../graphql/products/inStock'
     import * as HH from '@household/api-client';
-    import gql from 'graphql-tag';
+    import ApiHelpers from "../../../lib/ApiHelpers";
 
     const fields = [
+        {key: 'consume', _style: 'width:10%', label: 'Actions', sorter: false, filter: false},
         {key: 'name', _style: 'width:40%'},
         {key: 'inStock', _style: 'width:20%;'},
         {key: 'bestBefore', _style: 'width:20%;'},
-        {
-            key: 'show_details',
-            label: '',
-            _style: 'width:1%',
-            sorter: false,
-            filter: false
-        }
     ];
-
     export default {
         name: 'InStock',
         data() {
@@ -81,64 +80,32 @@
             this.getInStockItems();
         },
         methods: {
-            getBadge(status) {
-                return status === 'Active' ? 'success'
-                    : status === 'Inactive' ? 'secondary'
-                        : status === 'Pending' ? 'warning'
-                            : status === 'Banned' ? 'danger' : 'primary'
-            },
             toggleDetails(index) {
                 const position = this.details.indexOf(index);
                 position !== -1 ? this.details.splice(position, 1) : this.details.push(index)
             },
-            _createStockQuery: function(cursor = null) {
-                let pos = cursor === null ? 'LTE=' : cursor;
-                return {
-                    query: gql`
-                        query listAll {
-                            products(name: "", after: "${pos}")
+            consumeProduct: function(index) {
+                let item = this.items[index];
+                const client = new HH.ProductStockApi();
+                let _bestBefore = null;
+                if (item.expiring === true) {
+                    _bestBefore = item.bestBefore;
+                }
+                --this.items[index].stocks[0].quantity;
+                --this.items[index].inStock;
+                client.stockConsumeProductStockItem(
+                    ApiHelpers.normalizeIri(item.stocks[0].id),
+                    {
+                        inlineObject2: HH.InlineObject2.constructFromObject(
                             {
-                                pageInfo {
-                                    hasNextPage,
-                                    endCursor,
-                                },
-                                edges
-                                {
-                                    node
-                                    {
-                                        id,
-                                        collection
-                                        {
-                                            id,
-                                            name,
-                                            category {
-                                                id,
-                                                name,
-                                            }
-                                        }
-                                        name,
-                                        ean,
-                                        price,
-                                        expiring,
-                                        stocks
-                                        {
-                                            edges
-                                            {
-                                                node
-                                                {
-                                                    id,
-                                                    quantity,
-                                                    bestBefore
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
+                                quantity: 1,
+                                bestBefore: _bestBefore,
                             }
-                        }
-                `};
+                        )
+                    }
+                );
             },
-            _processStockEdges: function(data) {
+            _processStockEdges: function (data) {
                 data.forEach((item, index) => {
                     item = item['node'];
                     let totalStock = 0;
@@ -147,7 +114,12 @@
                     let stocks = [];
                     item['stocks']['edges'].forEach((stockItem, index) => {
                         stockItem = stockItem['node'];
-                        stocks.push(stockItem['id']);
+                        stocks.push(
+                            {
+                                id: stockItem['id'],
+                                quantity: stockItem['quantity'],
+                                location: stockItem['location'],
+                            });
                         totalStock += stockItem['quantity'];
                         if (item['expiring'] === true) {
                             Object.keys(stockItem['bestBefore']).forEach((bestBeforeDate) => {
@@ -178,11 +150,13 @@
                         ean: item['ean'],
                         price: item['price'],
                         expiring: item['expiring'],
-                        location: item['location'],
                         inStock: totalStock,
                         stocks: stocks,
                         collection: {name: item['collection']['name'], id: item['collection']['id']},
-                        category: {name: item['collection']['category']['name'], id: item['collection']['category']['id']},
+                        category: {
+                            name: item['collection']['category']['name'],
+                            id: item['collection']['category']['id']
+                        },
                         bestBefore: bestBefore === null ? 'Not expiring' : (new Date(bestBefore)).toLocaleDateString(),
                         bestBeforeAll: bestBeforeAll
 
@@ -193,14 +167,14 @@
                     }
                 });
             },
-            getInStockItems: async function() {
-                let data = await this.$apollo.query(this._createStockQuery());
+            getInStockItems: async function () {
+                let data = await this.$apollo.query({query: inStock, variables: {cursor: 'LTE='}});
                 this._processStockEdges(data['data']['products']['edges']);
                 if (data['data']['products']['pageInfo']['hasNextPage']) {
                     let hasNextPage = true;
                     let endCursor = data['data']['products']['pageInfo']['endCursor'];
                     while (hasNextPage) {
-                        let data = await this.$apollo.query(this._createStockQuery(endCursor));
+                        let data = await this.$apollo.query({query: inStock, variables: {cursor: endCursor}});
                         this._processStockEdges(data['data']['products']['edges']);
                         hasNextPage = data['data']['products']['pageInfo']['hasNextPage'];
                         endCursor = data['data']['products']['pageInfo']['endCursor'];
