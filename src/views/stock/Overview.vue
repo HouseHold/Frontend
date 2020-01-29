@@ -8,9 +8,9 @@
 </template>
 
 <script>
-    import WidgetsStock from './WidgetsStock'
+    import WidgetsStock from './widget/Stock'
     import InStock from "./table/InStock";
-    import WidgetsActions from "./WidgetsActions";
+    import WidgetsActions from "./widget/Actions";
 
     export default {
         name: 'Stock',

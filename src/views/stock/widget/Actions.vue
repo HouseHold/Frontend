@@ -17,7 +17,7 @@
 
 <script>
     export default {
-        name: 'WidgetsStockActions',
+        name: 'StockWidgetActions',
         methods: {
             redirectPurchase: function (event) {
                 this.$router.push("purchase")

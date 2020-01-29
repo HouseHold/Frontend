@@ -64,10 +64,10 @@
 </template>
 
 <script>
-    import {CChartLineSimple, CChartBarSimple} from '../charts/index.js'
+    import {CChartLineSimple, CChartBarSimple} from '../../charts/index.js'
 
     export default {
-        name: 'WidgetsStock',
+        name: 'StockWidgetStock',
         components: {CChartLineSimple, CChartBarSimple}
     }
 </script>
