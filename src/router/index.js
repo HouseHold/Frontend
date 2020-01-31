@@ -16,6 +16,7 @@ const Widgets = () => import('../views/widgets/Widgets');
 // Views - Stock
 const StockOverview = () => import('../views/stock/Overview');
 const StockPurchase = () => import('../views/stock/Purchase');
+const StockProduct = () => import('../views/stock/Product');
 
 // Views - Components
 const Cards = () => import('../views/base/Cards');
@@ -97,7 +98,12 @@ function configRoutes() {
                             path: 'purchase',
                             name: 'Purchase',
                             component: StockPurchase
-                        }
+                        },
+                        {
+                            path: 'product/:id',
+                            name: 'Product',
+                            component: StockProduct
+                        },
                     ]
                 },
                 {

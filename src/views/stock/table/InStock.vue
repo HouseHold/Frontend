@@ -28,6 +28,11 @@
                                 </CButton>
                             </td>
                         </template>
+                        <template #name="{item, index}">
+                            <td>
+                                <a class="clickable" @click="onClickProductName(index)">{{ item.name }}</a>
+                            </td>
+                        </template>
                         <template #show_details="{item, index}">
                             <td class="py-2">
                                 <CButton
@@ -63,7 +68,7 @@
     const fields = [
         {key: 'consume', _style: 'width:10%', label: 'Actions', sorter: false, filter: false},
         {key: 'name', _style: 'width:40%'},
-        {key: 'inStock', _style: 'width:20%;'},
+        {key: 'inStock', _style: 'width:10%;'},
         {key: 'bestBefore', _style: 'width:20%;'},
     ];
     export default {
@@ -80,6 +85,9 @@
             this.getInStockItems();
         },
         methods: {
+            onClickProductName: function(index) {
+                this.$router.push('product/'+ApiHelpers.normalizeIri(this.items[index]['id']))
+            },
             toggleDetails(index) {
                 const position = this.details.indexOf(index);
                 position !== -1 ? this.details.splice(position, 1) : this.details.push(index)
@@ -184,3 +192,9 @@
         }
     }
 </script>
+
+<style>
+    .clickable {
+        cursor: pointer;
+    }
+</style>
