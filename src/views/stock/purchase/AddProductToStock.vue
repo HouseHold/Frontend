@@ -5,7 +5,7 @@
         </CCardHeader>
         <CCardBody>
             <CForm @submit.prevent="addToStock">
-                <Autocomplete
+                <AutocompleteInput
                         :search="searchProducts"
                         label="Product"
                         placeholder="Search product"
@@ -55,14 +55,14 @@
 
 <script>
     import * as HH from '@household/api-client';
-    import Autocomplete from '../../shared/Autocomplete';
+    import { AutocompleteInput } from '../../../components/form';
     import gql from 'graphql-tag';
     import ApiHelpers from '../../../lib/ApiHelpers'
 
     export default {
         name: 'AddProductToStock',
         components: {
-            Autocomplete
+            AutocompleteInput
         },
         data() {
             return {
@@ -93,7 +93,7 @@
             isNumber: (val) => {
                 return Number(val) > 0;
             },
-            addToStock: function (event) {
+            addToStock: function () {
                 const api = new HH.ProductStockApi();
                 let locationId = this.locations_id[this.form.location];
                 let productId = this.products_id[this.form.product];
@@ -106,7 +106,7 @@
                     }
                 ).then(async (data) => {
                     console.log(data);
-                    let stockId = null;
+                    let stockId;
                     if (data['hydra:member'].length <= 0) {
                         stockId = (await this._initializeNewStock(locationId, productId));
                     } else {
@@ -143,7 +143,7 @@
             getAutocompleteResult: function (result) {
                 this.form.product = result;
             },
-            returnToStock: function (event) {
+            returnToStock: function () {
                 this.$router.push("overview");
             },
             searchProducts: async function (key) {
@@ -166,7 +166,7 @@
 
                 let data = (await this.$apollo.query(query))['data']['products']['edges'];
                 let results = [];
-                data.forEach((item ,index) => {
+                data.forEach((item) => {
                     results.push(item['node']['name']);
                     this.products_id[item['node']['name']] = item['node']['id'];
                 });
@@ -175,7 +175,7 @@
             },
             getLocations: function () {
                 const locationApi = new HH.ProductLocationApi();
-                locationApi.getProductLocationCollection().then((data) => {
+                locationApi.getProductLocationCollection({page: 1}).then((data) => {
                     data = data['hydra:member'];
                     let results = [];
                     let results_id = {};

@@ -19,7 +19,7 @@
     export default {
         name: 'StockWidgetActions',
         methods: {
-            redirectPurchase: function (event) {
+            redirectPurchase: function () {
                 this.$router.push("purchase")
             }
         }

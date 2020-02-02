@@ -13,17 +13,8 @@ Vue.use(CoreuiVue);
 Vue.use(VueApollo);
 Vue.use(VCalendar, {componentPrefix: ''});
 
-let getUrl = window.location;
-let baseUrl = getUrl.protocol + '//' + getUrl.host + '/';
-
-const apolloClient = new ApolloClient({
-    // You should use an absolute URL here
-    uri: baseUrl + 'api/graphql'
-});
-
-const apolloProvider = new VueApollo({
-    defaultClient: apolloClient,
-});
+const apolloClient = new ApolloClient({uri: window.location.protocol + '//' + window.location.host + '/' + 'api/graphql'});
+const apolloProvider = new VueApollo({defaultClient: apolloClient});
 
 new Vue({
     el: '#app',

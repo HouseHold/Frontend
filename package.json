@@ -9,6 +9,7 @@
         "@trevoreyre/autocomplete": "^2.0.4",
         "apollo-boost": "^0.4.7",
         "graphql": "^14.5.8",
+        "graphql-tag": "^2.10.1",
         "v-calendar": "^1.0.0-beta.23",
         "vue": "^2.6.10",
         "vue-apollo": "^3.0.2",
@@ -37,7 +38,7 @@
         "sass-loader": "^7.0.1",
         "webpack-notifier": "^1.6.0"
     },
-    "license": "LicenseRef-LICENSE.md",
+    "license": "SEE LICENSE IN LICENSE.md",
     "scripts": {
         "dev-server": "encore dev-server",
         "dev": "encore dev",

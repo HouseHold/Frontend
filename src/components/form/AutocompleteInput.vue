@@ -49,7 +49,7 @@
     import getRelativePosition from '@trevoreyre/autocomplete/util/getRelativePosition'
 
     export default {
-        name: 'Autocomplete',
+        name: 'AutocompleteInput',
         inheritAttrs: false,
         props: {
             search: {

@@ -11,11 +11,11 @@
       v-c-emit-root-event:toggle-sidebar
     />
     <CHeaderBrand
-      class="mx-auto d-lg-none" 
-      src="img/brand/coreui-vue-logo.svg"
+      class="mx-auto d-lg-none"
       width="190"
       height="46"
-      alt="CoreUI Logo"
+      src="//via.placeholder.com/190x46"
+      alt="HouseHold Logo"
     />
     <CHeaderNav class="d-md-down-none mr-auto">
       <CHeaderNavItem class="px-3">
@@ -29,7 +29,7 @@
         </CHeaderNavLink>
       </CHeaderNavItem>
       <CHeaderNavItem class="px-3">
-        <CHeaderNavLink>
+        <CHeaderNavLink to="/settings" exact>
           Settings
         </CHeaderNavLink>
       </CHeaderNavItem>

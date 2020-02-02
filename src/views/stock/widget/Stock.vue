@@ -64,8 +64,6 @@
 </template>
 
 <script>
-    import {CChartLineSimple, CChartBarSimple} from '../../charts/index.js'
-
     export default {
         name: 'StockWidgetStock',
         components: {CChartLineSimple, CChartBarSimple}

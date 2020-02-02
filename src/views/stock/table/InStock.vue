@@ -86,7 +86,7 @@
         },
         methods: {
             onClickProductName: function(index) {
-                this.$router.push('product/'+ApiHelpers.normalizeIri(this.items[index]['id']))
+                this.$router.push('product/'+ApiHelpers.normalizeIri(this.items[index]['id']));
             },
             toggleDetails(index) {
                 const position = this.details.indexOf(index);
