@@ -1,4 +1,5 @@
 const Encore = require('@symfony/webpack-encore');
+const VueAutoRoutingPlugin = require('vue-auto-routing/lib/webpack-plugin');
 const path = require('path');
 const fs = require('fs');
 
@@ -27,7 +28,7 @@ Encore
      * Each entry will result in one JavaScript file (e.g. app.js)
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
-    .addEntry('vue', './src/main.js')
+    .addEntry('vue', './src/main.ts')
     //.addEntry('page1', './assets/js/page1.js')
     //.addEntry('page2', './assets/js/page2.js')
 
@@ -57,21 +58,25 @@ Encore
         corejs: 3
     })
 
+    // Fix @sign.
+    .addAliases({
+        '@': path.resolve('src')
+    })
+
     // enables Sass/SCSS support
     .enableSassLoader()
 
-    // uncomment if you use Vue
     .enableVueLoader()
+    .addPlugin(new VueAutoRoutingPlugin({
+        pages: 'src/pages',
+    }))
 
     // uncomment if you use TypeScript
-    //.enableTypeScriptLoader()
+    .enableTypeScriptLoader()
 
     // uncomment to get integrity="..." attributes on your script & link tags
     // requires WebpackEncoreBundle 1.4 or higher
-    //.enableIntegrityHashes(Encore.isProduction())
-
-    // uncomment if you're having problems with a jQuery plugin
-    //.autoProvidejQuery()
+    .enableIntegrityHashes(Encore.isProduction())
 ;
 
 const fullConfig = Encore.getWebpackConfig();
