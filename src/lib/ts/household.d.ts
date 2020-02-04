@@ -1,1 +1,1 @@
-declare module '@household/api-client';
+//declare module '@household/api-client';

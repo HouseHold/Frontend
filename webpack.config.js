@@ -1,5 +1,4 @@
 const Encore = require('@symfony/webpack-encore');
-const VueAutoRoutingPlugin = require('vue-auto-routing/lib/webpack-plugin');
 const path = require('path');
 const fs = require('fs');
 
@@ -67,9 +66,6 @@ Encore
     .enableSassLoader()
 
     .enableVueLoader()
-    .addPlugin(new VueAutoRoutingPlugin({
-        pages: 'src/pages',
-    }))
 
     // uncomment if you use TypeScript
     .enableTypeScriptLoader()

@@ -67,9 +67,8 @@
 
 <script lang="ts">
     import {Vue, Component} from "vue-property-decorator";
-    import {ProductStockApi, ProductLocationApi, InlineObject, InlineObject1} from '@household/api-client';
-    //@ts-ignore
-    import AutocompleteInput from '@/components/form/AutocompleteInput';
+    import ApiClient from "@household/api-client"
+    import AutocompleteInput from '@/components/form/AutocompleteInput.vue';
     import gql from 'graphql-tag';
     import {Api} from '@/lib'
 
@@ -112,56 +111,56 @@
         }
 
         addToStock() {
-            const api = new ProductStockApi();
+            // const api = new ProductStockApi();
             //@ts-ignore
             let locationId = this.locations_id[this.form.location];
             //@ts-ignore
             let productId = this.products_id[this.form.product];
 
             // noinspection JSCheckFunctionSignatures
-            api.getProductStockCollection(
-                {
-                    location: Api.Helpers.normalizeIri(locationId),
-                    product: Api.Helpers.normalizeIri(productId),
-                }
-            ).then(async (data: any) => {
-                let stockId;
-                if (data['hydra:member'].length <= 0) {
-                    stockId = (await this._initializeNewStock(locationId, productId));
-                } else {
-                    stockId = data['hydra:member'][0]['@id'];
-                }
-                await (api.stockAddProductStockItem(
-                    Api.Helpers.normalizeIri(stockId),
-                    {
-                        inlineObject1: InlineObject1.constructFromObject({
-                                quantity: this.form.amount,
-                                price: this.form.price,
-                                bestBefore: this.form.bestBefore
-                            },
-                            new InlineObject1()
-                        )
-                    }
-                ));
-            }).catch((err: string) => {
-                console.log(err);
-            })
+            // api.getProductStockCollection(
+            //     {
+            //         location: Api.Helpers.normalizeIri(locationId),
+            //         product: Api.Helpers.normalizeIri(productId),
+            //     }
+            // ).then(async (data: any) => {
+            //     let stockId;
+            //     if (data['hydra:member'].length <= 0) {
+            //         stockId = (await this._initializeNewStock(locationId, productId));
+            //     } else {
+            //         stockId = data['hydra:member'][0]['@id'];
+            //     }
+            //     await (api.stockAddProductStockItem(
+            //         Api.Helpers.normalizeIri(stockId),
+            //         {
+            //             inlineObject1: InlineObject1.constructFromObject({
+            //                     quantity: this.form.amount,
+            //                     price: this.form.price,
+            //                     bestBefore: this.form.bestBefore
+            //                 },
+            //                 new InlineObject1()
+            //             )
+            //         }
+            //     ));
+            // }).catch((err: string) => {
+            //     console.log(err);
+            // })
 
         }
 
         async _initializeNewStock(locationId: string, productId: string) {
-            const api = new ProductStockApi();
-            let obj = InlineObject.constructFromObject(
-                {
-                    product: productId,
-                    location: locationId
-                },
-                new InlineObject()
-            );
+            // const api = new ProductStockApi();
+            // let obj = InlineObject.constructFromObject(
+            //     {
+            //         product: productId,
+            //         location: locationId
+            //     },
+            //     new InlineObject()
+            // );
             // noinspection JSCheckFunctionSignatures
-            return (await api.stockInitProductStockCollection({
-                inlineObject: obj
-            }))['@id'];
+            // return (await api.stockInitProductStockCollection({
+            //     inlineObject: obj
+            // }))['@id'];
         }
 
         getAutocompleteResult(result: any) {
@@ -204,20 +203,20 @@
         }
 
         getLocations() {
-            const locationApi = new ProductLocationApi();
-            locationApi.getProductLocationCollection({page: 1}).then((data: any) => {
-                data = data['hydra:member'];
-                let results: any = [];
-                let results_id = {};
-                data.forEach((item: any) => {
-                    results.push(item['name']);
-                    //@ts-ignore
-                    results_id[item['name']] = item['@id'];
-                });
-
-                this.locations_id = results_id;
-                this.locations = results;
-            });
+            // const locationApi = new ProductLocationApi();
+            // locationApi.getProductLocationCollection({page: 1}).then((data: any) => {
+            //     data = data['hydra:member'];
+            //     let results: any = [];
+            //     let results_id = {};
+            //     data.forEach((item: any) => {
+            //         results.push(item['name']);
+            //         @ts-ignore
+                    // results_id[item['name']] = item['@id'];
+                // });
+                //
+                // this.locations_id = results_id;
+                // this.locations = results;
+            // });
         }
     }
 </script>

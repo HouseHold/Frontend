@@ -68,7 +68,7 @@
 <script lang="ts">
     import {Vue, Component} from "vue-property-decorator";
     import {GQL, Api} from "@/lib";
-    import {InlineObject2, ProductStockApi} from "@household/api-client";
+    import Store from '@/store';
 
     @Component
     export default class StockProduct extends Vue {
@@ -163,20 +163,21 @@
             //@ts-ignore
             --this.stocks[item.id].quantity;
 
+            // TODO:
             // Remove from stocks. Backend Only.
-            (new ProductStockApi()).stockConsumeProductStockItem(
-                Api.Helpers.normalizeIri(item.id),
-                {
-                    inlineObject2: InlineObject2.constructFromObject(
-                        {
-                            quantity: 1,
-                            //@ts-ignore
-                            bestBefore: this.product.expiring === true ? item.bestBefore : null,
-                        },
-                        new InlineObject2()
-                    )
-                }
-            );
+            //(new ProductStockApi()).stockConsumeProductStockItem(
+            //    Api.Helpers.normalizeIri(item.id),
+            //    {
+            //         inlineObject2: InlineObject2.constructFromObject(
+            //             {
+            //                 quantity: 1,
+            //                 @ts-ignore
+                            // bestBefore: this.product.expiring === true ? item.bestBefore : null,
+                        // },
+                        // new InlineObject2()
+                    // )
+                // }
+            // );
         }
     }
 </script>

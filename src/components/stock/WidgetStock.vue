@@ -7,7 +7,7 @@
       <CWidgetDropdown
         color="primary"
         header="0"
-        text="Products"
+        text="Stock"
       >
         <template #footer>
           <ChartLine
