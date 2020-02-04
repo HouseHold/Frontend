@@ -11,7 +11,7 @@
       created() {
         // TODO: Replace with once per hour and optional refresh button.
         window.setInterval(async () => {
-          if(this.$store.state.Stock.updated < (Date.now()-120000) && !this.$store.state.Stock.lock) {
+          if(this.$store.state.Stock.updated < (Date.now()-120000) && !this.$store.state.Stock.lock && !document.hidden) {
             await this.$store.dispatch('lockStocks');
             await this.$store.dispatch('fetchStocks');
           }
