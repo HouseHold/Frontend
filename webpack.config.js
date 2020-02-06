@@ -8,8 +8,12 @@ if (!Encore.isRuntimeEnvironmentConfigured()) {
     Encore.configureRuntimeEnvironment(process.env.NODE_ENV || 'dev');
 }
 
-const outputPath = fs.existsSync('../public/index.php') ? '../public/build/' : './dist';
+const outputPath = fs.existsSync('../public/index.php')
+    ? path.resolve('../public/build/')
+    : path.resolve('./dist');
 
+
+console.log(outputPath);
 Encore
     // directory where compiled assets will be stored
     .setOutputPath(outputPath)
@@ -84,12 +88,18 @@ fullConfig.watchOptions = {
 fullConfig.devServer = {
     public: 'localhost:8080',
     allowedHosts: ['localhost:8080'],
-    contentBase: path.join(__dirname, 'public/'),
+    contentBase: path.resolve(__dirname, './public'),
     watchContentBase: true,
     compress: true,
     open: false,
+    overlay: true,
     disableHostCheck: true,
     progress: true,
+    hot: true,
+    hotOnly: true,
+    http2: true,
+    https: true,
+    writeToDisk: true,
     watchOptions: {
         watch: true,
         poll: true
