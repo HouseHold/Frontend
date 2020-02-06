@@ -3,7 +3,7 @@
     "build": "encore production --progress",
     "dev": "encore dev",
     "dev-server": "encore dev-server",
-    "watch": "encore dev --port 8880 --disable-host-check --hot --progress --watch --cache --hot-only --liveReload"
+    "watch": "encore dev-server --port 8080 --progress --watch --hot --hot-only --disable-host-check --keep-public-path"
   },
   "dependencies": {
     "@coreui/coreui": "^3.0.0-rc.0",
@@ -11,7 +11,7 @@
     "@coreui/utils": "^1.2",
     "@coreui/vue": "^3.0.0-beta.10",
     "@coreui/vue-chartjs": "^1.0.3",
-    "@household/api-client": "^0.0.7-rc2",
+    "@household/api-client": "^0.0.8",
     "@trevoreyre/autocomplete": "^2.0.4",
     "apollo-boost": "^0.4.7",
     "graphql": "^14.6",
