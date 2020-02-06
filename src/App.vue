@@ -9,9 +9,10 @@
     export default class App extends Vue {
       readonly name: string = 'App';
       created() {
-        // TODO: Replace with once per hour and optional refresh button.
-        window.setInterval(async () => {
-          if(this.$store.state.Stock.updated < (Date.now()-120000) && !this.$store.state.Stock.lock && !document.hidden) {
+        // Make sure lock is not stuck, by releasing it.
+        this.$store.dispatch('unlockStocks');
+        window.setInterval(async () => {            // 30 Minutes
+          if(this.$store.state.Stock.updated < (Date.now()-1800000) && !this.$store.state.Stock.lock && !document.hidden) {
             await this.$store.dispatch('lockStocks');
             await this.$store.dispatch('fetchStocks');
           }
