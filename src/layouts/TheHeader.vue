@@ -57,7 +57,20 @@
       </CHeaderNavItem>
       <CHeaderNavItem class="d-md-down-none mx-2">
         <CHeaderNavLink>
-          <CIcon name="cil-envelope-open" />
+          <div v-if="this.$store.state.Stock.lock">
+            <CIcon
+              class="spinning"
+              name="cil-reload"
+            />
+          </div>
+          <div
+            v-else
+            @click="refreshData"
+          >
+            <CIcon
+              name="cil-reload"
+            />
+          </div>
         </CHeaderNavLink>
       </CHeaderNavItem>
       <TheHeaderDropdownAccnt />
@@ -70,14 +83,19 @@
 
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
-import TheHeaderDropdownAccnt from './TheHeaderDropdownAccnt'
+import TheHeaderDropdownAccnt from './TheHeaderDropdownAccnt.vue';
 
 @Component({
-  name: 'TheHeader',
-
   components: {
     TheHeaderDropdownAccnt
   }
 })
-export default class TheHeader extends Vue {}
+export default class TheHeader extends Vue {
+  name:string = 'TheHeader';
+
+  async refreshData() {
+    await this.$store.dispatch('lockStocks');
+    await this.$store.dispatch('fetchStocks');
+  }
+}
 </script>

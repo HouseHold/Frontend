@@ -7,6 +7,7 @@ import {
     ProductCollectionApi, ProductCollectionjsonld
 } from "@household/api-client";
 import { Helpers } from '@/lib/api';
+import ConsumeProduct from "@/store/Stock/ConsumeProduct";
 
 @Module
 export default class Stock extends VuexModule {
@@ -44,11 +45,26 @@ export default class Stock extends VuexModule {
         };
     }
 
-    @MutationAction({mutate:['lock']})
-    async lockStocks() {
-        return {
-            lock: true,
-        }
+    @Mutation
+    SET_STOCK_LOCK(lock: boolean) {
+        this.lock = lock;
+    }
+
+    @Action({commit: 'SET_STOCK_LOCK'})
+    lockStocks(): boolean {
+        return true;
+    }
+
+    @Action({commit: 'SET_STOCK_LOCK'})
+    unlockStocks(): boolean {
+        return false;
+    }
+
+    @Action({})
+    stockConsumeProduct(payload: ConsumeProduct): void {
+        // This is Optimistic update for consuming product.
+        console.log(payload);
+
     }
 
     get stockById(): (id: string) => ProductStockjsonld {
