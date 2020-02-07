@@ -97,8 +97,8 @@ fullConfig.devServer = {
     progress: true,
     hot: true,
     hotOnly: true,
-    http2: true,
-    https: true,
+    http2: false, // No Support for Node 10
+    https: false, // --||--
     writeToDisk: true,
     watchOptions: {
         watch: true,
