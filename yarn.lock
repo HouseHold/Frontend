@@ -863,10 +863,10 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
-"@household/api-client@^0.0.8":
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/@household/api-client/-/api-client-0.0.8.tgz#a43c75ba010195d3fdf709362656daa0da97f1be"
-  integrity sha512-5KVg75VG0vWvp8N01Dxxx/2MZdxa7T9GvZnY/T3VTa7a2+us1AUcWLTl9dbmelDKgdqAQxoi1COyhU7EmVCg8w==
+"@household/api-client@0.0.8-1":
+  version "0.0.8-1"
+  resolved "https://registry.yarnpkg.com/@household/api-client/-/api-client-0.0.8-1.tgz#be0758e4be466ae5c53fb183d5d811fa53f85980"
+  integrity sha512-HXYJJ4JGyom/fEWi5Az9cCYbPprYa9cJm5NOR+7IXGifkFGZ/G/djR247tuEbx3bM6Aac/Qsi6Tke2o1+Tia9w==
   dependencies:
     "@types/node" "^13.7.0"
     axios "^0.19"
