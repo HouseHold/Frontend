@@ -7,7 +7,7 @@ import {
     ProductCollectionApi, ProductCollectionjsonld, InlineObject2
 } from "@household/api-client";
 import { Helpers } from '@/lib/api';
-import ConsumeProduct from "@/store/Stock/ConsumeProduct";
+import ConsumeProduct from "@/store/Stock/ConsumeProduct.ts";
 
 @Module
 export default class Stock extends VuexModule {
@@ -102,6 +102,16 @@ export default class Stock extends VuexModule {
         return (id: string): ProductStockjsonld => {
             return this.stocks[id];
         }
+    }
+
+    get productByShortId(): (id: string) => Productjsonld {
+        return (id: string): Productjsonld => {
+            return this.products['/api/products/'+id];
+        }
+    }
+
+    get stockNeedsRefresh(): boolean {
+        return this.updated < 1800;
     }
 }
 
