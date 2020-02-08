@@ -4,7 +4,7 @@ import {
     ProductStockApi, ProductStockjsonld,
     ProductLocationApi, ProductLocationjsonld,
     ProductCategoryApi, ProductCategoryjsonld,
-    ProductCollectionApi, ProductCollectionjsonld
+    ProductCollectionApi, ProductCollectionjsonld, InlineObject2
 } from "@household/api-client";
 import { Helpers } from '@/lib/api';
 import ConsumeProduct from "@/store/Stock/ConsumeProduct";
@@ -50,6 +50,26 @@ export default class Stock extends VuexModule {
         this.lock = lock;
     }
 
+    @Mutation
+    REDUCE_STOCK_QUANTITY(payload: ConsumeProduct): void {
+        if (payload.bestBefore !== null) {
+            let quantity = (parseInt(this.stocks[payload.stockId].bestBefore[payload.bestBefore]) - payload.quantity);
+            this.stocks[payload.stockId].bestBefore[payload.bestBefore] = String(quantity);
+
+        }
+        this.stocks[payload.stockId].quantity = this.stocks[payload.stockId].quantity - payload.quantity;
+    }
+
+    @Mutation
+    async REVERT_REDUCE_STOCK_QUANTITY(payload: ConsumeProduct) {
+        if (payload.bestBefore !== null) {
+            let quantity = (parseInt(this.stocks[payload.stockId].bestBefore[payload.bestBefore]) + payload.quantity);
+            this.stocks[payload.stockId].bestBefore[payload.bestBefore] = String(quantity);
+
+        }
+        this.stocks[payload.stockId].quantity = this.stocks[payload.stockId].quantity + payload.quantity;
+    }
+
     @Action({commit: 'SET_STOCK_LOCK'})
     lockStocks(): boolean {
         return true;
@@ -60,11 +80,22 @@ export default class Stock extends VuexModule {
         return false;
     }
 
-    @Action({})
+    @Action
     stockConsumeProduct(payload: ConsumeProduct): void {
-        // This is Optimistic update for consuming product.
-        console.log(payload);
+        // 1. Optimistic update. Update state, commit.
+        this.context.commit('REDUCE_STOCK_QUANTITY', payload);
 
+        // 2. Update backend data.
+        (new ProductStockApi()).stockConsumeProductStockItem(
+            Helpers.normalizeIri(payload.stockId),
+            new class implements InlineObject2 {
+                public quantity: number = payload.quantity;
+                public bestBefore: string|null = payload.bestBefore
+            }
+        ).catch(() => {
+            // 3. Revert update to stock, if API update fails.
+            this.context.commit('REVERT_REDUCE_STOCK_QUANTITY', payload);
+        })
     }
 
     get stockById(): (id: string) => ProductStockjsonld {
