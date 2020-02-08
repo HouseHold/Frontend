@@ -5,9 +5,9 @@ export default interface ConsumeProduct {
     stockId: string;
     /**
      * YYYY-MM-DD date or null, if product is set not expiring.
-     * @type {string}
+     * @type {string|null}
      */
-    bestBefore?: string;
+    bestBefore: string|null;
     /**
      * @type {number}
      */

@@ -117,6 +117,7 @@
               </CButton>
               <CButton
                 color="success"
+                :disabled="selectedQuantity === 0"
                 @click="consumeProduct()"
               >
                 Consume
@@ -208,8 +209,17 @@
         }
 
         consumeProduct() {
-            this.$store.dispatch('stockConsumeProduct', this.consumeData);
-            this.cancelConsumeProduct();
+          if(this.consumeModalProduct === undefined) {
+            throw Error('No modal product selected. Consume product failed!');
+          }
+
+          const payload: ConsumeProduct = {
+            stockId: this.selectedStock,
+            bestBefore: this.consumeModalProduct.expiring ? this.selectedBestBefore : null,
+            quantity: this.selectedQuantity
+          };
+          this.$store.dispatch('stockConsumeProduct', payload);
+          this.cancelConsumeProduct();
         }
 
       onDecreaseConsumeQuantity() {
