@@ -2,7 +2,7 @@
   <div>
     <CRow>
       <CCol sm="12">
-        <template v-if="this.$store.state.Stock.updated < 20">
+        <template v-if="this.$store.getters.stockNeedsRefresh">
           <c-spinner />
         </template>
         <template v-else>
