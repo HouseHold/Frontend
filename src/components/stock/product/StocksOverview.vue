@@ -20,7 +20,7 @@
     @Component({
       components: { StockList, LocationTable }
     })
-    export default class StockProduct extends Vue {
+    export default class StocksOverview extends Vue {
         readonly name: string = 'StocksOverview';
         //@ts-ignore Would cause is do otherwise extra checking for nothing...
         @Prop(Object) readonly product: Productjsonld;
