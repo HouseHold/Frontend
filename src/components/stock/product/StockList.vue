@@ -1,14 +1,14 @@
 <template>
-  <div>
-    <h4>Stocks</h4>
-    <hr class="d-none d-sm-block">
-    <CListGroup v-for="(stock, id) in stocks" :key="id">
-      <CListGroupItem>
-        {{ stock.name }} <span style="color: #8a94a5">({{ stock.quantity }})</span>
-      </CListGroupItem>
-      <div />
-    </CListGroup>
-  </div>
+    <div>
+        <h4>Stocks</h4>
+        <hr class="d-none d-sm-block">
+        <CListGroup v-for="(stock, id) in stocks" :key="id">
+            <CListGroupItem>
+                {{ stock.name }} <span style="color: #8a94a5">({{ stock.quantity }})</span>
+            </CListGroupItem>
+            <div />
+        </CListGroup>
+    </div>
 </template>
 
 <script lang="ts">

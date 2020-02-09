@@ -1,9 +1,9 @@
 <template>
-  <CChartBar
-    :datasets="computedDatasets"
-    :options="computedOptions"
-    :labels="labels"
-  />
+    <CChartBar
+        :datasets="computedDatasets"
+        :options="computedOptions"
+        :labels="labels"
+    />
 </template>
 
 <script>

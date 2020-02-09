@@ -1,33 +1,33 @@
 <template>
-  <CRow>
-    <CCol
-      col="12"
-      lg="6"
-    >
-      <CCard>
-        <CCardHeader>
-          User id:  {{ $route.params.id }}
-        </CCardHeader>
-        <CCardBody>
-          <CDataTable
-            striped
-            small
-            fixed
-            :items="getUserData($route.params.id)"
-            :fields="$options.fields"
-          />
-        </CCardBody>
-        <CCardFooter>
-          <CButton
-            color="primary"
-            @click="goBack"
-          >
-            Back
-          </CButton>
-        </CCardFooter>
-      </CCard>
-    </CCol>
-  </CRow>
+    <CRow>
+        <CCol
+            col="12"
+            lg="6"
+        >
+            <CCard>
+                <CCardHeader>
+                    User id:  {{ $route.params.id }}
+                </CCardHeader>
+                <CCardBody>
+                    <CDataTable
+                        striped
+                        small
+                        fixed
+                        :items="getUserData($route.params.id)"
+                        :fields="$options.fields"
+                    />
+                </CCardBody>
+                <CCardFooter>
+                    <CButton
+                        color="primary"
+                        @click="goBack"
+                    >
+                        Back
+                    </CButton>
+                </CCardFooter>
+            </CCard>
+        </CCol>
+    </CRow>
 </template>
 
 <script>

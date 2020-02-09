@@ -9,6 +9,7 @@ module.exports = {
         // override/add rules settings here, such as:
         // 'vue/no-unused-vars': 'error'
         'vue/max-attributes-per-line': 0,
+        "vue/html-indent": ["error", 4],
     },
     parserOptions: {
         parser: '@typescript-eslint/parser',

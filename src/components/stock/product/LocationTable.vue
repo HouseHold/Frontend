@@ -1,13 +1,13 @@
 <template>
-  <CDataTable :items="tableData" :fields="fields" hover sorter pagination>
-    <template #consume="{item}">
-      <td class="py-2">
-        <CButton color="danger" variant="outline" square size="sm" @click="console.log(item)">
-          Consume
-        </CButton>
-      </td>
-    </template>
-  </CDataTable>
+    <CDataTable :items="tableData" :fields="fields" hover sorter pagination>
+        <template #consume="{item}">
+            <td class="py-2">
+                <CButton color="danger" variant="outline" square size="sm" @click="console.log(item)">
+                    Consume
+                </CButton>
+            </td>
+        </template>
+    </CDataTable>
 </template>
 
 <script lang="ts">

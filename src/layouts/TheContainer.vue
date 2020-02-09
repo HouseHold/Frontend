@@ -1,20 +1,20 @@
 <template>
-  <div class="c-app">
-    <TheSidebar />
-    <div class="c-wrapper">
-      <TheHeader />
-      <div class="c-body">
-        <main class="c-main">
-          <CContainer fluid>
-            <transition name="fade">
-              <router-view />
-            </transition>
-          </CContainer>
-        </main>
-      </div>
-      <TheFooter />
+    <div class="c-app">
+        <TheSidebar />
+        <div class="c-wrapper">
+            <TheHeader />
+            <div class="c-body">
+                <main class="c-main">
+                    <CContainer fluid>
+                        <transition name="fade">
+                            <router-view />
+                        </transition>
+                    </CContainer>
+                </main>
+            </div>
+            <TheFooter />
+        </div>
     </div>
-  </div>
 </template>
 
 <script lang="ts">

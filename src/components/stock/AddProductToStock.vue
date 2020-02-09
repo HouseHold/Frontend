@@ -1,68 +1,68 @@
 <template>
-  <CCard>
-    <CCardHeader>
-      <strong>Add Product to Stock</strong>
-    </CCardHeader>
-    <CCardBody>
-      <CForm @submit.prevent="addToStock">
-        <AutocompleteInput
-          :search="searchProducts"
-          label="Product"
-          placeholder="Search product"
-          @submit="getAutocompleteResult"
-        />
-        <div class="form-group">
-          <label>
-            Best Before
-          </label>
-          <!-- Placeholder issue: https://github.com/nathanreyes/v-calendar/issues/493 -->
-          <date-picker
-            v-model="form.bestBefore"
-            mode="single"
-            :attributes="pickerAttrs"
-          />
-        </div>
-        <CInput
-          v-model="form.amount"
-          label="Amount"
-          placeholder="Enter amount"
-          type="number"
-          invalid-feedback="Please provide amount in numbers."
-          :is-valid="isNumber"
-        />
-        <CInput
-          v-model="form.price"
-          label="Price"
-          placeholder="Enter price"
-          type="number"
-          step=".01"
-          invalid-feedback="Please provide price in numbers."
-          :is-valid="isNumber"
-        />
-        <CSelect
-          label="Location"
-          :options="locations"
-          placeholder="Select Location"
-          :value.sync="form.location"
-        />
-        <hr>
-        <CButton
-          block
-          color="success"
-          type="submit"
-        >
-          Submit
-        </CButton>
-        <CButton
-          block
-          color="danger"
-          @click="returnToStock"
-        >
-          Cancel
-        </CButton>
-      </CForm>
-    </CCardBody>
-  </CCard>
+    <CCard>
+        <CCardHeader>
+            <strong>Add Product to Stock</strong>
+        </CCardHeader>
+        <CCardBody>
+            <CForm @submit.prevent="addToStock">
+                <AutocompleteInput
+                    :search="searchProducts"
+                    label="Product"
+                    placeholder="Search product"
+                    @submit="getAutocompleteResult"
+                />
+                <div class="form-group">
+                    <label>
+                        Best Before
+                    </label>
+                    <!-- Placeholder issue: https://github.com/nathanreyes/v-calendar/issues/493 -->
+                    <date-picker
+                        v-model="form.bestBefore"
+                        mode="single"
+                        :attributes="pickerAttrs"
+                    />
+                </div>
+                <CInput
+                    v-model="form.amount"
+                    label="Amount"
+                    placeholder="Enter amount"
+                    type="number"
+                    invalid-feedback="Please provide amount in numbers."
+                    :is-valid="isNumber"
+                />
+                <CInput
+                    v-model="form.price"
+                    label="Price"
+                    placeholder="Enter price"
+                    type="number"
+                    step=".01"
+                    invalid-feedback="Please provide price in numbers."
+                    :is-valid="isNumber"
+                />
+                <CSelect
+                    label="Location"
+                    :options="locations"
+                    placeholder="Select Location"
+                    :value.sync="form.location"
+                />
+                <hr>
+                <CButton
+                    block
+                    color="success"
+                    type="submit"
+                >
+                    Submit
+                </CButton>
+                <CButton
+                    block
+                    color="danger"
+                    @click="returnToStock"
+                >
+                    Cancel
+                </CButton>
+            </CForm>
+        </CCardBody>
+    </CCard>
 </template>
 
 <script lang="ts">

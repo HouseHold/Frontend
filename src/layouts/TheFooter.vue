@@ -1,20 +1,20 @@
 <template>
-  <CFooter>
-    <div>
-      <a
-        href="https://github.com/HouseHold/HouseHold"
-        target="_blank"
-      >HouseHold</a>
-      <span class="ml-1">&copy; 2019-{{ this.year }} <a href="https://xn--gran-8qa.fi"> Niko Granö</a> </span>
-    </div>
-    <div class="ml-auto">
-      <span class="mr-1">Report a</span>
-      <a
-        href="https://github.com/HouseHold/HouseHold"
-        target="_blank"
-      >bug</a>
-    </div>
-  </CFooter>
+    <CFooter>
+        <div>
+            <a
+                href="https://github.com/HouseHold/HouseHold"
+                target="_blank"
+            >HouseHold</a>
+            <span class="ml-1">&copy; 2019-{{ this.year }} <a href="https://xn--gran-8qa.fi"> Niko Granö</a> </span>
+        </div>
+        <div class="ml-auto">
+            <span class="mr-1">Report a</span>
+            <a
+                href="https://github.com/HouseHold/HouseHold"
+                target="_blank"
+            >bug</a>
+        </div>
+    </CFooter>
 </template>
 
 <script lang="ts">

@@ -1,25 +1,25 @@
 <template>
-  <div>
-    <CRow>
-      <CCol sm="12">
-        <CCard>
-          <CCardHeader>
-            <template v-if="this.$store.getters.stockNeedsRefresh === false">
-              <h2>{{ product.name }}</h2>
-            </template>
-          </CCardHeader>
-          <CCardBody>
-            <template v-if="this.$store.getters.stockNeedsRefresh">
-              <c-spinner />
-            </template>
-            <template v-else>
-              <stocks-overview :product="product" />
-            </template>
-          </CCardBody>
-        </CCard>
-      </CCol>
-    </CRow>
-  </div>
+    <div>
+        <CRow>
+            <CCol sm="12">
+                <CCard>
+                    <CCardHeader>
+                        <template v-if="this.$store.getters.stockNeedsRefresh === false">
+                            <h2>{{ product.name }}</h2>
+                        </template>
+                    </CCardHeader>
+                    <CCardBody>
+                        <template v-if="this.$store.getters.stockNeedsRefresh">
+                            <c-spinner />
+                        </template>
+                        <template v-else>
+                            <stocks-overview :product="product" />
+                        </template>
+                    </CCardBody>
+                </CCard>
+            </CCol>
+        </CRow>
+    </div>
 </template>
 
 <script lang="ts">

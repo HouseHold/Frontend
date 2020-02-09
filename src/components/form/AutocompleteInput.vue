@@ -1,56 +1,56 @@
 <template>
-  <div ref="root">
-    <slot
-      :rootProps="rootProps"
-      :inputProps="inputProps"
-      :inputListeners="inputListeners"
-      :resultListProps="resultListProps"
-      :resultListListeners="resultListListeners"
-      :results="results"
-      :resultProps="resultProps"
-    >
-      <div
-        v-bind="rootProps"
-        class="form-group"
-      >
-        <label :for="safeId">
-          {{ label }}
-        </label>
-        <input
-          :id="safeId"
-          ref="input"
-          :placeholder="placeholder"
-          class="form-control"
-          v-bind="inputProps"
-          @input="handleInput"
-          @keydown="core.handleKeyDown"
-          @focus="core.handleFocus"
-          @blur="core.handleBlur"
-          v-on="$listeners"
+    <div ref="root">
+        <slot
+            :rootProps="rootProps"
+            :inputProps="inputProps"
+            :inputListeners="inputListeners"
+            :resultListProps="resultListProps"
+            :resultListListeners="resultListListeners"
+            :results="results"
+            :resultProps="resultProps"
         >
-        <ul
-          ref="resultList"
-          v-bind="resultListProps"
-          v-on="resultListListeners"
-        >
-          <template v-for="(result, index) in results">
-            <slot
-              name="result"
-              :result="result"
-              :props="resultProps[index]"
+            <div
+                v-bind="rootProps"
+                class="form-group"
             >
-              <li
-                :key="resultProps[index].id"
-                v-bind="resultProps[index]"
-              >
-                {{ getResultValue(result) }}
-              </li>
-            </slot>
-          </template>
-        </ul>
-      </div>
-    </slot>
-  </div>
+                <label :for="safeId">
+                    {{ label }}
+                </label>
+                <input
+                    :id="safeId"
+                    ref="input"
+                    :placeholder="placeholder"
+                    class="form-control"
+                    v-bind="inputProps"
+                    @input="handleInput"
+                    @keydown="core.handleKeyDown"
+                    @focus="core.handleFocus"
+                    @blur="core.handleBlur"
+                    v-on="$listeners"
+                >
+                <ul
+                    ref="resultList"
+                    v-bind="resultListProps"
+                    v-on="resultListListeners"
+                >
+                    <template v-for="(result, index) in results">
+                        <slot
+                            name="result"
+                            :result="result"
+                            :props="resultProps[index]"
+                        >
+                            <li
+                                :key="resultProps[index].id"
+                                v-bind="resultProps[index]"
+                            >
+                                {{ getResultValue(result) }}
+                            </li>
+                        </slot>
+                    </template>
+                </ul>
+            </div>
+        </slot>
+    </div>
 </template>
 
 <script lang="ts">

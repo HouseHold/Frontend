@@ -1,23 +1,23 @@
 <template>
-  <CSidebar
-    fixed
-    :minimize="minimize"
-    :show.sync="show"
-  >
-    <CSidebarBrand
-      :img-full="{ width: 118, height: 46, alt: 'Logo', src: '//via.placeholder.com/118x46'}"
-      :img-minimized="{ width: 118, height: 46, alt: 'Logo', src: '//via.placeholder.com/118x46'}"
-      :wrapped-in-link="{ href: 'https://github.com/HouseHold/HouseHold', target: '_blank'}"
-    />
-    <CRenderFunction
-      flat
-      :content-to-render="nav"
-    />
-    <CSidebarMinimizer
-      class="d-md-down-none"
-      @click.native="minimize = !minimize"
-    />
-  </CSidebar>
+    <CSidebar
+        fixed
+        :minimize="minimize"
+        :show.sync="show"
+    >
+        <CSidebarBrand
+            :img-full="{ width: 118, height: 46, alt: 'Logo', src: '//via.placeholder.com/118x46'}"
+            :img-minimized="{ width: 118, height: 46, alt: 'Logo', src: '//via.placeholder.com/118x46'}"
+            :wrapped-in-link="{ href: 'https://github.com/HouseHold/HouseHold', target: '_blank'}"
+        />
+        <CRenderFunction
+            flat
+            :content-to-render="nav"
+        />
+        <CSidebarMinimizer
+            class="d-md-down-none"
+            @click.native="minimize = !minimize"
+        />
+    </CSidebar>
 </template>
 
 <script lang="ts">

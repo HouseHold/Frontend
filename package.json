@@ -3,7 +3,8 @@
     "build": "encore production --progress",
     "dev": "encore dev",
     "dev-server": "encore dev-server",
-    "watch": "encore dev-server --port 8080 --progress --watch --hot --hot-only --disable-host-check --keep-public-path"
+    "watch": "encore dev-server --port 8080 --progress --watch --hot --hot-only --disable-host-check --keep-public-path",
+    "lint": "node_modules/.bin/eslint --fix \"./src/**/*.{js,vue,ts}\""
   },
   "dependencies": {
     "@coreui/coreui": "^3.0.0-rc.0",

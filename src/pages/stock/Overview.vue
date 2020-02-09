@@ -1,10 +1,10 @@
 <template>
-  <div>
-    <widgets-stock />
-    <widgets-actions />
-    <hr>
-    <in-stock />
-  </div>
+    <div>
+        <widgets-stock />
+        <widgets-actions />
+        <hr>
+        <in-stock />
+    </div>
 </template>
 
 <script lang="ts">

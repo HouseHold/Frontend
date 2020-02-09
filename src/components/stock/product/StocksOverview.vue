@@ -1,14 +1,14 @@
 <template>
-  <CRow>
-    <CCol sm="8">
-      <h4>Storage Overview</h4>
-      <hr class="d-none d-sm-block">
-      <location-table :product="product" />
-    </CCol>
-    <CCol sm="4">
-      <stock-list :product="product" />
-    </CCol>
-  </CRow>
+    <CRow>
+        <CCol sm="8">
+            <h4>Storage Overview</h4>
+            <hr class="d-none d-sm-block">
+            <location-table :product="product" />
+        </CCol>
+        <CCol sm="4">
+            <stock-list :product="product" />
+        </CCol>
+    </CRow>
 </template>
 
 <script lang="ts">
