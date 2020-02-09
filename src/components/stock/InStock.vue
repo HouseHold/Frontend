@@ -131,7 +131,4 @@
 </script>
 
 <style>
-    .clickable {
-        cursor: pointer;
-    }
 </style>
