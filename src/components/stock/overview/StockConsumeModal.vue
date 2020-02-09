@@ -97,10 +97,25 @@
         //@ts-ignore Would cause is do otherwise extra checking for nothing...
         @Prop(String) readonly title: string;
         //@ts-ignore Would cause is do otherwise extra checking for nothing...
-        @Prop(String) readonly color: String = 'dark';
+        @Prop(String) readonly color: string = 'dark';
+        @Prop(Object) readonly stock: ProductStockjsonld|undefined;
+        @Prop(Object) readonly bestBefore: {date: string, amount: number}|undefined;
+
+        mounted() {
+            if (this.stock !== undefined) {
+                this.onSelectedStock(this.stock);
+                if (this.product.expiring && this.bestBefore !== undefined) {
+                    this.onSelectBestBefore(this.bestBefore.date, String(this.bestBefore.amount));
+                }
+            }
+        }
 
         @Emit('close')
         closeModal(cancel: boolean) {
+            this.selectedStock = '';
+            this.selectedBestBefore = '';
+            this.selectedQuantity = 0;
+            this.selectedMaxQuantity = 2147483647;
             return cancel;
         }
 
