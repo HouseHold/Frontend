@@ -62,7 +62,7 @@
         inStock: number;
         bestBefore: string;
         id: string;
-    };
+    }
 
     @Component({
         components: {StockConsumeModal}
@@ -85,18 +85,28 @@
             for (let key in products) {
                 let stocks: Array<ProductStockjsonld> = [];
                 let quantity: number = 0;
+                let bestBefore: number = 0;
+
                 products[key].stocks.forEach((item) => {
                     stocks.push(this.$store.getters.stockById(item));
                 });
 
                 stocks.forEach((item) => {
                     quantity += item.quantity;
+                    let date: number = Date.parse(Object.keys(item.bestBefore)
+                        .sort((a:string, b:string): number => {
+                            return Number(Date.parse(a) > Date.parse(b));
+                        })[0]);
+
+                    if (bestBefore === 0 || bestBefore < date) {
+                        bestBefore = date;
+                    }
                 });
 
                 data.push({
                     name: products[key].name,
                     inStock: quantity,
-                    bestBefore: 'Pew',
+                    bestBefore: products[key].expiring ? (new Date(bestBefore)).toLocaleDateString() : 'Not expiring',
                     id: products[key]["@id"]
                 });
             }
