@@ -16,7 +16,7 @@
   import {Productjsonld, ProductLocationjsonld, ProductStockjsonld} from "@household/api-client";
 
     @Component
-    export default class StockProduct extends Vue {
+    export default class StockList extends Vue {
         readonly name: string = 'StockList';
         //@ts-ignore Would cause is do otherwise extra checking for nothing...
         @Prop(Object) readonly product: Productjsonld;

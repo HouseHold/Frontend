@@ -39,7 +39,7 @@
     @Component({
         components: { StockConsumeModal }
     })
-    export default class StockProduct extends Vue {
+    export default class LocationTable extends Vue {
         readonly name: string = 'LocationTable';
         consumeModal: boolean = false;
         selected?: {stock: ProductStockjsonld, bestBefore: { date: string, amount: number }|null };
