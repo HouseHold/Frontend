@@ -4,23 +4,15 @@ export default [
     _children: [
       {
         _name: 'CSidebarNavItem',
-        name: 'Stock',
-        to: '/stock',
-        icon: 'cil-speedometer',
-        badge: {
-          color: 'danger',
-          text: 'DEV'
-        }
-      },
-      {
-        _name: 'CSidebarNavItem',
         name: 'Dashboard',
         to: '/dashboard',
         icon: 'cil-speedometer',
-        badge: {
-          color: 'primary',
-          text: 'NEW'
-        }
+      },
+      {
+        _name: 'CSidebarNavItem',
+        name: 'Stock',
+        to: '/stock',
+        icon: 'cil-fridge',
       },
       {
         _name: 'CSidebarNavDivider',
