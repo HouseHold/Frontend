@@ -5,15 +5,22 @@
                 <CCardText>{{ label }}</CCardText>
             </CCol>
             <CCol col="1">
-                <div @click="addRow" class="clickable">
+                <div class="clickable" @click="addRow">
                     <CIcon name="cil-playlist-add" />
                 </div>
             </CCol>
         </CRow>
-        <div v-for="(input, index) in inputs" :key="index">
+        <div v-for="(input, index) in rows" :key="index">
             <CRow>
                 <CCol>
-                    <CInput required inline :value="input">
+                    <CInput
+                        required
+                        inline
+                        :value="input"
+                        style="margin-bottom: 2px"
+                        :type="inputType"
+                        @input="updateRow(index, $event)"
+                    >
                         <template #append-content>
                             <div class="clickable" @click="removeRow(index)">
                                 <CIcon name="cil-x-circle" />
@@ -23,20 +30,21 @@
                 </CCol>
             </CRow>
         </div>
+        <div style="margin-bottom: 13px" />
     </div>
 </template>
 
 <script lang="ts">
-  import {Component, Prop, Vue} from "vue-property-decorator";
+    import {Component, Prop, PropSync, Vue} from "vue-property-decorator";
 
     @Component
     export default class DynamicInputList extends Vue {
         readonly name: string = 'DynamicInputList';
         //@ts-ignore
-        @Prop(Array) readonly data: Array<string>;
+        @PropSync('data', {type: Array}) rows: Array<string>;
         //@ts-ignore
         @Prop(String) readonly label: string;
-        rows: Array<string> = [];
+        @Prop(String) readonly type?: string|undefined;
 
         addRow(): void {
             this.rows.push('');
@@ -46,12 +54,16 @@
             this.rows.splice(index, 1);
         }
 
-        get inputs(): Array<String> {
-            if (this.rows.length === 0) {
-                this.rows = this.data;
-            }
+        updateRow(index: number, value: string): void {
+            this.rows.splice(index, 1, value);
+        }
 
-            return this.data;
+        setData(data: Array<string>): void {
+            this.rows.splice(0, data.length, ...data);
+        }
+
+        get inputType(): string {
+            return this.type === undefined ? 'text' : this.type;
         }
     }
 </script>
