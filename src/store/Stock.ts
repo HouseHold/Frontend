@@ -7,6 +7,7 @@ import {
     ProductCollectionApi, ProductCollectionjsonld, InlineObject2
 } from "@household/api-client";
 import { Helpers } from '@/lib/api';
+import _ from 'lodash';
 import ConsumeProduct from "@/store/Stock/ConsumeProduct.ts";
 
 @Module
@@ -61,13 +62,18 @@ export default class Stock extends VuexModule {
     }
 
     @Mutation
-    async REVERT_REDUCE_STOCK_QUANTITY(payload: ConsumeProduct) {
+    REVERT_REDUCE_STOCK_QUANTITY(payload: ConsumeProduct) {
         if (payload.bestBefore !== null) {
             let quantity = (parseInt(this.stocks[payload.stockId].bestBefore[payload.bestBefore]) + payload.quantity);
             this.stocks[payload.stockId].bestBefore[payload.bestBefore] = String(quantity);
 
         }
         this.stocks[payload.stockId].quantity = this.stocks[payload.stockId].quantity + payload.quantity;
+    }
+
+    @Mutation
+    SET_STOCK_PRODUCT(payload: Productjsonld) {
+        this.products[payload["@id"]] = _.clone(payload);
     }
 
     @Action({commit: 'SET_STOCK_LOCK'})
@@ -95,6 +101,28 @@ export default class Stock extends VuexModule {
         ).catch(() => {
             // 3. Revert update to stock, if API update fails.
             this.context.commit('REVERT_REDUCE_STOCK_QUANTITY', payload);
+        })
+    }
+
+    @Action
+    stockUpdateProduct(payload: Productjsonld): void {
+        // 1. Save current state into independent local variable.
+        let revertData = _.clone(this.products[payload["@id"]]);
+
+        // 2. Optimistic update. Update state, commit.
+        this.context.commit('SET_STOCK_PRODUCT', payload);
+
+        // 3. Update backend data.
+        (new ProductApi()).patchProductItem(
+            payload.id,
+            {
+                ean: payload.ean,
+                name: payload.name,
+                collection: payload.collection,
+            }
+        ).catch((e) => {
+            // 4. Revert update to stock, if API update fails.
+            this.context.commit('SET_STOCK_PRODUCT', revertData);
         })
     }
 
