@@ -5,19 +5,20 @@
                 <CForm>
                     <CCardBody>
                         <CInput
+                            v-model="productName"
                             description="Please give product a name"
                             label="Product name"
                             placeholder="Enter product name"
-                            :value="product.name"
                             required
                         />
                         <CSelect
+                            v-model="collection"
                             label="Product collection"
                             description="Please select a collection where product belongs"
                             :options="collections"
-                            :value="currentCollection"
+                            @update:value="collection = $event"
                         />
-                        <dynamic-input-list :data="product.ean" label="Barcodes" />
+                        <dynamic-input-list ref="dynInput" :data="ean" label="Barcodes" field="number" @update:data="ean = $event" />
                         <p style="color: #3c4b64">
                             Product is part of <b>{{ category }}</b> category.
                         </p>
@@ -27,6 +28,18 @@
                             <b v-else>not expire</b>.
                         </p>
                     </ccardbody>
+                    <CRow>
+                        <CCol col="12">
+                            <div class="float-right">
+                                <CButton color="warning" style="margin-right: 10px" @click="reset()">
+                                    Reset
+                                </CButton>
+                                <CButton color="success" @click="save()">
+                                    Save
+                                </CButton>
+                            </div>
+                        </CCol>
+                    </CRow>
                 </CForm>
             </CCol>
             <CCol col="4">
@@ -51,14 +64,38 @@
   import {Component, Prop, Vue} from "vue-property-decorator";
   import {Productjsonld} from "@household/api-client";
   import DynamicInputList from "@/components/form/DynamicInputList.vue";
+  import _ from "lodash";
 
     @Component({
         components: { DynamicInputList }
     })
     export default class ProductEdit extends Vue {
         readonly name: string = 'ProductEdit';
+        ean: Array<string> = [];
+        productName: string = '';
+        collection: string = '';
         //@ts-ignore Would cause is do otherwise extra checking for nothing...
         @Prop(Object) readonly product: Productjsonld;
+
+        created(): void {
+            this.resetFields();
+        }
+
+        resetFields(): void {
+            this.ean = _.clone(this.product.ean);
+            this.productName = _.clone(this.product.name);
+            this.collection = this.currentCollection;
+        }
+
+        reset(): void {
+            this.resetFields();
+            //@ts-ignore
+            this.$refs.dynInput.setData(this.ean);
+        }
+
+        save(): void {
+
+        }
 
         get collections(): Array<string> {
             let data: Array<string> = [];
