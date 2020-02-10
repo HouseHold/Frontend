@@ -84,7 +84,7 @@
         resetFields(): void {
             this.ean = _.clone(this.product.ean);
             this.productName = _.clone(this.product.name);
-            this.collection = this.currentCollection;
+            this.collection = _.clone(this.product.collection);
         }
 
         reset(): void {
@@ -94,21 +94,22 @@
         }
 
         save(): void {
-
+            let payload: Productjsonld = _.clone(this.product);
+            payload.ean = this.ean;
+            payload.name = this.productName;
+            payload.collection = this.collection;
+            console.log(payload);
+            this.$store.dispatch('stockUpdateProduct', payload);
         }
 
-        get collections(): Array<string> {
-            let data: Array<string> = [];
+        get collections(): Array<{label: string, value: string}> {
+            let data: Array<{label: string, value: string}> = [];
             for (let id in this.$store.state.Stock.collections) {
-                data.push(this.$store.state.Stock.collections[id].name);
+                data.push({label: this.$store.state.Stock.collections[id].name, value: id});
             }
 
             // Short items alphabetically.
-            return data.sort((a,b) => a.localeCompare(b));
-        }
-
-        get currentCollection(): string {
-            return this.$store.state.Stock.collections[this.product.collection].name;
+            return data.sort((a,b) => a.label.localeCompare(b.label));
         }
 
         get category(): string {
