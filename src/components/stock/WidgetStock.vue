@@ -114,11 +114,13 @@
     get expiring(): string {
       let count = 0;
       let threeDaysFromNow = Date.now() + 259200000; // 3 Days in milliseconds.
+      let today = Date.now();
       for (let productId in this.$store.state.Stock.products) {
         if (this.$store.state.Stock.products[productId].expiring) {
           this.$store.state.Stock.products[productId].stocks.forEach((stockId: string) => {
             for (let bestBeforeDate in this.$store.state.Stock.stocks[stockId].bestBefore) {
-              if (Date.parse(bestBeforeDate) < threeDaysFromNow) {
+              let bestBeforeParsed = Date.parse(bestBeforeDate);
+              if (bestBeforeParsed < threeDaysFromNow && bestBeforeParsed > today) {
                 count += this.$store.state.Stock.stocks[stockId].bestBefore[bestBeforeDate];
               }
             }
