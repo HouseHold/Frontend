@@ -5,7 +5,7 @@
                 <CCard>
                     <CCardHeader>
                         <template v-if="this.$store.getters.stockNeedsRefresh === false">
-                            <h2>{{ product.name }}</h2>
+                            <h2>{{ this.$store.state.Stock.products[product['@id']].name }}</h2>
                         </template>
                     </CCardHeader>
                     <CCardBody>
