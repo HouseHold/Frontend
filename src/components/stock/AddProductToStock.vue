@@ -4,15 +4,13 @@
             <strong>Add Product to Stock</strong>
         </CCardHeader>
         <CCardBody>
-            <CForm @submit.prevent="addToStock">
-                <AutocompleteInput
-                    :search="searchProducts"
-                    label="Product"
-                    placeholder="Search product"
-                    @submit="getAutocompleteResult"
-                />
+            <CForm>
                 <div class="form-group">
                     <label>
+                        Product
+                    </label>
+                    <v-select :options="products" @input="onProductInput" />
+                    <label style="margin-top: 10px">
                         Best Before
                     </label>
                     <!-- Placeholder issue: https://github.com/nathanreyes/v-calendar/issues/493 -->
@@ -23,7 +21,7 @@
                     />
                 </div>
                 <CInput
-                    v-model="form.amount"
+                    v-model="form.quantity"
                     label="Amount"
                     placeholder="Enter amount"
                     type="number"
@@ -39,24 +37,40 @@
                     invalid-feedback="Please provide price in numbers."
                     :is-valid="isNumber"
                 />
-                <CSelect
-                    label="Location"
-                    :options="locations"
-                    placeholder="Select Location"
-                    :value.sync="form.location"
-                />
+                <CRow v-if="form.product !== null">
+                    <CCol>
+                        <div class="col-xs-1 modal-row" align="center">
+                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                <label
+                                    v-for="stock in stocks"
+                                    :key="stock['@id']"
+                                    class="btn btn-primary"
+                                    :class="{ active: stock['@id'] === form.stock}"
+                                >
+                                    <input :id="stock['@id']"
+                                           type="radio"
+                                           name="options"
+                                           :checked="stock['@id'] === form.stock"
+                                           @click="onSelectedStock(stock)"
+                                    >
+                                    {{ $store.state.Stock.locations[stock.location].name }}
+                                </label>
+                            </div>
+                        </div>
+                    </CCol>
+                </CRow>
                 <hr>
                 <CButton
                     block
                     color="success"
-                    type="submit"
+                    @click="check"
                 >
                     Submit
                 </CButton>
                 <CButton
                     block
                     color="danger"
-                    @click="returnToStock"
+                    @click="returnToStock()"
                 >
                     Cancel
                 </CButton>
@@ -67,34 +81,23 @@
 
 <script lang="ts">
     import {Vue, Component} from "vue-property-decorator";
-    import ApiClient from "@household/api-client"
-    import AutocompleteInput from '@/components/form/AutocompleteInput.vue';
-    import gql from 'graphql-tag';
-    import {Api} from '@/lib'
+    import vSelect from "vue-select";
+    import {ProductStockjsonld} from "@household/api-client";
+
+    interface AddProductToStockData {
+        stock: string | null;
+        product: string | null;
+        quantity: number | null;
+        price: number | null;
+        bestBefore: string | null;
+    }
 
     @Component({
-
-        components: {
-            AutocompleteInput
-        }
+        components: {vSelect}
     })
     export default class AddProductToStock extends Vue {
         readonly name: string = 'AddProductToStock';
-
-        locations = [];
-        locations_id = {};
-        products_id = {};
-        selectedDate = null;
-
-        form = {
-            product: null,
-            bestBefore: null,
-            amount: null,
-            price: null,
-            location: null
-        };
-
-        pickerAttrs = [
+        readonly pickerAttrs: Array<object> = [
             {
                 key: 'today',
                 highlight: true,
@@ -102,121 +105,47 @@
             },
         ];
 
-        mounted() {
-            this.getLocations();
+        form: AddProductToStockData = {
+            stock: null,
+            product: null,
+            quantity: null,
+            price: null,
+            bestBefore: null,
+        };
+
+        onProductInput(event: {label: string, code: string}): void {
+            this.form.product = event.code;
         }
 
         isNumber(val: any) {
             return Number(val) > 0;
         }
 
-        addToStock() {
-            // const api = new ProductStockApi();
-            //@ts-ignore
-            let locationId = this.locations_id[this.form.location];
-            //@ts-ignore
-            let productId = this.products_id[this.form.product];
-
-            // noinspection JSCheckFunctionSignatures
-            // api.getProductStockCollection(
-            //     {
-            //         location: Api.Helpers.normalizeIri(locationId),
-            //         product: Api.Helpers.normalizeIri(productId),
-            //     }
-            // ).then(async (data: any) => {
-            //     let stockId;
-            //     if (data['hydra:member'].length <= 0) {
-            //         stockId = (await this._initializeNewStock(locationId, productId));
-            //     } else {
-            //         stockId = data['hydra:member'][0]['@id'];
-            //     }
-            //     await (api.stockAddProductStockItem(
-            //         Api.Helpers.normalizeIri(stockId),
-            //         {
-            //             inlineObject1: InlineObject1.constructFromObject({
-            //                     quantity: this.form.amount,
-            //                     price: this.form.price,
-            //                     bestBefore: this.form.bestBefore
-            //                 },
-            //                 new InlineObject1()
-            //             )
-            //         }
-            //     ));
-            // }).catch((err: string) => {
-            //     console.log(err);
-            // })
-
-        }
-
-        async _initializeNewStock(locationId: string, productId: string) {
-            // const api = new ProductStockApi();
-            // let obj = InlineObject.constructFromObject(
-            //     {
-            //         product: productId,
-            //         location: locationId
-            //     },
-            //     new InlineObject()
-            // );
-            // noinspection JSCheckFunctionSignatures
-            // return (await api.stockInitProductStockCollection({
-            //     inlineObject: obj
-            // }))['@id'];
-        }
-
-        getAutocompleteResult(result: any) {
-            this.form.product = result;
-        }
-
         returnToStock() {
             this.$router.push("overview");
         }
 
-        async searchProducts(key: any) {
-          if (key.length < 1) {
-            return [];
-          }
-
-          const query = {
-            query: gql`
-            {
-                products(name: "${key}") {
-                    edges {
-                        node {
-                            name,
-                            id
-                        }
-                    }
-                }
-            }
-            `
-          };
-
-          let data = (await this.$apollo.query(query))['data']['products']['edges'];
-          let results: any = [];
-          data.forEach((item: any) => {
-            results.push(item['node']['name']);
-            //@ts-ignore
-            this.products_id[item['node']['name']] = item['node']['id'];
-          });
-
-          return results;
+        onSelectedStock(stock: ProductStockjsonld) {
+            this.form.stock = this.form.stock === stock['@id'] ? null : this.form.stock = stock['@id'];
         }
 
-        getLocations() {
-            // const locationApi = new ProductLocationApi();
-            // locationApi.getProductLocationCollection({page: 1}).then((data: any) => {
-            //     data = data['hydra:member'];
-            //     let results: any = [];
-            //     let results_id = {};
-            //     data.forEach((item: any) => {
-            //         results.push(item['name']);
-            //         @ts-ignore
-                    // results_id[item['name']] = item['@id'];
-                // });
-                //
-                // this.locations_id = results_id;
-                // this.locations = results;
-            // });
+        get products(): Array<{ label: string, code: string }> {
+            let data = [];
+            for (let productId in this.$store.state.Stock.products) {
+                data.push({label: this.$store.state.Stock.products[productId].name, code: productId});
+            }
+
+            return data;
+        }
+
+        get stocks(): Array<ProductStockjsonld> {
+            let data: Array<ProductStockjsonld> = [];
+            // @ts-ignore
+            this.$store.state.Stock.products[this.form.product].stocks.forEach((key: string) => {
+                data.push(this.$store.state.Stock.stocks[key]);
+            });
+
+            return data;
         }
     }
 </script>
