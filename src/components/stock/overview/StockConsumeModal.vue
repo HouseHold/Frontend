@@ -54,8 +54,10 @@
             </CCol>
             <CCol class="col-xs-6 inStock-align-center" align="center">
                 <div class="input-text-center">
-                    <CInput type="number" :value="selectedQuantity" min="0" :max="selectedMaxQuantity"
+                    <CInput v-model="selectedQuantity" type="number" min="0"
+                            :max="selectedMaxQuantity"
                             :append="maxAppend"
+                            @blur="validateSelectedQuantity()"
                     />
                 </div>
             </CCol>
@@ -129,10 +131,11 @@
         }
 
         consumeProduct() {
+            this.validateSelectedQuantity();
             const payload: ConsumeProduct = {
                 stockId: this.selectedStock,
                 bestBefore: this.product.expiring ? this.selectedBestBefore : null,
-                quantity: this.selectedQuantity
+                quantity: Number(this.selectedQuantity)
             };
             this.$store.dispatch('stockConsumeProduct', payload);
             this.closeModal(false);
@@ -160,6 +163,12 @@
         onSelectedStock(stock: ProductStockjsonld) {
             this.selectedStock = stock['@id'];
             this.selectedMaxQuantity = stock.quantity;
+        }
+
+        validateSelectedQuantity() {
+            if (this.selectedQuantity > this.selectedMaxQuantity && this.selectedMaxQuantity !== 2147483647) {
+                this.selectedQuantity = this.selectedMaxQuantity;
+            }
         }
 
         get maxAppend() {
