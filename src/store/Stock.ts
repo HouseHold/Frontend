@@ -9,6 +9,7 @@ import {
 import { Helpers } from '@/lib/api';
 import _ from 'lodash';
 import ConsumeProduct from "@/store/Stock/ConsumeProduct.ts";
+import AddProductToStock from "@/store/Stock/AddProductToStock";
 
 @Module
 export default class Stock extends VuexModule {
@@ -72,8 +73,18 @@ export default class Stock extends VuexModule {
     }
 
     @Mutation
-    SET_STOCK_PRODUCT(payload: Productjsonld) {
+    SET_STOCK_PRODUCT(payload: Productjsonld): void {
         this.products[payload["@id"]] = _.clone(payload);
+    }
+
+    @Mutation
+    ADD_PRODUCT_STOCK_QUANTITY(payload: AddProductToStock): void {
+        this.stocks[payload.stock].quantity += payload.quantity;
+    }
+
+    @Mutation
+    REVERT_ADD_PRODUCT_STOCK_QUANTITY(payload: AddProductToStock): void {
+        this.stocks[payload.stock].quantity += payload.quantity;
     }
 
     @Action({commit: 'SET_STOCK_LOCK'})
@@ -120,9 +131,27 @@ export default class Stock extends VuexModule {
                 name: payload.name,
                 collection: payload.collection,
             }
-        ).catch((e) => {
+        ).catch((/** e **/) => {
             // 4. Revert update to stock, if API update fails.
             this.context.commit('SET_STOCK_PRODUCT', revertData);
+        })
+    }
+
+    @Action
+    stockAddToStock(payload: AddProductToStock): void {
+        console.log(payload);
+        // 1. Optimistic update. Update state, commit.
+        this.context.commit('ADD_PRODUCT_STOCK_QUANTITY', payload);
+
+        // 2. Update backend data.
+        (new ProductStockApi()).stockAddProductStockItem(
+            Helpers.normalizeIri(payload.stock),
+            {
+                quantity: payload.quantity
+            }
+        ).catch((/** e **/) => {
+            // 3. Revert update to stock, if API update fails.
+            this.context.commit('REVERT_ADD_PRODUCT_STOCK_QUANTITY', payload);
         })
     }
 
