@@ -63,7 +63,7 @@
                 <CButton
                     block
                     color="success"
-                    @click="check"
+                    @click="onAddToStock()"
                 >
                     Submit
                 </CButton>
@@ -83,6 +83,7 @@
     import {Vue, Component} from "vue-property-decorator";
     import vSelect from "vue-select";
     import {ProductStockjsonld} from "@household/api-client";
+    import AddProductToStock from "@/store/Stock/AddProductToStock";
 
     interface AddProductToStockData {
         stock: string | null;
@@ -95,8 +96,8 @@
     @Component({
         components: {vSelect}
     })
-    export default class AddProductToStock extends Vue {
-        readonly name: string = 'AddProductToStock';
+    export default class AddProductToStockVue extends Vue {
+        readonly name: string = 'AddProductToStockVue';
         readonly pickerAttrs: Array<object> = [
             {
                 key: 'today',
@@ -115,6 +116,20 @@
 
         onProductInput(event: {label: string, code: string}): void {
             this.form.product = event.code;
+        }
+
+        onAddToStock(): void {
+            if (typeof this.form.stock !== 'string') {
+                throw Error('Stock id cannot be null.');
+            }
+            let payload: AddProductToStock = {
+                bestBefore: this.form.bestBefore,
+                price: Number(this.form.price),
+                quantity: Number(this.form.quantity),
+                stock: this.form.stock
+            };
+
+            this.$store.dispatch('stockAddToStock', payload);
         }
 
         isNumber(val: any) {
@@ -139,6 +154,10 @@
         }
 
         get stocks(): Array<ProductStockjsonld> {
+            if (this.form.product === null) {
+                return [];
+            }
+
             let data: Array<ProductStockjsonld> = [];
             // @ts-ignore
             this.$store.state.Stock.products[this.form.product].stocks.forEach((key: string) => {
