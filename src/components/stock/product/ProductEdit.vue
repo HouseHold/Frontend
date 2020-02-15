@@ -98,7 +98,6 @@
             payload.ean = this.ean;
             payload.name = this.productName;
             payload.collection = this.collection;
-            console.log(payload);
             this.$store.dispatch('stockUpdateProduct', payload);
         }
 
