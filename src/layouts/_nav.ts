@@ -30,6 +30,12 @@ export default [
         icon: 'cil-arrow-thick-to-left',
       },
       {
+        _name: 'CSidebarNavItem',
+        name: 'Create product',
+        to: '/stock/product/create',
+        icon: 'cil-playlist-add',
+      },
+      {
         _name: 'CSidebarNavDivider',
         _class: 'm-2'
       },

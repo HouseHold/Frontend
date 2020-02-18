@@ -10,6 +10,7 @@ import FrontDashboard from "@/pages/front/Dashboard.vue";
 import StockOverview from "@/pages/stock/Overview.vue";
 import StockPurchase from "@/pages/stock/Purchase.vue";
 import StockProduct from "@/pages/stock/Product.vue";
+import StockCreateProduct from "@/pages/stock/CreateProduct.vue";
 
 // Views - Pages
 //const Page404 = () => import('./pages/pages/Page404');
@@ -59,6 +60,11 @@ function configRoutes() {
                             path: 'purchase',
                             name: 'Purchase',
                             component: StockPurchase
+                        },
+                        {
+                            path: 'product/create',
+                            name: 'Create Product',
+                            component: StockCreateProduct
                         },
                         {
                             path: 'product/:id',
