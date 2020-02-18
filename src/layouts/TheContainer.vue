@@ -1,7 +1,7 @@
 <template>
     <div class="c-app">
         <TheSidebar />
-        <div class="c-wrapper">
+        <div class="c-wrapper c-fixed-components">
             <TheHeader />
             <div class="c-body">
                 <main class="c-main">
@@ -19,9 +19,9 @@
 
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
-import TheSidebar from './TheSidebar';
-import TheHeader from './TheHeader';
-import TheFooter from './TheFooter';
+import TheSidebar from './TheSidebar.vue';
+import TheHeader from './TheHeader.vue';
+import TheFooter from './TheFooter.vue';
 
 @Component({
   name: 'TheContainer',
