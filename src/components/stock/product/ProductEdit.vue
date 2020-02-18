@@ -20,11 +20,14 @@
                         />
                         <dynamic-input-list ref="dynInput" :data="ean" label="Barcodes" field="number" @update:data="ean = $event" />
                         <p style="color: #3c4b64">
-                            Product is part of <b>{{ category }}</b> category.
+                            Product is part of
+                            <b>
+                                {{ category }}
+                            </b> category.
                         </p>
                         <p style="color: #3c4b64">
                             Product is set to
-                            <b v-if="product.expiring">expire</b>
+                            <b v-if="this.$store.state.Stock.products[productId].expiring">expire</b>
                             <b v-else>not expire</b>.
                         </p>
                     </ccardbody>
@@ -47,7 +50,7 @@
                 <p>
                     <br>
                     You cannot edit some fields like price. Price is generated based on adding products to the stock.
-                    It will be showing always latest price which is currently <b>{{ product.price }}</b>.
+                    It will be showing always latest price which is currently <b>{{ this.$store.state.Stock.products[productId].price }}</b>.
                     <br> <br>
                     Also you cannot change the category of product here. To move this product into different category,
                     you need to change product collection, which is under different category.
@@ -75,16 +78,16 @@
         productName: string = '';
         collection: string = '';
         //@ts-ignore Would cause is do otherwise extra checking for nothing...
-        @Prop(Object) readonly product: Productjsonld;
+        @Prop(String) readonly productId: string;
 
         created(): void {
             this.resetFields();
         }
 
         resetFields(): void {
-            this.ean = _.clone(this.product.ean);
-            this.productName = _.clone(this.product.name);
-            this.collection = _.clone(this.product.collection);
+            this.ean = _.clone(this.$store.state.Stock.products[this.productId].ean);
+            this.productName = _.clone(this.$store.state.Stock.products[this.productId].name);
+            this.collection = _.clone(this.$store.state.Stock.products[this.productId].collection);
         }
 
         reset(): void {
@@ -94,7 +97,7 @@
         }
 
         save(): void {
-            let payload: Productjsonld = _.clone(this.product);
+            let payload: Productjsonld = _.clone(this.$store.state.Stock.products[this.productId]);
             payload.ean = this.ean;
             payload.name = this.productName;
             payload.collection = this.collection;
@@ -112,7 +115,13 @@
         }
 
         get category(): string {
-            return this.$store.state.Stock.categories[this.$store.state.Stock.collections[this.product.collection].category].name;
+            return this.$store.state.Stock.categories
+                [this.$store.state.Stock.collections
+                [this.$store.state.Stock.products
+                [this.productId
+                ].collection
+                ].category
+                ].name
         }
     }
 </script>

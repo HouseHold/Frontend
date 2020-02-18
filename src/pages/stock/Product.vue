@@ -27,7 +27,7 @@
                             </CNav>
                             <div>
                                 <stocks-overview v-if="currentTab === 'stock'" :product="product" />
-                                <product-edit v-if="currentTab === 'edit'" :product="product" />
+                                <product-edit v-if="currentTab === 'edit'" :product-id="product['@id']" />
                             </div>
                         </template>
                     </CCardBody>
