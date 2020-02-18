@@ -9,10 +9,25 @@ export default [
         icon: 'cil-speedometer',
       },
       {
+        _name: 'hr',
+        _class: 'm-0'
+      },
+      {
+        _name: 'CSidebarNavTitle',
+        _children: ['Inventory'],
+        _class: 'm-0'
+      },
+      {
         _name: 'CSidebarNavItem',
         name: 'Stock',
-        to: '/stock',
+        to: '/stock/overview',
         icon: 'cil-fridge',
+      },
+      {
+        _name: 'CSidebarNavItem',
+        name: 'Add inventory',
+        to: '/stock/purchase',
+        icon: 'cil-arrow-thick-to-left',
       },
       {
         _name: 'CSidebarNavDivider',
