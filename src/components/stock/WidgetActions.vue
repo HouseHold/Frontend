@@ -1,55 +1,22 @@
 <template>
     <CRow>
-        <CCol
-            sm="6"
-            lg="3"
-        >
-            <CButton
-                class="stock-action-btn"
-                size="lg"
-                color="success"
-                block
-                @click="redirectPurchase"
-            >
+        <CCol sm="6" lg="3">
+            <CButton class="stock-action-btn" size="lg" color="success" block @click="redirectPurchase">
                 Add Stock
             </CButton>
         </CCol>
-        <CCol
-            sm="6"
-            lg="3"
-        >
-            <CButton
-                class="stock-action-btn"
-                size="lg"
-                color="info"
-                block
-            >
+        <CCol sm="6" lg="3">
+            <CButton class="stock-action-btn" size="lg" color="info" block>
                 Show Bellow Limit
             </CButton>
         </CCol>
-        <CCol
-            sm="6"
-            lg="3"
-        >
-            <CButton
-                class="stock-action-btn"
-                size="lg"
-                color="warning"
-                block
-            >
+        <CCol sm="6" lg="3">
+            <CButton class="stock-action-btn" size="lg" color="warning" block>
                 Show Expiring
             </CButton>
         </CCol>
-        <CCol
-            sm="6"
-            lg="3"
-        >
-            <CButton
-                class="stock-action-btn"
-                size="lg"
-                color="danger"
-                block
-            >
+        <CCol sm="6" lg="3">
+            <CButton class="stock-action-btn" size="lg" color="danger" block>
                 Show Expired
             </CButton>
         </CCol>
