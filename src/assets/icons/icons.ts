@@ -11,6 +11,8 @@ import {
 } from '@coreui/icons'
 import {
     cilArrowRight,
+    cilArrowThickFromLeft,
+    cilArrowThickToLeft,
     cilBan,
     cilBell,
     cilCalendar,
@@ -50,6 +52,8 @@ export const iconsSet = Object.assign(
     {},
     {
         cilArrowRight,
+        cilArrowThickFromLeft,
+        cilArrowThickToLeft,
         cilBan,
         cilBell,
         cilCalendar,
