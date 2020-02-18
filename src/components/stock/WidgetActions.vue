@@ -1,8 +1,8 @@
 <template>
     <CRow>
         <CCol sm="6" lg="3">
-            <CButton class="stock-action-btn" size="lg" color="success" block @click="redirectPurchase">
-                Add Stock
+            <CButton class="stock-action-btn" size="lg" color="primary" block>
+                Show In Stock
             </CButton>
         </CCol>
         <CCol sm="6" lg="3">
