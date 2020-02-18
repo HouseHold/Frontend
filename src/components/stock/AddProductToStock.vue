@@ -10,6 +10,8 @@
                         Product
                     </label>
                     <v-select :options="products" @input="onProductInput" />
+                </div>
+                <div v-if="form.product !== null && this.$store.state.Stock.products[form.product].expiring" class="form-group">
                     <label style="margin-top: 10px">
                         Best Before
                     </label>
@@ -114,7 +116,16 @@
             bestBefore: null,
         };
 
-        onProductInput(event: {label: string, code: string}): void {
+        onProductInput(event: {label: string, code: string}|null): void {
+            if (event === null) {
+                this.form.stock = null;
+                this.form.product = null;
+                this.form.quantity = null;
+                this.form.price = null;
+                this.form.bestBefore = null;
+                
+                return;
+            }
             this.form.product = event.code;
         }
 
