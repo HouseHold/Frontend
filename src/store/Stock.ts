@@ -147,7 +147,8 @@ export default class Stock extends VuexModule {
         (new ProductStockApi()).stockAddProductStockItem(
             Helpers.normalizeIri(payload.stock),
             {
-                quantity: payload.quantity
+                quantity: payload.quantity,
+                price: payload.price,
             }
         ).catch((/** e **/) => {
             // 3. Revert update to stock, if API update fails.
