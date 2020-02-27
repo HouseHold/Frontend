@@ -8,41 +8,41 @@
   },
   "global": {
     "button": {
-      "save": "Save",
-      "submit": "Submit",
-      "cancel": "Cancel",
-      "reset": "Reset"
+      "save": "Tallenna",
+      "submit": "Lähetä",
+      "cancel": "Peruuta",
+      "reset": "Tyhjennä"
     }
   },
   "stock": {
     "title": {
-      "storage-overview": "Storage Overview",
-      "product": "Product"
+      "storage-overview": "Varaston yleiskatsaus",
+      "product": "Tuote"
     },
     "text": {},
     "label": {
-      "add-product-to-stock": "Add Product to Stock",
-      "best-before": "Best Before",
-      "amount": "Amount",
-      "price": "Price",
-      "product": "Product",
-      "product-name": "Product name",
-      "product-collection": "Product collection",
-      "barcodes": "Barcodes"
+      "add-product-to-stock": "Lisää tuote varastoon",
+      "best-before": "Parasta ennen",
+      "amount": "Määrä",
+      "price": "Hinta",
+      "product": "Tuote",
+      "product-name": "Tuotenimi",
+      "product-collection": "Tuotekokoelma",
+      "barcodes": "Viivakoodit"
     },
     "form": {
       "hint": {
-        "enter-amount": "Enter amount",
-        "enter-price": "Enter price",
-        "enter-product-name": "Enter product name"
+        "enter-amount": "Anna määrä",
+        "enter-price": "Anna hinta",
+        "enter-product-name": "Anna tuotenimi"
       },
       "error": {
-        "amount-in-numbers": "Please provide amount in numbers.",
-        "price-in-numbers": "Please provide price in numbers."
+        "amount-in-numbers": "Anna määrä numeroina.",
+        "price-in-numbers": "Anna hinta numeroina."
       },
       "desc": {
-        "please-give-product-name": "Please give product a name",
-        "please-give-product-collection": "Please select a collection where product belongs"
+        "please-give-product-name": "Anna tuotenimi",
+        "please-give-product-collection": "Valitse tuotekokoelma johon tuote kuuluu"
       }
     }
   }
