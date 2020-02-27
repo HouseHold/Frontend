@@ -2,5 +2,48 @@
   "locale": {
     "name": "Afrikaans",
     "flag": "cif-za"
+  },
+  "app": {
+    "house-hold": "HouseHold"
+  },
+  "global": {
+    "button": {
+      "save": "Save",
+      "submit": "Submit",
+      "cancel": "Cancel",
+      "reset": "Reset"
+    }
+  },
+  "stock": {
+    "title": {
+      "storage-overview": "Storage Overview",
+      "product": "Product"
+    },
+    "text": {},
+    "label": {
+      "add-product-to-stock": "Add Product to Stock",
+      "best-before": "Best Before",
+      "amount": "Amount",
+      "price": "Price",
+      "product": "Product",
+      "product-name": "Product name",
+      "product-collection": "Product collection",
+      "barcodes": "Barcodes"
+    },
+    "form": {
+      "hint": {
+        "enter-amount": "Enter amount",
+        "enter-price": "Enter price",
+        "enter-product-name": "Enter product name"
+      },
+      "error": {
+        "amount-in-numbers": "Please provide amount in numbers.",
+        "price-in-numbers": "Please provide price in numbers."
+      },
+      "desc": {
+        "please-give-product-name": "Please give product a name",
+        "please-give-product-collection": "Please select a collection where product belongs"
+      }
+    }
   }
 }
