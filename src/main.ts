@@ -8,7 +8,8 @@ import VCalendar from 'v-calendar';
 import { iconsSet as icons } from './assets/icons/icons';
 import store from './store';
 import VueI18n, { LocaleMessages } from "vue-i18n";
-import { defaultLocale, locales } from './locales';
+import _ from "lodash";
+import { defaultLocale, locales, localeFiles } from './locales';
 const messages: LocaleMessages = locales as LocaleMessages;
 
 Vue.config.performance = true;
@@ -38,8 +39,9 @@ new Vue({
 
 // Development related
 if (module.hot) {
-    module.hot.accept(['./locales/en.json'], function () {
-        i18n.setLocaleMessage('en', require('./locales/en.json'));
-        //i18n.setLocaleMessage('fi', require('./translations/fi.json'));
+    module.hot.accept(_.values(localeFiles), function () {
+        for (let locale in localeFiles) {
+            i18n.setLocaleMessage(locale, require(`./locales/${locale}.json`));
+        }
     });
 }

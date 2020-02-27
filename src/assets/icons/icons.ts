@@ -6,8 +6,25 @@ import {
     cibPaypal,
 } from '@coreui/icons'
 import {
-    cifUs,
+    cifCz, // Locales
+    cifDk, // Locales
+    cifDe, // Locales
+    cifEs, // Locales
+    cifGr, // Locales
     cifFi,
+    cifFr, // Locales
+    cifHu, // Locales
+    cifIt, // Locales
+    cifNl, // Locales
+    cifNo, // Locales
+    cifPl, // Locales
+    cifRo, // Locales
+    cifRu, // Locales
+    cifSe, // Locales
+    cifTr, // Locales
+    cifSa, // Locales
+    cifUs,
+    cifZa, // Locales
 } from '@coreui/icons'
 import {
     cilArrowRight,
@@ -90,8 +107,25 @@ export const iconsSet = Object.assign(
         cilXCircle
     },
     {
-        cifUs,
+        cifCz, // Locales
+        cifDk, // Locales
+        cifDe, // Locales
+        cifEs, // Locales
+        cifGr, // Locales
         cifFi,
+        cifFr, // Locales
+        cifHu, // Locales
+        cifIt, // Locales
+        cifNl, // Locales
+        cifNo, // Locales
+        cifPl, // Locales
+        cifRo, // Locales
+        cifRu, // Locales
+        cifSe, // Locales
+        cifTr, // Locales
+        cifSa, // Locales
+        cifUs,
+        cifZa, // Locales
     },
     {
         cibGithub,

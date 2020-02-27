@@ -1,19 +1,19 @@
 <template>
     <CCard>
         <CCardHeader>
-            <strong>Add Product to Stock</strong>
+            <strong>{{ $t('stock.label.add-product-to-stock') }}</strong>
         </CCardHeader>
         <CCardBody>
             <CForm>
                 <div class="form-group">
                     <label>
-                        Product
+                        {{ $t('stock.label.product') }}
                     </label>
                     <v-select :options="products" @input="onProductInput" />
                 </div>
                 <div v-if="form.product !== null && this.$store.state.Stock.products[form.product].expiring" class="form-group">
                     <label style="margin-top: 10px">
-                        Best Before
+                        {{ $t('stock.label.best-before') }}
                     </label>
                     <!-- Placeholder issue: https://github.com/nathanreyes/v-calendar/issues/493 -->
                     <date-picker

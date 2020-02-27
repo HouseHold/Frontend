@@ -6,15 +6,15 @@
                     <CCardBody>
                         <CInput
                             v-model="productName"
-                            description="Please give product a name"
-                            label="Product name"
-                            placeholder="Enter product name"
+                            :description="$t('stock.form.desc.please-give-product-name')"
+                            :label="$t('stock.label.product-name')"
+                            :placeholder="$t('stock.form.hint.enter-product-name')"
                             required
                         />
                         <CSelect
                             v-model="collection"
-                            label="Product collection"
-                            description="Please select a collection where product belongs"
+                            :label="$t('stock.label.product-collection')"
+                            :description="$t('stock.form.desc.please-give-product-collection')"
                             :options="collections"
                             @update:value="collection = $event"
                         />
@@ -35,10 +35,10 @@
                         <CCol col="12">
                             <div class="float-right">
                                 <CButton color="warning" style="margin-right: 10px" @click="reset()">
-                                    Reset
+                                    {{ $t('global.button.reset') }}
                                 </CButton>
                                 <CButton color="success" @click="save()">
-                                    Save
+                                    {{ $t('global.button.save') }}
                                 </CButton>
                             </div>
                         </CCol>

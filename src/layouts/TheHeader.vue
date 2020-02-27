@@ -108,7 +108,7 @@ export default class TheHeader extends Vue {
   get languages(): { [key: string]: { name: string, flag: string } } {
       let $return: { [key: string]: { name: string, flag: string } } = {};
       this.$i18n.availableLocales.forEach((code: string) => {
-          $return[code] = { name: this.$t('locale.name').toString(), flag: this.$t('locale.flag').toString() };
+          $return[code] = { name: this.$t('locale.name', code).toString(), flag: this.$t('locale.flag', code).toString() };
       });
 
       return $return;
