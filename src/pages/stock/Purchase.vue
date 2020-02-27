@@ -2,7 +2,7 @@
     <div>
         <c-row>
             <CCol sm="8">
-                <AddProductToStock />
+                <h-stock-form-product-add-to-stock />
             </CCol>
             <CCol sm="4">
                 <CCard>
@@ -20,13 +20,9 @@
 
 <script lang="ts">
     import { Vue, Component } from "vue-property-decorator";
-    import AddProductToStock from "@/components/stock/AddProductToStock.vue";
+    import HStockFormProductAddToStock from "@/components/stock/form/product/HStockFormProductAddToStock.vue";
 
-    @Component({
-      components: {
-        AddProductToStock
-      }
-    })
+    @Component({ components: { HStockFormProductAddToStock } })
     export default class StockPurchase extends Vue {
       readonly name: string = 'StockPurchase';
     }

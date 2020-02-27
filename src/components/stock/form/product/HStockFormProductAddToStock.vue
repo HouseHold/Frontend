@@ -82,9 +82,9 @@
 </template>
 
 <script lang="ts">
-    import {Vue, Component} from "vue-property-decorator";
+    import { Vue, Component } from "vue-property-decorator";
     import vSelect from "vue-select";
-    import {ProductStockjsonld} from "@household/api-client";
+    import { ProductStockjsonld } from "@household/api-client";
     import AddProductToStock from "@/store/Stock/AddProductToStock";
 
     interface AddProductToStockData {
@@ -96,10 +96,10 @@
     }
 
     @Component({
-        components: {vSelect}
+        components: { vSelect }
     })
-    export default class AddProductToStockVue extends Vue {
-        readonly name: string = 'AddProductToStockVue';
+    export default class HStockFormProductAddToStock extends Vue {
+        readonly name: string = 'HStockFormProductAddToStock';
         readonly pickerAttrs: Array<object> = [
             {
                 key: 'today',
@@ -123,7 +123,7 @@
                 this.form.quantity = null;
                 this.form.price = null;
                 this.form.bestBefore = null;
-                
+
                 return;
             }
             this.form.product = event.code;
@@ -158,7 +158,7 @@
         get products(): Array<{ label: string, code: string }> {
             let data = [];
             for (let productId in this.$store.state.Stock.products) {
-                data.push({label: this.$store.state.Stock.products[productId].name, code: productId});
+                data.push({ label: this.$store.state.Stock.products[productId].name, code: productId });
             }
 
             return data;

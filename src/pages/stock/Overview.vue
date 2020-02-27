@@ -1,23 +1,23 @@
 <template>
     <div>
-        <widgets-stock />
-        <widgets-actions />
+        <h-stock-widget-item-count />
+        <h-stock-widget-actions />
         <hr>
-        <in-stock />
+        <h-stock-table-products />
     </div>
 </template>
 
 <script lang="ts">
     import { Vue, Component } from "vue-property-decorator";
-    import WidgetsStock from '@/components/stock/WidgetStock.vue'
-    import InStock from '@/components/stock/InStock.vue';
-    import WidgetsActions from '@/components/stock/WidgetActions.vue';
+    import HStockWidgetItemCount from "@/components/stock/widget/HStockWidgetItemCount.vue";
+    import HStockWidgetActions from '@/components/stock/widget/HStockWidgetActions.vue';
+    import HStockTableProducts from "@/components/stock/table/HStockTableProducts.vue";
 
     @Component({
       components: {
-        WidgetsStock,
-        InStock,
-        WidgetsActions
+        HStockWidgetItemCount,
+        HStockWidgetActions,
+        HStockTableProducts
       }
     })
     export default class StockOverview extends Vue {

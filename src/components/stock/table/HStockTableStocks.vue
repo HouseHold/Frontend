@@ -12,12 +12,12 @@
 </template>
 
 <script lang="ts">
-  import {Component, Prop, Vue} from "vue-property-decorator";
-  import {Productjsonld, ProductLocationjsonld, ProductStockjsonld} from "@household/api-client";
+  import { Component, Prop, Vue } from "vue-property-decorator";
+  import { Productjsonld, ProductLocationjsonld, ProductStockjsonld } from "@household/api-client";
 
     @Component
-    export default class StockList extends Vue {
-        readonly name: string = 'StockList';
+    export default class HStockTableStocks extends Vue {
+        readonly name: string = 'HStockTableStocks';
         //@ts-ignore Would cause is do otherwise extra checking for nothing...
         @Prop(Object) readonly product: Productjsonld;
 

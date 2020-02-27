@@ -26,8 +26,8 @@
                                 </li>
                             </CNav>
                             <div>
-                                <stocks-overview v-if="currentTab === 'stock'" :product="product" />
-                                <product-edit v-if="currentTab === 'edit'" :product-id="product['@id']" />
+                                <h-stocks-overview v-if="currentTab === 'stock'" :product="product" />
+                                <h-stock-form-product-edit v-if="currentTab === 'edit'" :product-id="product['@id']" />
                             </div>
                         </template>
                     </CCardBody>
@@ -38,13 +38,13 @@
 </template>
 
 <script lang="ts">
-    import {Vue, Component} from "vue-property-decorator";
-    import StocksOverview from "@/components/stock/product/StocksOverview.vue";
-    import ProductEdit from "@/components/stock/product/ProductEdit.vue";
+    import { Vue, Component } from "vue-property-decorator";
+    import HStocksOverview from "@/components/stock/HStocksOverview.vue";
+    import HStockFormProductEdit from "@/components/stock/form/product/HStockFormProductEdit.vue";
     import { Productjsonld } from "@household/api-client";
 
     @Component({
-      components: { StocksOverview, ProductEdit }
+      components: { HStocksOverview, HStockFormProductEdit }
     })
     export default class StockProduct extends Vue {
         readonly name: string = 'StockProduct';

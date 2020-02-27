@@ -14,6 +14,6 @@ export default new Vuex.Store({
     mutations: {},
     actions: {},
     plugins: [
-        (new VuexPersistence({storage: window.localStorage})).plugin
+        (new VuexPersistence({ storage: window.localStorage })).plugin
     ]
 });

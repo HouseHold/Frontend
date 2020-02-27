@@ -36,7 +36,7 @@
                         </template>
                     </CDataTable>
                     <template v-if="consumeModalProduct !== null">
-                        <stock-consume-modal
+                        <h-stock-modal-consume
                             :product="consumeModalProduct"
                             color="dark"
                             :show-modal="consumeModal"
@@ -51,10 +51,10 @@
 </template>
 
 <script lang="ts">
-    import {Vue, Component} from "vue-property-decorator";
-    import {Api} from '@/lib';
-    import {Productjsonld, ProductStockjsonld} from "@household/api-client";
-    import StockConsumeModal from "@/components/stock/overview/StockConsumeModal.vue";
+    import { Vue, Component } from "vue-property-decorator";
+    import { Api } from '@/lib';
+    import { Productjsonld, ProductStockjsonld } from "@household/api-client";
+    import HStockModalConsume from "@/components/stock/modal/HStockModalConsume.vue";
     import { DataTableItem } from "@/lib/coreui";
 
     interface ProductInStockRowItem {
@@ -65,17 +65,17 @@
     }
 
     @Component({
-        components: {StockConsumeModal}
+        components: { HStockModalConsume }
     })
-    export default class InStock extends Vue {
-        name: string = 'InStock';
+    export default class HStockTableProducts extends Vue {
+        name: string = 'HStockTableProducts';
         consumeModal: boolean = false;
         consumeModalProduct: Productjsonld|null = null;
         fields: Array<DataTableItem> = [
-            {key: 'consume', _style: 'width:10%', label: 'Actions', sorter: false, filter: false},
-            {key: 'name', _style: 'width:40%'},
-            {key: 'inStock', _style: 'width:10%;'},
-            {key: 'bestBefore', _style: 'width:20%;'},
+            { key: 'consume', _style: 'width:10%', label: 'Actions', sorter: false, filter: false },
+            { key: 'name', _style: 'width:40%' },
+            { key: 'inStock', _style: 'width:10%;' },
+            { key: 'bestBefore', _style: 'width:20%;' },
         ];
 
         get items(): Array<ProductInStockRowItem> {

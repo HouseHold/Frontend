@@ -85,13 +85,13 @@
 </template>
 
 <script lang="ts">
-    import {Component, Prop, Emit, Vue} from "vue-property-decorator";
-    import {Productjsonld, ProductStockjsonld} from "@household/api-client";
+    import { Component, Prop, Emit, Vue } from "vue-property-decorator";
+    import { Productjsonld, ProductStockjsonld } from "@household/api-client";
     import ConsumeProduct from "@/store/Stock/ConsumeProduct";
 
     @Component
-    export default class StockProduct extends Vue {
-        readonly name: string = 'StockConsumeModal';
+    export default class HStockModalConsume extends Vue {
+        readonly name: string = 'HStockModalConsume';
         //@ts-ignore Would cause is do otherwise extra checking for nothing...
         @Prop(Object) readonly product: Productjsonld;
         //@ts-ignore Would cause is do otherwise extra checking for nothing...

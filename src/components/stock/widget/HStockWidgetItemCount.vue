@@ -97,10 +97,10 @@
   import ChartLine from "@/components/chart/ChartLine.vue";
   import ChartBar from "@/components/chart/ChartBar.vue";
   @Component({
-    components: {ChartBar, ChartLine}
+    components: { ChartBar, ChartLine }
   })
-  export default class StockWidgetStock extends Vue {
-    public readonly name: string = 'StockWidgetStock';
+  export default class HStockWidgetItemCount extends Vue {
+    public readonly name: string = 'HStockWidgetItemCount';
 
     get inStock(): string {
       let count = 0;

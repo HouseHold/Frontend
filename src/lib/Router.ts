@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Router, {RouterOptions} from 'vue-router'
+import Router, { RouterOptions } from 'vue-router'
 
 import TheContainer from "@/layouts/TheContainer.vue";
 
@@ -28,7 +28,7 @@ const config: RouterOptions = {
     mode: 'hash',
     linkActiveClass: 'active',
     // @ts-ignore
-    scrollBehavior: () => ({y: 0}),
+    scrollBehavior: () => ({ y: 0 }),
     routes: configRoutes()
 };
 export default new Router(config);

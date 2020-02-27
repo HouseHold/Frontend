@@ -35,13 +35,13 @@
 </template>
 
 <script lang="ts">
-    import {Component, Prop, PropSync, Vue} from "vue-property-decorator";
+    import { Component, Prop, PropSync, Vue } from "vue-property-decorator";
 
     @Component
     export default class DynamicInputList extends Vue {
         readonly name: string = 'DynamicInputList';
         //@ts-ignore
-        @PropSync('data', {type: Array}) rows: Array<string>;
+        @PropSync('data', { type: Array }) rows: Array<string>;
         //@ts-ignore
         @Prop(String) readonly label: string;
         @Prop(String) readonly type?: string|undefined;

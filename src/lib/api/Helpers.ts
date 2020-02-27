@@ -1,4 +1,4 @@
-import {Helpers} from "@/lib/api/index";
+import { Helpers } from "@/lib/api/index";
 
 type FetchCallback = (page: number) => any;
 

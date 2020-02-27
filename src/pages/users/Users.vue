@@ -76,7 +76,7 @@ export default {
     },
     rowClicked (item, index) {
       const userLink = this.userLink(index + 1)
-      this.$router.push({path: userLink})
+      this.$router.push({ path: userLink })
     }
   }
 }

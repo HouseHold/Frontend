@@ -1,4 +1,4 @@
-import {Module, VuexModule, Mutation, Action, MutationAction} from 'vuex-module-decorators'
+import { Module, VuexModule, Mutation, Action, MutationAction } from 'vuex-module-decorators'
 import {
     ProductApi, Productjsonld,
     ProductStockApi, ProductStockjsonld,
@@ -21,7 +21,7 @@ export default class Stock extends VuexModule {
     categories: { [key: string]: ProductCategoryjsonld } = {};
     lock: boolean = false;
 
-    @MutationAction({mutate:['updated','lock','products','stocks','locations','collections','categories']})
+    @MutationAction({ mutate:['updated','lock','products','stocks','locations','collections','categories'] })
     async fetchStocks() {
         return {
             lock: false,
@@ -87,12 +87,12 @@ export default class Stock extends VuexModule {
         this.stocks[payload.stock].quantity += payload.quantity;
     }
 
-    @Action({commit: 'SET_STOCK_LOCK'})
+    @Action({ commit: 'SET_STOCK_LOCK' })
     lockStocks(): boolean {
         return true;
     }
 
-    @Action({commit: 'SET_STOCK_LOCK'})
+    @Action({ commit: 'SET_STOCK_LOCK' })
     unlockStocks(): boolean {
         return false;
     }

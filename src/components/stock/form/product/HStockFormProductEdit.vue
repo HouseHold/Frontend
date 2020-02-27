@@ -64,16 +64,16 @@
 </template>
 
 <script lang="ts">
-  import {Component, Prop, Vue} from "vue-property-decorator";
-  import {Productjsonld} from "@household/api-client";
+  import { Component, Prop, Vue } from "vue-property-decorator";
+  import { Productjsonld } from "@household/api-client";
   import DynamicInputList from "@/components/form/DynamicInputList.vue";
   import _ from "lodash";
 
     @Component({
         components: { DynamicInputList }
     })
-    export default class ProductEdit extends Vue {
-        readonly name: string = 'ProductEdit';
+    export default class HStockFormProductEdit extends Vue {
+        readonly name: string = 'HStockFormProductEdit';
         ean: Array<string> = [];
         productName: string = '';
         collection: string = '';
@@ -107,7 +107,7 @@
         get collections(): Array<{label: string, value: string}> {
             let data: Array<{label: string, value: string}> = [];
             for (let id in this.$store.state.Stock.collections) {
-                data.push({label: this.$store.state.Stock.collections[id].name, value: id});
+                data.push({ label: this.$store.state.Stock.collections[id].name, value: id });
             }
 
             // Short items alphabetically.

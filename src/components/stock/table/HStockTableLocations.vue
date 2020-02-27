@@ -10,7 +10,7 @@
             </template>
         </CDataTable>
         <div v-if="consumeModal">
-            <stock-consume-modal
+            <h-stock-modal-consume
                 :product="product"
                 :stock="selected.stock"
                 :best-before="selected.bestBefore"
@@ -24,10 +24,10 @@
 </template>
 
 <script lang="ts">
-    import {Component, Prop, Vue} from "vue-property-decorator";
-    import {Productjsonld, ProductLocationjsonld, ProductStockjsonld} from "@household/api-client";
-    import {DataTableItem} from "@/lib/coreui";
-    import StockConsumeModal from "@/components/stock/overview/StockConsumeModal.vue";
+    import { Component, Prop, Vue } from "vue-property-decorator";
+    import { Productjsonld, ProductLocationjsonld, ProductStockjsonld } from "@household/api-client";
+    import { DataTableItem } from "@/lib/coreui";
+    import HStockModalConsume from "@/components/stock/modal/HStockModalConsume.vue";
 
     interface StockProductTableData {
         location: string;
@@ -37,10 +37,10 @@
     }
 
     @Component({
-        components: { StockConsumeModal }
+        components: { HStockModalConsume }
     })
-    export default class LocationTable extends Vue {
-        readonly name: string = 'LocationTable';
+    export default class HStockTableLocations extends Vue {
+        readonly name: string = 'HStockTableLocations';
         consumeModal: boolean = false;
         selected?: {stock: ProductStockjsonld, bestBefore: { date: string, amount: number }|null };
         //@ts-ignore Would cause is do otherwise extra checking for nothing...
@@ -53,7 +53,7 @@
         onConsume(item: StockProductTableData) {
             this.selected = {
                 stock: item.stock,
-                bestBefore: item.bestBefore !== undefined ? { amount: item.quantity, date: item.bestBefore} : null,
+                bestBefore: item.bestBefore !== undefined ? { amount: item.quantity, date: item.bestBefore } : null,
             };
             this.consumeModal = true;
         }
@@ -89,17 +89,17 @@
         get fields(): Array<DataTableItem> {
             if (this.product.expiring) {
                 return [
-                    {key: 'consume', _style: 'width:10%', label: 'Actions', sorter: false, filter: false},
-                    {key: 'location', _style: 'width:30%'},
-                    {key: 'quantity', _style: 'width:10%;'},
-                    {key: 'bestBefore', _style: 'width:15%;'},
+                    { key: 'consume', _style: 'width:10%', label: 'Actions', sorter: false, filter: false },
+                    { key: 'location', _style: 'width:30%' },
+                    { key: 'quantity', _style: 'width:10%;' },
+                    { key: 'bestBefore', _style: 'width:15%;' },
                 ];
             }
 
             return [
-                {key: 'consume', _style: 'width:10%', label: 'Actions', sorter: false, filter: false},
-                {key: 'location', _style: 'width:40%'},
-                {key: 'quantity', _style: 'width:10%;'},
+                { key: 'consume', _style: 'width:10%', label: 'Actions', sorter: false, filter: false },
+                { key: 'location', _style: 'width:40%' },
+                { key: 'quantity', _style: 'width:10%;' },
             ];
         }
 

@@ -23,14 +23,12 @@
     </CRow>
 </template>
 
-<script>
-    export default {
-        name: 'StockWidgetActions',
-        methods: {
-            redirectPurchase: function () {
-                this.$router.push("purchase")
-            }
-        }
+<script lang="ts">
+    import { Vue, Component } from "vue-property-decorator";
+
+    @Component
+    export default class HStockWidgetActions extends Vue {
+        public readonly name: string = 'HStockWidgetActions';
     }
 </script>
 
