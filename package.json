@@ -69,7 +69,7 @@
     "ts-loader": "^5.4",
     "typescript": "^3.8",
     "webpack-notifier": "^1.8",
-    "webpack": "^4"
+    "webpack": "*"
   },
   "browserslist": [
     "> 0.5%",
