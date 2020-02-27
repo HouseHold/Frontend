@@ -7,8 +7,9 @@ import ApolloClient from 'apollo-boost';
 import VCalendar from 'v-calendar';
 import { iconsSet as icons } from './assets/icons/icons';
 import store from './store';
-import VueI18n from "vue-i18n";
-import { defaultLocale, messages } from './locales';
+import VueI18n, { LocaleMessages } from "vue-i18n";
+import { defaultLocale, locales } from './locales';
+const messages: LocaleMessages = locales as LocaleMessages;
 
 Vue.config.performance = true;
 Vue.use(CoreuiVue);
