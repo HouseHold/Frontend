@@ -58,21 +58,32 @@
             <CHeaderNavItem class="d-md-down-none mx-2">
                 <CHeaderNavLink>
                     <div v-if="this.$store.state.Stock.lock">
-                        <CIcon
-                            class="spinning"
-                            name="cil-reload"
-                        />
+                        <CIcon class="spinning" name="cil-reload" />
                     </div>
-                    <div
-                        v-else
-                        @click="refreshData"
-                    >
-                        <CIcon
-                            name="cil-reload"
-                        />
+                    <div v-else @click="refreshData">
+                        <CIcon name="cil-reload" />
                     </div>
                 </CHeaderNavLink>
             </CHeaderNavItem>
+            <template>
+                <CDropdown in-nav class="c-header-nav-items" placement="bottom-end" add-menu-classes="pt-0">
+                    <template #toggler>
+                        <CHeaderNavLink>
+                            <CIcon name="cil-language" />
+                        </CHeaderNavLink>
+                    </template>
+                    <CDropdownHeader
+                        tag="div"
+                        class="text-center"
+                        color="light"
+                    >
+                        <strong>Translations</strong>
+                    </CDropdownHeader>
+                    <CDropdownItem v-for="(data, key) in languages" :key="key" @click="useLanguage(key)">
+                        <CIcon :name="data.flag" /> &nbsp; {{ data.name }}
+                    </CDropdownItem>
+                </CDropdown>
+            </template>
             <TheHeaderDropdownAccnt />
         </CHeaderNav>
         <CSubheader class="px-3">
@@ -92,6 +103,20 @@ import TheHeaderDropdownAccnt from './TheHeaderDropdownAccnt.vue';
 })
 export default class TheHeader extends Vue {
   name:string = 'TheHeader';
+  showLocales: boolean = false;
+
+  get languages(): { [key: string]: { name: string, flag: string } } {
+      let $return: { [key: string]: { name: string, flag: string } } = {};
+      this.$i18n.availableLocales.forEach((code: string) => {
+          $return[code] = { name: this.$t('locale.name').toString(), flag: this.$t('locale.flag').toString() };
+      });
+
+      return $return;
+  }
+
+  useLanguage(key: string) {
+      this.$i18n.locale = key;
+  }
 
   async refreshData() {
     await this.$store.dispatch('lockStocks');
