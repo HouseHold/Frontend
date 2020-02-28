@@ -10,11 +10,11 @@
     "dashboard": "Dashboard",
     "inventory": "Inventory",
     "stock": "Stock",
+    "stock-overview": "Overview",
     "stock-add": "Add inventory",
-    "stock-create-product": "Create product"
-  },
-  "router": {
-    "home": "Home"
+    "stock-create-product": "Create product",
+    "stock-purchase": "Purchase",
+    "stock-product": "Product"
   },
   "global": {
     "button": {

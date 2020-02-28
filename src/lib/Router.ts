@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router, { RouterOptions } from 'vue-router'
+import i18n from './I18n';
 
 import TheContainer from "@/layouts/TheContainer.vue";
 
@@ -38,13 +39,13 @@ function configRoutes() {
         {
             path: '/',
             redirect: '/dashboard',
-            name: 'Home',
+            name: i18n.t('nav.dashboard').toString(),
             component: TheContainer,
             children: [
                 {
                     path: 'stock',
                     redirect: '/stock/overview',
-                    name: 'Stock',
+                    name: i18n.t('nav.stock').toString(),
                     component: {
                         render(c: any) {
                             return c('router-view')
@@ -53,29 +54,29 @@ function configRoutes() {
                     children: [
                         {
                             path: 'overview',
-                            name: 'Overview',
+                            name: i18n.t('nav.stock-overview').toString(),
                             component: StockOverview
                         },
                         {
                             path: 'purchase',
-                            name: 'Purchase',
+                            name: i18n.t('nav.stock-purchase').toString(),
                             component: StockPurchase
                         },
                         {
                             path: 'product/create',
-                            name: 'Create Product',
+                            name: i18n.t('nav.stock-create-product').toString(),
                             component: StockCreateProduct
                         },
                         {
                             path: 'product/:id',
-                            name: 'Product',
+                            name: i18n.t('nav.stock-product').toString(),
                             component: StockProduct
                         },
                     ]
                 },
                 {
                     path: 'dashboard',
-                    name: 'Dashboard',
+                    name: i18n.t('nav.dashboard').toString(),
                     component: FrontDashboard
                 },/**
                 {
