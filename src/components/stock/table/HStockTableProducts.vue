@@ -15,6 +15,8 @@
                         hover
                         sorter
                         pagination
+                        :table-filter="{ label: $t('global.form.filter'), placeholder: $t('global.form.type-string') }"
+                        :items-per-page-select="{ label: $t('global.form.items-per-page') }"
                     >
                         <template #consume="{item}">
                             <td class="py-2">
@@ -65,12 +67,15 @@
         name: string = 'HStockTableProducts';
         consumeModal: boolean = false;
         consumeModalProduct: Productjsonld|null = null;
-        fields: Array<DataTableItem> = [
-            { key: 'consume', _style: 'width:10%', label: 'Actions', sorter: false, filter: false },
-            { key: 'name', _style: 'width:40%' },
-            { key: 'inStock', _style: 'width:10%;' },
-            { key: 'bestBefore', _style: 'width:20%;' },
-        ];
+
+        get fields(): Array<DataTableItem> {
+            return [
+                { key: 'consume', _style: 'width:10%', label: this.$t('global.button.actions').toString(), sorter: false, filter: false },
+                { key: 'name', _style: 'width:40%', label: this.$t('global.label.name').toString() },
+                { key: 'inStock', _style: 'width:10%;', label: this.$t('stock.label.stock-in').toString() },
+                { key: 'bestBefore', _style: 'width:20%;', label: this.$t('stock.label.best-before').toString() },
+            ];
+        }
 
         get items(): Array<ProductInStockRowItem> {
             let data: Array<ProductInStockRowItem> = [];
@@ -100,7 +105,7 @@
                 data.push({
                     name: products[key].name,
                     inStock: quantity,
-                    bestBefore: products[key].expiring ? (new Date(bestBefore)).toLocaleDateString() : 'Not expiring',
+                    bestBefore: products[key].expiring ? (new Date(bestBefore)).toLocaleDateString() : this.$t('stock.label.expiring-not').toString(),
                     id: products[key]["@id"]
                 });
             }
