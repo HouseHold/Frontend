@@ -18,7 +18,7 @@
   },
   "global": {
     "label": {
-      "name": "Name"
+      "name": "Nimi"
     },
     "button": {
       "cancel": "Peruuta",
@@ -26,12 +26,12 @@
       "reset": "Tyhjennä",
       "save": "Tallenna",
       "submit": "Lähetä",
-      "actions": "Actions"
+      "actions": "Toiminnot"
     },
     "form": {
-      "items-per-labpage": "Items per page:",
-      "filter": "Filter:",
-      "type-string": "type string..."
+      "items-per-labpage": "Kohteita sivulla:",
+      "filter": "Suodata:",
+      "type-string": "hakusana..."
     }
   },
   "stock": {
@@ -60,7 +60,7 @@
       "bellow-limit": "Alle rajan",
       "best-before": "Parasta ennen",
       "expiring": "Vanhentumassa",
-      "expiring-not": "Not expiring",
+      "expiring-not": "Ei vanhene",
       "price": "Hinta",
       "product": "Tuote",
       "product-collection": "Tuotekokoelma",
@@ -68,7 +68,7 @@
       "product-consume": "Käytä tuote",
       "product-name": "Tuotenimi",
       "spoiled": "Vanhentuneet",
-      "stock-in": "In Stock",
+      "stock-in": "Varastossa",
       "stock-total": "Yhteensä varastossa"
     },
     "form": {
