@@ -7,39 +7,39 @@
     "house-hold": "HouseHold"
   },
   "nav": {
-    "dashboard": "Dashboard",
-    "inventory": "Inventory",
-    "stock": "Stock",
-    "stock-overview": "Overview",
+    "dashboard": "Übersicht",
+    "inventory": "Lagerbestand",
+    "stock": "Reserve",
+    "stock-overview": "Übersicht",
     "stock-add": "Add inventory",
-    "stock-create-product": "Create product",
-    "stock-purchase": "Purchase",
-    "stock-product": "Product"
+    "stock-create-product": "Produkt erstellen",
+    "stock-purchase": "Kaufen",
+    "stock-product": "Produkt"
   },
   "global": {
     "label": {
       "name": "Name"
     },
     "button": {
-      "cancel": "Cancel",
-      "edit": "Edit",
-      "reset": "Reset",
-      "save": "Save",
-      "submit": "Submit",
-      "actions": "Actions"
+      "cancel": "Abbrechen",
+      "edit": "Beschreibung",
+      "reset": "Neustarten",
+      "save": "Speichern",
+      "submit": "Senden",
+      "actions": "Aktionen"
     },
     "form": {
-      "items-per-labpage": "Items per page:",
+      "items-per-labpage": "Einträge pro Seite:",
       "filter": "Filter:",
       "type-string": "type string..."
     }
   },
   "stock": {
     "title": {
-      "product": "Product",
+      "product": "Produkt",
       "product-overview": "Product Overview",
       "storage-overview": "Storage Overview",
-      "stock": "Stock",
+      "stock": "Reserve",
       "stocks": "Stocks"
     },
     "text": {
@@ -55,14 +55,14 @@
     },
     "label": {
       "add-product-to-stock": "Add Product to Stock",
-      "amount": "Amount",
-      "barcodes": "Barcodes",
+      "amount": "Quantität",
+      "barcodes": "Strichcode",
       "bellow-limit": "Bellow Limit",
       "best-before": "Best Before",
-      "expiring": "Expiring",
+      "expiring": "Auslaufend",
       "expiring-not": "Not expiring",
-      "price": "Price",
-      "product": "Product",
+      "price": "Preis",
+      "product": "Produkt",
       "product-collection": "Product collection",
       "product-consume-product": "Consume {product}",
       "product-consume": "Consume Product",
