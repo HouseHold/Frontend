@@ -76,8 +76,8 @@
       },
       "button": {
         "consume": "Kuluta",
-        "show-in-stock": "Näytä Varastossa",
-        "show-bellow-limit": "Näytä Alle Rajan",
+        "show-in-stock": "Näytä varastossa",
+        "show-bellow-limit": "Näytä alle rajan",
         "show-expiring": "Näytä vanhentumassa",
         "show-expired": "Näytä vanhentuneet"
       }
