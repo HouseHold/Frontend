@@ -17,12 +17,21 @@
     "stock-product": "Product"
   },
   "global": {
+    "label": {
+      "name": "Name"
+    },
     "button": {
       "cancel": "Cancel",
       "edit": "Edit",
       "reset": "Reset",
       "save": "Save",
-      "submit": "Submit"
+      "submit": "Submit",
+      "actions": "Actions"
+    },
+    "form": {
+      "items-per-labpage": "Items per page:",
+      "filter": "Filter:",
+      "type-string": "type string..."
     }
   },
   "stock": {
@@ -51,6 +60,7 @@
       "bellow-limit": "Bellow Limit",
       "best-before": "Best Before",
       "expiring": "Expiring",
+      "expiring-not": "Not expiring",
       "price": "Price",
       "product": "Product",
       "product-collection": "Product collection",
@@ -58,6 +68,7 @@
       "product-consume": "Consume Product",
       "product-name": "Product name",
       "spoiled": "Spoiled",
+      "stock-in": "In Stock",
       "stock-total": "Total Stock"
     },
     "form": {
