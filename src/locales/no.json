@@ -7,39 +7,39 @@
     "house-hold": "HouseHold"
   },
   "nav": {
-    "dashboard": "Dashboard",
-    "inventory": "Inventory",
-    "stock": "Stock",
-    "stock-overview": "Overview",
+    "dashboard": "Kontrollpanel",
+    "inventory": "Inventar",
+    "stock": "Lager",
+    "stock-overview": "Oversikt",
     "stock-add": "Add inventory",
-    "stock-create-product": "Create product",
-    "stock-purchase": "Purchase",
-    "stock-product": "Product"
+    "stock-create-product": "Nytt produkt",
+    "stock-purchase": "Kjøp",
+    "stock-product": "Produkt"
   },
   "global": {
     "label": {
-      "name": "Name"
+      "name": "Navn"
     },
     "button": {
-      "cancel": "Cancel",
-      "edit": "Edit",
+      "cancel": "Avbryt",
+      "edit": "Editar",
       "reset": "Reset",
-      "save": "Save",
-      "submit": "Submit",
-      "actions": "Actions"
+      "save": "Lagre",
+      "submit": "Sende",
+      "actions": "Handlinger"
     },
     "form": {
-      "items-per-labpage": "Items per page:",
+      "items-per-labpage": "Produkter per side:",
       "filter": "Filter:",
       "type-string": "type string..."
     }
   },
   "stock": {
     "title": {
-      "product": "Product",
+      "product": "Produkt",
       "product-overview": "Product Overview",
       "storage-overview": "Storage Overview",
-      "stock": "Stock",
+      "stock": "Lager",
       "stocks": "Stocks"
     },
     "text": {
@@ -55,26 +55,26 @@
     },
     "label": {
       "add-product-to-stock": "Add Product to Stock",
-      "amount": "Amount",
-      "barcodes": "Barcodes",
+      "amount": "Mengde",
+      "barcodes": "Strekkoder",
       "bellow-limit": "Bellow Limit",
       "best-before": "Best Before",
-      "expiring": "Expiring",
-      "expiring-not": "Not expiring",
-      "price": "Price",
-      "product": "Product",
+      "expiring": "Utløper",
+      "expiring-not": "Utløper ikke",
+      "price": "Pris",
+      "product": "Produkt",
       "product-collection": "Product collection",
       "product-consume-product": "Consume {product}",
       "product-consume": "Consume Product",
-      "product-name": "Product name",
-      "spoiled": "Spoiled",
-      "stock-in": "In Stock",
+      "product-name": "Produktnavn",
+      "spoiled": "Bedervet",
+      "stock-in": "På lager",
       "stock-total": "Total Stock"
     },
     "form": {
       "hint": {
         "enter-amount": "Enter amount",
-        "enter-price": "Enter price",
+        "enter-price": "Skriv inn prisen",
         "enter-product-name": "Enter product name"
       },
       "error": {
@@ -86,7 +86,7 @@
         "please-give-product-collection": "Please select a collection where product belongs"
       },
       "button": {
-        "consume": "Consume",
+        "consume": "Bruke",
         "show-in-stock": "Show In Stock",
         "show-bellow-limit": "Show Bellow Limit",
         "show-expiring": "Show Expiring",
