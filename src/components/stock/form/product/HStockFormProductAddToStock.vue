@@ -24,19 +24,19 @@
                 </div>
                 <CInput
                     v-model="form.quantity"
-                    label="Amount"
-                    placeholder="Enter amount"
+                    :label="$t('stock.label.amount')"
+                    :placeholder="$t('stock.form.hint.enter-amount')"
                     type="number"
-                    invalid-feedback="Please provide amount in numbers."
+                    :invalid-feedback="$t('stock.form.error.amount-in-numbers')"
                     :is-valid="isNumber"
                 />
                 <CInput
                     v-model="form.price"
-                    label="Price"
-                    placeholder="Enter price"
+                    :label="$t('stock.label.price')"
+                    :placeholder="$t('stock.form.hint.enter-price')"
                     type="number"
                     step=".01"
-                    invalid-feedback="Please provide price in numbers."
+                    :invalid-feedback="$t('stock.form.error.price-in-numbers')"
                     :is-valid="isNumber"
                 />
                 <CRow v-if="form.product !== null">

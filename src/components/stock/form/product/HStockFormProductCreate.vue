@@ -18,18 +18,7 @@
                             :options="collections"
                             @update:value="collection = $event"
                         />
-                        <dynamic-input-list ref="dynInput" :data="ean" label="Barcodes" field="number" @update:data="ean = $event" />
-                        <p style="color: #3c4b64">
-                            Product is part of
-                            <b>
-                                {{ category }}
-                            </b> category.
-                        </p>
-                        <p style="color: #3c4b64">
-                            Product is set to
-                            <b v-if="this.$store.state.Stock.products[productId].expiring">expire</b>
-                            <b v-else>not expire</b>.
-                        </p>
+                        <dynamic-input-list ref="dynInput" :data="ean" :label="$t('stock.label.barcodes')" field="number" @update:data="ean = $event" />
                     </ccardbody>
                     <CRow>
                         <CCol col="12">

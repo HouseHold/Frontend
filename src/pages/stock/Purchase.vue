@@ -7,7 +7,7 @@
             <CCol sm="4">
                 <CCard>
                     <CCardHeader>
-                        <strong>Product Overview</strong>
+                        <strong>{{ $t('stock.title.product-overview') }}</strong>
                     </CCardHeader>
                     <CCardBody>
                         <p>WIP</p>

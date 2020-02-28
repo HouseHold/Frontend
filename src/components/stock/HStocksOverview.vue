@@ -1,7 +1,7 @@
 <template>
     <CRow>
         <CCol sm="8">
-            <h4>Storage Overview</h4>
+            <h4>{{ $t('stock.title.storage-overview') }}</h4>
             <hr class="d-none d-sm-block">
             <h-stock-table-locations :product="product" />
         </CCol>

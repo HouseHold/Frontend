@@ -18,14 +18,8 @@
                     >
                         <template #consume="{item}">
                             <td class="py-2">
-                                <CButton
-                                    color="danger"
-                                    variant="outline"
-                                    square
-                                    size="sm"
-                                    @click="prepareConsumeProduct(item)"
-                                >
-                                    Consume
+                                <CButton color="danger" variant="outline" square size="sm" @click="prepareConsumeProduct(item)">
+                                    {{ $t('stock.form.button.consume') }}
                                 </CButton>
                             </td>
                         </template>
@@ -40,7 +34,7 @@
                             :product="consumeModalProduct"
                             color="dark"
                             :show-modal="consumeModal"
-                            title="Consume Product"
+                            :title="$t('stock.label.product-consume')"
                             @close="onCloseConsumeModal()"
                         />
                     </template>

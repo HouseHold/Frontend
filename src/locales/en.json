@@ -8,27 +8,48 @@
   },
   "global": {
     "button": {
-      "save": "Save",
-      "submit": "Submit",
       "cancel": "Cancel",
-      "reset": "Reset"
+      "edit": "Edit",
+      "reset": "Reset",
+      "save": "Save",
+      "submit": "Submit"
     }
   },
   "stock": {
     "title": {
+      "product": "Product",
+      "product-overview": "Product Overview",
       "storage-overview": "Storage Overview",
-      "product": "Product"
+      "stock": "Stock",
+      "stocks": "Stocks"
     },
-    "text": {},
+    "text": {
+      "product-part-of-category": "Product is part of {category} category.",
+      "product-is-expiring": "Product is set to {0}expire{1}.",
+      "product-is-not-expiring": "Product is set to {0}not expire{1}.",
+      "product-edit-hint-line-1": "You cannot edit some fields like price. Price is generated based on adding products to the stock.",
+      "product-edit-hint-line-2": "It will be showing always latest price which is currently",
+      "product-edit-hint-line-3": "Also you cannot change the category of product here.",
+      "product-edit-hint-line-4": "To move this product into different category, you need to change product collection, which is under different category.",
+      "product-edit-hint-line-5": "You cannot change product from expiring to non-expiring or opposite.",
+      "product-edit-hint-line-6": "If you like to do that, you need to re-create product."
+
+    },
     "label": {
       "add-product-to-stock": "Add Product to Stock",
-      "best-before": "Best Before",
       "amount": "Amount",
+      "barcodes": "Barcodes",
+      "bellow-limit": "Bellow Limit",
+      "best-before": "Best Before",
+      "expiring": "Expiring",
       "price": "Price",
       "product": "Product",
-      "product-name": "Product name",
       "product-collection": "Product collection",
-      "barcodes": "Barcodes"
+      "product-consume-product": "Consume {product}",
+      "product-consume": "Consume Product",
+      "product-name": "Product name",
+      "spoiled": "Spoiled",
+      "stock-total": "Total Stock"
     },
     "form": {
       "hint": {
@@ -43,6 +64,13 @@
       "desc": {
         "please-give-product-name": "Please give product a name",
         "please-give-product-collection": "Please select a collection where product belongs"
+      },
+      "button": {
+        "consume": "Consume",
+        "show-in-stock": "Show In Stock",
+        "show-bellow-limit": "Show Bellow Limit",
+        "show-expiring": "Show Expiring",
+        "show-expired": "Show Expired"
       }
     }
   }

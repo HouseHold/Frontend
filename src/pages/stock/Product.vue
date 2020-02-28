@@ -16,12 +16,12 @@
                             <CNav justified variant="tabs" style="margin-bottom: 25px">
                                 <li class="nav-item">
                                     <CLink class="nav-link" :active="currentTab === 'stock'" @click="currentTab = 'stock'">
-                                        {{ $t('Stock') }}
+                                        {{ $t('stock.title.stock') }}
                                     </CLink>
                                 </li>
                                 <li class="nav-item">
                                     <CLink class="nav-link" :active="currentTab === 'edit'" @click="currentTab = 'edit'">
-                                        Edit
+                                        {{ $t('global.button.edit') }}
                                     </CLink>
                                 </li>
                             </CNav>
