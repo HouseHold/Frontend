@@ -40,7 +40,7 @@ new Vue({
 // Development related
 if (module.hot) {
     module.hot.accept(_.values(localeFiles), function () {
-        for (let locale in localeFiles) {
+        for (const locale in localeFiles) {
             i18n.setLocaleMessage(locale, require(`./locales/${locale}.json`));
         }
     });
