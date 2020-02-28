@@ -7,10 +7,10 @@
     "house-hold": "HouseHold"
   },
   "nav": {
-    "dashboard": "Dashboard",
-    "inventory": "Inventory",
-    "stock": "Stock",
-    "stock-overview": "Overview",
+    "dashboard": "Nástěnka",
+    "inventory": "Inventář",
+    "stock": "Sklad",
+    "stock-overview": "Přehled",
     "stock-add": "Add inventory",
     "stock-create-product": "Create product",
     "stock-purchase": "Purchase",
