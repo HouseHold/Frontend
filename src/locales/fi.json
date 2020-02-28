@@ -6,6 +6,16 @@
   "app": {
     "house-hold": "HouseHold"
   },
+  "nav": {
+    "dashboard": "Päänäkymä",
+    "inventory": "Tavaraluettelo",
+    "stock": "Varasto",
+    "stock-overview": "Yleiskatsaus",
+    "stock-add": "Lisää varastoon",
+    "stock-create-product": "Luo tuote",
+    "stock-purchase": "Osto",
+    "stock-product": "Tuote"
+  },
   "global": {
     "button": {
       "cancel": "Peruuta",
@@ -38,17 +48,17 @@
       "add-product-to-stock": "Lisää tuote varastoon",
       "amount": "Määrä",
       "barcodes": "Viivakoodit",
-      "bellow-limit": "Alle Rajan",
+      "bellow-limit": "Alle rajan",
       "best-before": "Parasta ennen",
       "expiring": "Vanhentumassa",
       "price": "Hinta",
       "product": "Tuote",
       "product-collection": "Tuotekokoelma",
-      "product-consume-product": "Kuluta {product}",
-      "product-consume": "Kuluta Tuote",
+      "product-consume-product": "Käytä {product}",
+      "product-consume": "Käytä tuote",
       "product-name": "Tuotenimi",
-      "spoiled": "Pilaantuneet",
-      "stock-total": "Yhteensä Varastossa"
+      "spoiled": "Vanhentuneet",
+      "stock-total": "Yhteensä varastossa"
     },
     "form": {
       "hint": {
@@ -65,11 +75,11 @@
         "please-give-product-collection": "Valitse tuotekokoelma johon tuote kuuluu"
       },
       "button": {
-        "consume": "Käytä",
-        "show-in-stock": "Näytä Varastossa",
-        "show-bellow-limit": "Näytä Alle Rajan",
-        "show-expiring": "Näytä Vanhentumassa",
-        "show-expired": "Näytä Pilaantuneet"
+        "consume": "Kuluta",
+        "show-in-stock": "Näytä varastossa",
+        "show-bellow-limit": "Näytä alle rajan",
+        "show-expiring": "Näytä vanhentumassa",
+        "show-expired": "Näytä vanhentuneet"
       }
     }
   }
