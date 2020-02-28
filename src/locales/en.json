@@ -6,6 +6,16 @@
   "app": {
     "house-hold": "HouseHold"
   },
+  "nav": {
+    "dashboard": "Dashboard",
+    "inventory": "Inventory",
+    "stock": "Stock",
+    "stock-add": "Add inventory",
+    "stock-create-product": "Create product"
+  },
+  "router": {
+    "home": "Home"
+  },
   "global": {
     "button": {
       "cancel": "Cancel",

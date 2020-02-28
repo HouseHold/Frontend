@@ -1,10 +1,12 @@
+import i18n from '../lib/I18n';
+
 export default [
   {
     _name: 'CSidebarNav',
     _children: [
       {
         _name: 'CSidebarNavItem',
-        name: 'Dashboard',
+        name: i18n.t('nav.dashboard'),
         to: '/dashboard',
         icon: 'cil-speedometer',
       },
@@ -14,24 +16,24 @@ export default [
       },
       {
         _name: 'CSidebarNavTitle',
-        _children: ['Inventory'],
+        _children: [i18n.t('nav.inventory')],
         _class: 'm-0'
       },
       {
         _name: 'CSidebarNavItem',
-        name: 'Stock',
+        name: i18n.t('nav.stock'),
         to: '/stock/overview',
         icon: 'cil-fridge',
       },
       {
         _name: 'CSidebarNavItem',
-        name: 'Add inventory',
+        name: i18n.t('nav.stock-add'),
         to: '/stock/purchase',
         icon: 'cil-arrow-thick-to-left',
       },
       {
         _name: 'CSidebarNavItem',
-        name: 'Create product',
+        name: i18n.t('nav.stock-create-product'),
         to: '/stock/product/create',
         icon: 'cil-playlist-add',
       },
