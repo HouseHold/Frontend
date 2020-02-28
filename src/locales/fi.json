@@ -9,7 +9,7 @@
   "global": {
     "button": {
       "cancel": "Peruuta",
-      "edit": "Edit",
+      "edit": "Muokkaa",
       "reset": "Tyhjennä",
       "save": "Tallenna",
       "submit": "Lähetä"
@@ -18,37 +18,37 @@
   "stock": {
     "title": {
       "product": "Tuote",
-      "product-overview": "Product Overview",
+      "product-overview": "Tuotenäkymä",
       "storage-overview": "Varaston yleiskatsaus",
-      "stock": "Stock",
-      "stocks": "Stocks"
+      "stock": "Varasto",
+      "stocks": "Varastot"
     },
     "text": {
-      "product-part-of-category": "Product is part of {category} category.",
-      "product-is-expiring": "Product is set to {0}expire{1}.",
-      "product-is-not-expiring": "Product is set to {0}not expire{1}.",
-      "product-edit-hint-line-1": "You cannot edit some fields like price. Price is generated based on adding products to the stock.",
-      "product-edit-hint-line-2": "It will be showing always latest price which is currently",
-      "product-edit-hint-line-3": "Also you cannot change the category of product here.",
-      "product-edit-hint-line-4": "To move this product into different category, you need to change product collection, which is under different category.",
-      "product-edit-hint-line-5": "You cannot change product from expiring to non-expiring or opposite.",
-      "product-edit-hint-line-6": "If you like to do that, you need to re-create product."
+      "product-part-of-category": "Tuote on osa {category} kategoriaa.",
+      "product-is-expiring": "Tuote {0}erääntyy{1}.",
+      "product-is-not-expiring": "Tuote {0}ei eräänny{1}.",
+      "product-edit-hint-line-1": "Et voi muokata kaikkia tietoja, kuten hintaa. Hinta päivitetään automaattisesti lisätessäsi tuotteita varastoon.",
+      "product-edit-hint-line-2": "Se näyttää aina viimeisimmän hinnan, joka on tällä hetkellä",
+      "product-edit-hint-line-3": "Et voi myöskään muuttaa tuotteen kategoriaa.",
+      "product-edit-hint-line-4": "Vaihtaaksesi tuotteen kategoriaa, sinun tulee vaihtaa tuoteryhmää, jonka kategoria on eri.",
+      "product-edit-hint-line-5": "Et voi vaihtaa tuotetta erääntymään ja päinvastoin.",
+      "product-edit-hint-line-6": "Jos haluat muuttaa tätä, tulee sinun luoda tuote uudelleen."
     },
     "label": {
       "add-product-to-stock": "Lisää tuote varastoon",
       "amount": "Määrä",
       "barcodes": "Viivakoodit",
-      "bellow-limit": "Bellow Limit",
+      "bellow-limit": "Alle Rajan",
       "best-before": "Parasta ennen",
-      "expiring": "Expiring",
+      "expiring": "Vanhentumassa",
       "price": "Hinta",
       "product": "Tuote",
       "product-collection": "Tuotekokoelma",
-      "product-consume-product": "Consume {product}",
-      "product-consume": "Consume Product",
+      "product-consume-product": "Kuluta {product}",
+      "product-consume": "Kuluta Tuote",
       "product-name": "Tuotenimi",
-      "spoiled": "Spoiled",
-      "stock-total": "Total Stock"
+      "spoiled": "Pilaantuneet",
+      "stock-total": "Yhteensä Varastossa"
     },
     "form": {
       "hint": {
@@ -65,11 +65,11 @@
         "please-give-product-collection": "Valitse tuotekokoelma johon tuote kuuluu"
       },
       "button": {
-        "consume": "Consume",
-        "show-in-stock": "Show In Stock",
-        "show-bellow-limit": "Show Bellow Limit",
-        "show-expiring": "Show Expiring",
-        "show-expired": "Show Expired"
+        "consume": "Käytä",
+        "show-in-stock": "Näytä Varastossa",
+        "show-bellow-limit": "Näytä Alle Rajan",
+        "show-expiring": "Näytä Vanhentumassa",
+        "show-expired": "Näytä Pilaantuneet"
       }
     }
   }
