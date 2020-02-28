@@ -67,14 +67,14 @@
                     color="success"
                     @click="onAddToStock()"
                 >
-                    Submit
+                    {{ $t('global.button.submit') }}
                 </CButton>
                 <CButton
                     block
                     color="danger"
                     @click="returnToStock()"
                 >
-                    Cancel
+                    {{ $t('global.button.cancel') }}
                 </CButton>
             </CForm>
         </CCardBody>

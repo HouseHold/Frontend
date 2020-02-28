@@ -4,11 +4,13 @@ import VuexPersistence from 'vuex-persist'
 
 // Modules
 import Stock from './Stock';
+import Session from './Session';
 
 Vue.use(Vuex);
 export default new Vuex.Store({
     modules: {
-        Stock
+        Stock,
+        Session,
     },
     state: {},
     mutations: {},

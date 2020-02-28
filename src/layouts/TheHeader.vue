@@ -116,6 +116,7 @@ export default class TheHeader extends Vue {
 
   useLanguage(key: string) {
       this.$i18n.locale = key;
+      this.$store.dispatch('changeLocale', key);
   }
 
   async refreshData() {
