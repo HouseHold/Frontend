@@ -67,8 +67,8 @@
       "product-consume-product": "Consume {product}",
       "product-consume": "Consume Product",
       "product-name": "Product name",
-      "spoiled": "Spoiled",
-      "stock-in": "In Stock",
+      "spoiled": "Verdorbenes",
+      "stock-in": "Lager",
       "stock-total": "Total Stock"
     },
     "form": {
