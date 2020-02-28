@@ -33,7 +33,6 @@
       "product-edit-hint-line-4": "To move this product into different category, you need to change product collection, which is under different category.",
       "product-edit-hint-line-5": "You cannot change product from expiring to non-expiring or opposite.",
       "product-edit-hint-line-6": "If you like to do that, you need to re-create product."
-
     },
     "label": {
       "add-product-to-stock": "Add Product to Stock",
