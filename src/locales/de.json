@@ -29,7 +29,7 @@
       "actions": "Aktionen"
     },
     "form": {
-      "items-per-labpage": "Einträge pro Seite:",
+      "items-per-page": "Items per page:",
       "filter": "Filter:",
       "type-string": "type string..."
     }
