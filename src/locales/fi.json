@@ -31,12 +31,14 @@
     "form": {
       "items-per-page": "Kohteita sivulla:",
       "filter": "Suodata:",
-      "type-string": "hakusana..."
+      "type-string": "hakusana...",
+      "select-one": "Valitse yksi vaihtoehdoista"
     }
   },
   "stock": {
     "title": {
       "product": "Tuote",
+      "product-create": "Luo tuote",
       "product-overview": "Tuotenäkymä",
       "storage-overview": "Varaston yleiskatsaus",
       "stock": "Varasto",
@@ -75,11 +77,16 @@
       "hint": {
         "enter-amount": "Anna määrä",
         "enter-price": "Anna hinta",
-        "enter-product-name": "Anna tuotenimi"
+        "enter-product-name": "Anna tuotenimi",
+        "no-barcodes": "Ei viivakoodeja",
+        "product-expiring": "Vanheneeko tuote?"
       },
       "error": {
         "amount-in-numbers": "Anna määrä numeroina.",
-        "price-in-numbers": "Anna hinta numeroina."
+        "barcode-empty": "Viivakoodi ei voi olla tyhjä.",
+        "price-in-numbers": "Anna hinta numeroina.",
+        "product-name-empty": "Tuotenimi ei voi olla tyhjä.",
+        "product-collection-invalid": "Tuotekokoelma on virheellinen."
       },
       "desc": {
         "please-give-product-name": "Anna tuotenimi",
