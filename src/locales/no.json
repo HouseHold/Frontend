@@ -29,7 +29,7 @@
       "actions": "Handlinger"
     },
     "form": {
-      "items-per-labpage": "Produkter per side:",
+      "items-per-page": "Produkter per side:",
       "filter": "Filter:",
       "type-string": "type string..."
     }

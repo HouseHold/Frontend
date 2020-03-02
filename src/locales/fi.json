@@ -29,7 +29,7 @@
       "actions": "Toiminnot"
     },
     "form": {
-      "items-per-labpage": "Kohteita sivulla:",
+      "items-per-page": "Kohteita sivulla:",
       "filter": "Suodata:",
       "type-string": "hakusana..."
     }
