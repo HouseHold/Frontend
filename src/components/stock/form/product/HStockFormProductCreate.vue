@@ -1,116 +1,109 @@
 <template>
     <div id="stock-product-create-form">
-        <CRow>
-            <CCol col="8">
+        <CCard>
+            <CCardHeader>
+                <strong>{{ $t('stock.title.product-create') }}</strong>
+            </CCardHeader>
+            <CCardBody>
                 <CForm>
                     <CCardBody>
                         <CInput
-                            v-model="productName"
+                            v-model="product"
                             :description="$t('stock.form.desc.please-give-product-name')"
                             :label="$t('stock.label.product-name')"
                             :placeholder="$t('stock.form.hint.enter-product-name')"
                             required
                         />
                         <CSelect
-                            v-model="collection"
                             :label="$t('stock.label.product-collection')"
                             :description="$t('stock.form.desc.please-give-product-collection')"
                             :options="collections"
-                            @update:value="collection = $event"
+                            @update:value="collection = $event.toString()"
+                            value="placeholder"
                         />
-                        <dynamic-input-list ref="dynInput" :data="ean" :label="$t('stock.label.barcodes')" field="number" @update:data="ean = $event" />
-                    </ccardbody>
+                        <dynamic-input-list ref="dynInput" :data="ean" :label="$t('stock.label.barcodes')"
+                                            field="number" @update:data="ean = $event" placeholder="12344567"
+                                            :valid="isBarcodeValid()" :empty="$t('stock.form.hint.no-barcodes')"
+                                            :invalid-feedback="$t('stock.form.error.barcode-empty')" />
+
+                        <CInputCheckbox :label="$t('stock.form.hint.product-expiring')" custom
+                                        :checked="expiring" @click="expiring = !expiring"/>
+                    </CCardBody>
                     <CRow>
                         <CCol col="12">
                             <div class="float-right">
-                                <CButton color="warning" style="margin-right: 10px" @click="reset()">
-                                    {{ $t('global.button.reset') }}
-                                </CButton>
-                                <CButton color="success" @click="save()">
-                                    {{ $t('global.button.save') }}
+                                <CButton color="success" style="margin-right: 10px" @click="save()">
+                                    {{ $t('global.button.submit') }}
                                 </CButton>
                             </div>
                         </CCol>
                     </CRow>
                 </CForm>
-            </CCol>
-            <CCol col="4">
-                <CIcon name="cil-info" />
-                <p>
-                    <br>
-                    You cannot edit some fields like price. Price is generated based on adding products to the stock.
-                    It will be showing always latest price which is currently <b>{{ this.$store.state.Stock.products[productId].price }}</b>.
-                    <br> <br>
-                    Also you cannot change the category of product here. To move this product into different category,
-                    you need to change product collection, which is under different category.
-                    <br> <br>
-                    You cannot change product from expiring to non-expiring or opposite.
-                    If you like to do that, you need to re-create product.
-                </p>
-            </CCol>
-        </CRow>
+            </CCardBody>
+        </CCard>
     </div>
 </template>
 
 <script lang="ts">
-  import { Component, Prop, Vue } from "vue-property-decorator";
-  import { Productjsonld } from "@household/api-client";
+  import { Component, Vue } from "vue-property-decorator";
   import DynamicInputList from "@/components/form/DynamicInputList.vue";
-  import _ from "lodash";
+  import CreateProduct from "@/store/Stock/CreateProduct";
+  import {ToastOptions} from "vue-toasted";
 
     @Component({
         components: { DynamicInputList }
     })
     export default class HStockFormProductCreate extends Vue {
         readonly name: string = 'HStockFormProductCreate';
+        readonly toasted: ToastOptions = { duration: 5000, type: 'error' };
+        product: string = '';
         ean: Array<string> = [];
-        productName: string = '';
         collection: string = '';
-        //@ts-ignore Would cause is do otherwise extra checking for nothing...
-        @Prop(String) readonly productId: string;
+        expiring: boolean = true;
 
-        created(): void {
-            this.resetFields();
-        }
+        async save(): Promise<void> {
+            const payload: CreateProduct = {
+                product: this.product,
+                collection: this.collection,
+                ean: this.ean,
+                expiring: this.expiring,
+            };
 
-        resetFields(): void {
-            this.ean = _.clone(this.$store.state.Stock.products[this.productId].ean);
-            this.productName = _.clone(this.$store.state.Stock.products[this.productId].name);
-            this.collection = _.clone(this.$store.state.Stock.products[this.productId].collection);
-        }
-
-        reset(): void {
-            this.resetFields();
-            //@ts-ignore
-            this.$refs.dynInput.setData(this.ean);
-        }
-
-        save(): void {
-            let payload: Productjsonld = _.clone(this.$store.state.Stock.products[this.productId]);
-            payload.ean = this.ean;
-            payload.name = this.productName;
-            payload.collection = this.collection;
-            this.$store.dispatch('stockUpdateProduct', payload);
-        }
-
-        get collections(): Array<{label: string, value: string}> {
-            let data: Array<{label: string, value: string}> = [];
-            for (let id in this.$store.state.Stock.collections) {
-                data.push({ label: this.$store.state.Stock.collections[id].name, value: id });
+            if (payload.product === '') {
+                this.$toasted.show(this.$t('stock.form.error.product-name-empty').toString(), this.toasted);
+                return;
             }
 
-            // Short items alphabetically.
-            return data.sort((a,b) => a.label.localeCompare(b.label));
+            if (payload.collection === '' || payload.collection === 'placeholder') {
+                this.$toasted.show(this.$t('stock.form.error.product-collection-invalid').toString(), this.toasted);
+                return;
+            }
+
+            const productId: string = (await (this.$store.dispatch('stockCreateProduct', payload)));
+            await this.$router.push(`${productId}`);
         }
 
-        get category(): string {
-            return this.$store.state.Stock.categories
-                [this.$store.state.Stock.collections
-                [this.$store.state.Stock.products
-                [this.productId
-                ].collection
-                ].category
-                ].name
+        isBarcodeValid(): boolean {
+            let valid: boolean = true;
+            this.ean.forEach((item: string) => {
+                if (item === '') {
+                    valid = false;
+                }
+            });
+
+            return valid;
+        }
+
+        get collections(): Array<{label: string, value: string, disabled: boolean}> {
+            let data: Array<{label: string, value: string, disabled: boolean}> = [];
+            for (let id in this.$store.state.Stock.collections) {
+                data.push({ label: this.$store.state.Stock.collections[id].name, value: id, disabled: false });
+            }
+
+            const hint = '=== ' + this.$t('global.form.select-one').toString() + ' ===';
+            data = data.sort((a,b) => a.label.localeCompare(b.label)); // Short items alphabetically.
+            data.unshift({ label: hint, value: 'placeholder', disabled: true }); // Need to add this due ios.
+            return data;
         }
     }
 </script>

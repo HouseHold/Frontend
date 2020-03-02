@@ -18,7 +18,8 @@
                             :options="collections"
                             @update:value="collection = $event"
                         />
-                        <dynamic-input-list ref="dynInput" :data="ean" :label="$t('stock.label.barcodes')" field="number" @update:data="ean = $event" />
+                        <dynamic-input-list ref="dynInput" :data="ean" :label="$t('stock.label.barcodes')" field="number"
+                                            @update:data="ean = $event" :empty="$t('stock.form.hint.no-barcodes')" />
                         <p style="color: #3c4b64" v-html="$t('stock.text.product-part-of-category', { 'category': htmlCategory })" />
                         <p style="color: #3c4b64" v-html="htmlExpiring" />
                     </ccardbody>
