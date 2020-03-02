@@ -9,6 +9,7 @@ import { iconsSet as icons } from './assets/icons/icons';
 import store from './store';
 import _ from "lodash";
 import i18n, { localeFiles } from './lib/I18n';
+import './lib/Sentry';
 
 Vue.config.performance = true;
 Vue.use(CoreuiVue);
