@@ -47,24 +47,40 @@
 <script lang="ts">
   import { Component, Vue } from "vue-property-decorator";
   import DynamicInputList from "@/components/form/DynamicInputList.vue";
+  import CreateProduct from "@/store/Stock/CreateProduct";
+  import {ToastOptions} from "vue-toasted";
 
     @Component({
         components: { DynamicInputList }
     })
     export default class HStockFormProductCreate extends Vue {
         readonly name: string = 'HStockFormProductCreate';
+        readonly toasted: ToastOptions = { duration: 5000, type: 'error' };
         product: string = '';
         ean: Array<string> = [];
         collection: string = '';
         expiring: boolean = true;
 
-        save(): void {
-            console.log(this.product);
-            console.log(this.ean);
-            console.log(this.collection);
-            console.log(this.expiring);
-            // let payload: x =
-            // this.$store.dispatch('stockCreateProduct', payload);
+        async save(): Promise<void> {
+            const payload: CreateProduct = {
+                product: this.product,
+                collection: this.collection,
+                ean: this.ean,
+                expiring: this.expiring,
+            };
+
+            if (payload.product === '') {
+                this.$toasted.show(this.$t('stock.form.error.product-name-empty').toString(), this.toasted);
+                return;
+            }
+
+            if (payload.collection === '' || payload.collection === 'placeholder') {
+                this.$toasted.show(this.$t('stock.form.error.product-collection-invalid').toString(), this.toasted);
+                return;
+            }
+
+            const productId: string = (await (this.$store.dispatch('stockCreateProduct', payload)));
+            await this.$router.push(`${productId}`);
         }
 
         isBarcodeValid(): boolean {

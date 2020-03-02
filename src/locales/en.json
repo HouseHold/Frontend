@@ -84,7 +84,9 @@
       "error": {
         "amount-in-numbers": "Please provide amount in numbers.",
         "barcode-empty": "Barcode cannot be empty.",
-        "price-in-numbers": "Please provide price in numbers."
+        "price-in-numbers": "Please provide price in numbers.",
+        "product-name-empty": "Product name cannot be empty.",
+        "product-collection-invalid": "Product collection is not valid."
       },
       "desc": {
         "please-give-product-name": "Please give product a name",

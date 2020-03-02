@@ -10,6 +10,7 @@ import { Helpers } from '@/lib/api';
 import _ from 'lodash';
 import ConsumeProduct from "@/store/Stock/ConsumeProduct.ts";
 import AddProductToStock from "@/store/Stock/AddProductToStock";
+import CreateProduct from "@/store/Stock/CreateProduct";
 
 @Module
 export default class Stock extends VuexModule {
@@ -138,8 +139,23 @@ export default class Stock extends VuexModule {
     }
 
     @Action
+    async stockCreateProduct(payload: CreateProduct): Promise<string> {
+        const data: object = {
+            name: payload.product,
+            price: 0.00,
+            expiring: payload.expiring,
+            collection: payload.collection,
+            ean: payload.ean,
+            stocks: [],
+        };
+        const res: Productjsonld = (await (new ProductApi()).postProductCollection((data as Productjsonld))).data;
+        this.context.commit('SET_STOCK_PRODUCT', res);
+
+        return res.id;
+    }
+
+    @Action
     stockAddToStock(payload: AddProductToStock): void {
-        console.log(payload);
         // 1. Optimistic update. Update state, commit.
         this.context.commit('ADD_PRODUCT_STOCK_QUANTITY', payload);
 

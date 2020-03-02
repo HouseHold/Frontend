@@ -10,10 +10,12 @@ import store from './store';
 import _ from "lodash";
 import i18n, { localeFiles } from './lib/I18n';
 import './lib/Sentry';
+import ToastedPlugin from 'vue-toasted';
 
 Vue.config.performance = true;
 Vue.use(CoreuiVue);
 Vue.use(VueApollo);
+Vue.use(ToastedPlugin);
 Vue.use(VCalendar, { componentPrefix: '' });
 
 const apolloClient = new ApolloClient({ uri: window.location.protocol + '//' + window.location.host + '/' + 'api/graphql' });
