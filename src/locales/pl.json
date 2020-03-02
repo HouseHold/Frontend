@@ -1,0 +1,97 @@
+{
+  "locale": {
+    "name": "Polski",
+    "flag": "cif-pl"
+  },
+  "app": {
+    "house-hold": "HouseHold"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "inventory": "Inventory",
+    "stock": "Stock",
+    "stock-overview": "Overview",
+    "stock-add": "Add inventory",
+    "stock-create-product": "Create product",
+    "stock-purchase": "Purchase",
+    "stock-product": "Product"
+  },
+  "global": {
+    "label": {
+      "name": "Name"
+    },
+    "button": {
+      "cancel": "Cancel",
+      "edit": "Edit",
+      "reset": "Reset",
+      "save": "Save",
+      "submit": "Submit",
+      "actions": "Actions"
+    },
+    "form": {
+      "items-per-page": "Items per page:",
+      "filter": "Filter:",
+      "type-string": "type string..."
+    }
+  },
+  "stock": {
+    "title": {
+      "product": "Product",
+      "product-overview": "Product Overview",
+      "storage-overview": "Storage Overview",
+      "stock": "Stock",
+      "stocks": "Stocks"
+    },
+    "text": {
+      "product-part-of-category": "Product is part of {category} category.",
+      "product-is-expiring": "Product is set to {0}expire{1}.",
+      "product-is-not-expiring": "Product is set to {0}not expire{1}.",
+      "product-edit-hint-line-1": "You cannot edit some fields like price. Price is generated based on adding products to the stock.",
+      "product-edit-hint-line-2": "It will be showing always latest price which is currently",
+      "product-edit-hint-line-3": "Also you cannot change the category of product here.",
+      "product-edit-hint-line-4": "To move this product into different category, you need to change product collection, which is under different category.",
+      "product-edit-hint-line-5": "You cannot change product from expiring to non-expiring or opposite.",
+      "product-edit-hint-line-6": "If you like to do that, you need to re-create product."
+    },
+    "label": {
+      "add-product-to-stock": "Add Product to Stock",
+      "amount": "Amount",
+      "barcodes": "Barcodes",
+      "bellow-limit": "Bellow Limit",
+      "best-before": "Best Before",
+      "expiring": "Expiring",
+      "expiring-not": "Not expiring",
+      "price": "Price",
+      "product": "Product",
+      "product-collection": "Product collection",
+      "product-consume-product": "Consume {product}",
+      "product-consume": "Consume Product",
+      "product-name": "Product name",
+      "spoiled": "Spoiled",
+      "stock-in": "In Stock",
+      "stock-total": "Total Stock"
+    },
+    "form": {
+      "hint": {
+        "enter-amount": "Enter amount",
+        "enter-price": "Enter price",
+        "enter-product-name": "Enter product name"
+      },
+      "error": {
+        "amount-in-numbers": "Please provide amount in numbers.",
+        "price-in-numbers": "Please provide price in numbers."
+      },
+      "desc": {
+        "please-give-product-name": "Please give product a name",
+        "please-give-product-collection": "Please select a collection where product belongs"
+      },
+      "button": {
+        "consume": "Consume",
+        "show-in-stock": "Show In Stock",
+        "show-bellow-limit": "Show Bellow Limit",
+        "show-expiring": "Show Expiring",
+        "show-expired": "Show Expired"
+      }
+    }
+  }
+}

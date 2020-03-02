@@ -2,22 +2,22 @@
     <CRow>
         <CCol sm="6" lg="3">
             <CButton class="stock-action-btn" size="lg" color="primary" block>
-                Show In Stock
+                {{ $t('stock.form.button.show-in-stock') }}
             </CButton>
         </CCol>
         <CCol sm="6" lg="3">
             <CButton class="stock-action-btn" size="lg" color="info" block>
-                Show Bellow Limit
+                {{ $t('stock.form.button.show-bellow-limit') }}
             </CButton>
         </CCol>
         <CCol sm="6" lg="3">
             <CButton class="stock-action-btn" size="lg" color="warning" block>
-                Show Expiring
+                {{ $t('stock.form.button.show-expiring') }}
             </CButton>
         </CCol>
         <CCol sm="6" lg="3">
             <CButton class="stock-action-btn" size="lg" color="danger" block>
-                Show Expired
+                {{ $t('stock.form.button.show-expired') }}
             </CButton>
         </CCol>
     </CRow>

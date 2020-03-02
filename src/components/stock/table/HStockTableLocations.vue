@@ -4,7 +4,7 @@
             <template #consume="{item}">
                 <td class="py-2">
                     <CButton color="danger" variant="outline" square size="sm" @click="onConsume(item)">
-                        Consume
+                        {{ $t('stock.form.button.consume') }}
                     </CButton>
                 </td>
             </template>
@@ -16,7 +16,7 @@
                 :best-before="selected.bestBefore"
                 color="dark"
                 :show-modal="consumeModal"
-                title="Consume Product"
+                :title="$t('stock.label.product-consume')"
                 @close="onCloseConsumeModal()"
             />
         </div>

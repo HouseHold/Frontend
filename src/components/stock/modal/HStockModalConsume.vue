@@ -69,16 +69,16 @@
         </CRow>
         <template #header>
             <h6 class="modal-title">
-                Consume {{ product.name }}
+                {{ $t('stock.label.product-consume-product', { product: product.name }) }}
             </h6>
             <CButtonClose class="text-white" @click="cancelConsumeProduct()" />
         </template>
         <template #footer>
             <CButton color="danger" @click="cancelConsumeProduct()">
-                Cancel
+                {{ $t('global.button.cancel') }}
             </CButton>
             <CButton color="success" :disabled="selectedQuantity === 0" @click="consumeProduct()">
-                Consume
+                {{ $t('stock.form.button.consume') }}
             </CButton>
         </template>
     </CModal>

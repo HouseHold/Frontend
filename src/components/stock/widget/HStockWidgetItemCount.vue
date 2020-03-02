@@ -1,14 +1,7 @@
 <template>
     <CRow>
-        <CCol
-            sm="6"
-            lg="3"
-        >
-            <CWidgetDropdown
-                color="primary"
-                :header="inStock"
-                text="Stock"
-            >
+        <CCol sm="6" lg="3">
+            <CWidgetDropdown color="primary" :header="inStock" :text="$t('stock.title.stock')">
                 <template #footer>
                     <ChartLine
                         pointed
@@ -16,21 +9,14 @@
                         style="height:70px"
                         :data-points="[0, 0, 0, 0, 0, 0, 0]"
                         point-hover-background-color="primary"
-                        label="Total Stock"
+                        :label="$t('stock.label.stock-total')"
                         labels="months"
                     />
                 </template>
             </CWidgetDropdown>
         </CCol>
-        <CCol
-            sm="6"
-            lg="3"
-        >
-            <CWidgetDropdown
-                color="info"
-                header="0"
-                text="Bellow limit"
-            >
+        <CCol sm="6" lg="3">
+            <CWidgetDropdown color="info" header="0" :text="$t('stock.label.bellow-limit')">
                 <template #footer>
                     <ChartLine
                         pointed
@@ -39,21 +25,14 @@
                         :data-points="[0, 0, 0, 0, 0, 0, 0]"
                         point-hover-background-color="info"
                         :options="{ elements: { line: { tension: 0.00001 }}}"
-                        label="Bellow Limit"
+                        :label="$t('stock.label.bellow-limit')"
                         labels="months"
                     />
                 </template>
             </CWidgetDropdown>
         </CCol>
-        <CCol
-            sm="6"
-            lg="3"
-        >
-            <CWidgetDropdown
-                color="warning"
-                :header="expiring"
-                text="Expiring"
-            >
+        <CCol sm="6" lg="3">
+            <CWidgetDropdown color="warning" :header="expiring" :text="$t('stock.label.expiring')">
                 <template #footer>
                     <ChartLine
                         class="mt-3"
@@ -62,7 +41,7 @@
                         :data-points="[0, 0, 0, 0, 0, 0, 0]"
                         :options="{ elements: { line: { borderWidth: 2.5 }}}"
                         point-hover-background-color="warning"
-                        label="Expiring"
+                        :label="$t('stock.label.expiring')"
                         labels="months"
                     />
                 </template>
@@ -72,18 +51,14 @@
             sm="6"
             lg="3"
         >
-            <CWidgetDropdown
-                color="danger"
-                :header="spoiled"
-                text="Spoiled"
-            >
+            <CWidgetDropdown color="danger" :header="spoiled" :text="$t('stock.label.spoiled')">
                 <template #footer>
                     <ChartBar
                         class="mt-3 mx-3"
                         style="height:70px"
                         background-color="rgb(250, 152, 152)"
                         :data-points="[5, 5, 5, 5, 5, 5, 5]"
-                        label="Spoiled"
+                        :label="$t('stock.label.spoiled')"
                         labels="months"
                     />
                 </template>

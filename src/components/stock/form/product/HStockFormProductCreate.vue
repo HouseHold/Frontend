@@ -8,28 +8,33 @@
                 <CForm>
                     <CCardBody>
                         <CInput
-                            v-model="product"
-                            description="Please give product a name"
-                            label="Product name"
-                            placeholder="Enter product name"
+                            v-model="productName"
+                            :description="$t('stock.form.desc.please-give-product-name')"
+                            :label="$t('stock.label.product-name')"
+                            :placeholder="$t('stock.form.hint.enter-product-name')"
                             required
                         />
                         <CSelect
                             v-model="collection"
-                            label="Product collection"
-                            description="Please select a collection where product belongs"
+                            :label="$t('stock.label.product-collection')"
+                            :description="$t('stock.form.desc.please-give-product-collection')"
                             :options="collections"
                             @update:value="collection = $event"
                         />
-                        <dynamic-input-list ref="dynInput" :data="ean" label="Barcodes" field="number" @update:data="ean = $event" />
+                        <dynamic-input-list ref="dynInput" :data="ean" :label="$t('stock.label.barcodes')" field="number" @update:data="ean = $event" />
                     </ccardbody>
                     <CRow>
                         <CCol col="12">
-                            <CButton color="success" @click="save()">
-                                Create
-                            </CButton>
-                        </ccol>
-                    </crow>
+                            <div class="float-right">
+                                <CButton color="warning" style="margin-right: 10px" @click="reset()">
+                                    {{ $t('global.button.reset') }}
+                                </CButton>
+                                <CButton color="success" @click="save()">
+                                    {{ $t('global.button.save') }}
+                                </CButton>
+                            </div>
+                        </CCol>
+                    </CRow>
                 </CForm>
             </CCardBody>
         </CCard>

@@ -6,39 +6,30 @@
                     <CCardBody>
                         <CInput
                             v-model="productName"
-                            description="Please give product a name"
-                            label="Product name"
-                            placeholder="Enter product name"
+                            :description="$t('stock.form.desc.please-give-product-name')"
+                            :label="$t('stock.label.product-name')"
+                            :placeholder="$t('stock.form.hint.enter-product-name')"
                             required
                         />
                         <CSelect
                             v-model="collection"
-                            label="Product collection"
-                            description="Please select a collection where product belongs"
+                            :label="$t('stock.label.product-collection')"
+                            :description="$t('stock.form.desc.please-give-product-collection')"
                             :options="collections"
                             @update:value="collection = $event"
                         />
-                        <dynamic-input-list ref="dynInput" :data="ean" label="Barcodes" field="number" @update:data="ean = $event" />
-                        <p style="color: #3c4b64">
-                            Product is part of
-                            <b>
-                                {{ category }}
-                            </b> category.
-                        </p>
-                        <p style="color: #3c4b64">
-                            Product is set to
-                            <b v-if="this.$store.state.Stock.products[productId].expiring">expire</b>
-                            <b v-else>not expire</b>.
-                        </p>
+                        <dynamic-input-list ref="dynInput" :data="ean" :label="$t('stock.label.barcodes')" field="number" @update:data="ean = $event" />
+                        <p style="color: #3c4b64" v-html="$t('stock.text.product-part-of-category', { 'category': htmlCategory })" />
+                        <p style="color: #3c4b64" v-html="htmlExpiring" />
                     </ccardbody>
                     <CRow>
                         <CCol col="12">
                             <div class="float-right">
                                 <CButton color="warning" style="margin-right: 10px" @click="reset()">
-                                    Reset
+                                    {{ $t('global.button.reset') }}
                                 </CButton>
                                 <CButton color="success" @click="save()">
-                                    Save
+                                    {{ $t('global.button.save') }}
                                 </CButton>
                             </div>
                         </CCol>
@@ -49,14 +40,14 @@
                 <CIcon name="cil-info" />
                 <p>
                     <br>
-                    You cannot edit some fields like price. Price is generated based on adding products to the stock.
-                    It will be showing always latest price which is currently <b>{{ this.$store.state.Stock.products[productId].price }}</b>.
+                    {{ $t('stock.text.product-edit-hint-line-1') }}
+                    {{ $t('stock.text.product-edit-hint-line-2') }} <b>{{ this.$store.state.Stock.products[productId].price }}</b>.
                     <br> <br>
-                    Also you cannot change the category of product here. To move this product into different category,
-                    you need to change product collection, which is under different category.
+                    {{ $t('stock.text.product-edit-hint-line-3') }}
+                    {{ $t('stock.text.product-edit-hint-line-4') }}
                     <br> <br>
-                    You cannot change product from expiring to non-expiring or opposite.
-                    If you like to do that, you need to re-create product.
+                    {{ $t('stock.text.product-edit-hint-line-5') }}
+                    {{ $t('stock.text.product-edit-hint-line-6') }}
                 </p>
             </CCol>
         </CRow>
@@ -122,6 +113,18 @@
                 ].collection
                 ].category
                 ].name
+        }
+
+        get htmlCategory(): string {
+            return `<b>${this.category}</b>`;
+        }
+
+        get htmlExpiring(): string {
+            if (this.$store.state.Stock.products[this.productId].expiring) {
+                return this.$t('stock.text.product-is-expiring', ['<b>', '</b>']).toString();
+            }
+
+            return this.$t('stock.text.product-is-not-expiring', ['<b>', '</b>']).toString();
         }
     }
 </script>

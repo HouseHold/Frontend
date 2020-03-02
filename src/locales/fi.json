@@ -1,0 +1,97 @@
+{
+  "locale": {
+    "name": "Suomi",
+    "flag": "cif-fi"
+  },
+  "app": {
+    "house-hold": "HouseHold"
+  },
+  "nav": {
+    "dashboard": "Päänäkymä",
+    "inventory": "Tavaraluettelo",
+    "stock": "Varasto",
+    "stock-overview": "Yleiskatsaus",
+    "stock-add": "Lisää varastoon",
+    "stock-create-product": "Luo tuote",
+    "stock-purchase": "Osto",
+    "stock-product": "Tuote"
+  },
+  "global": {
+    "label": {
+      "name": "Nimi"
+    },
+    "button": {
+      "cancel": "Peruuta",
+      "edit": "Muokkaa",
+      "reset": "Tyhjennä",
+      "save": "Tallenna",
+      "submit": "Lähetä",
+      "actions": "Toiminnot"
+    },
+    "form": {
+      "items-per-page": "Kohteita sivulla:",
+      "filter": "Suodata:",
+      "type-string": "hakusana..."
+    }
+  },
+  "stock": {
+    "title": {
+      "product": "Tuote",
+      "product-overview": "Tuotenäkymä",
+      "storage-overview": "Varaston yleiskatsaus",
+      "stock": "Varasto",
+      "stocks": "Varastot"
+    },
+    "text": {
+      "product-part-of-category": "Tuote on osa {category} kategoriaa.",
+      "product-is-expiring": "Tuote {0}erääntyy{1}.",
+      "product-is-not-expiring": "Tuote {0}ei eräänny{1}.",
+      "product-edit-hint-line-1": "Et voi muokata kaikkia tietoja, kuten hintaa. Hinta päivitetään automaattisesti lisätessäsi tuotteita varastoon.",
+      "product-edit-hint-line-2": "Se näyttää aina viimeisimmän hinnan, joka on tällä hetkellä",
+      "product-edit-hint-line-3": "Et voi myöskään muuttaa tuotteen kategoriaa.",
+      "product-edit-hint-line-4": "Vaihtaaksesi tuotteen kategoriaa, sinun tulee vaihtaa tuoteryhmää, jonka kategoria on eri.",
+      "product-edit-hint-line-5": "Et voi vaihtaa tuotetta erääntymään ja päinvastoin.",
+      "product-edit-hint-line-6": "Jos haluat muuttaa tätä, tulee sinun luoda tuote uudelleen."
+    },
+    "label": {
+      "add-product-to-stock": "Lisää tuote varastoon",
+      "amount": "Määrä",
+      "barcodes": "Viivakoodit",
+      "bellow-limit": "Alle rajan",
+      "best-before": "Parasta ennen",
+      "expiring": "Vanhentumassa",
+      "expiring-not": "Ei vanhene",
+      "price": "Hinta",
+      "product": "Tuote",
+      "product-collection": "Tuotekokoelma",
+      "product-consume-product": "Käytä {product}",
+      "product-consume": "Käytä tuote",
+      "product-name": "Tuotenimi",
+      "spoiled": "Vanhentuneet",
+      "stock-in": "Varastossa",
+      "stock-total": "Yhteensä varastossa"
+    },
+    "form": {
+      "hint": {
+        "enter-amount": "Anna määrä",
+        "enter-price": "Anna hinta",
+        "enter-product-name": "Anna tuotenimi"
+      },
+      "error": {
+        "amount-in-numbers": "Anna määrä numeroina.",
+        "price-in-numbers": "Anna hinta numeroina."
+      },
+      "desc": {
+        "please-give-product-name": "Anna tuotenimi",
+        "please-give-product-collection": "Valitse tuotekokoelma johon tuote kuuluu"
+      },
+      "button": {
+        "consume": "Kuluta",
+        "show-in-stock": "Näytä varastossa",
+        "show-bellow-limit": "Näytä alle rajan",
+        "show-expiring": "Näytä vanhentumassa",
+        "show-expired": "Näytä vanhentuneet"
+      }
+    }
+  }
+}

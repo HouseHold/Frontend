@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h4>Stocks</h4>
+        <h4>{{ $t('stock.title.stocks') }}</h4>
         <hr class="d-none d-sm-block">
         <CListGroup v-for="(stock, id) in stocks" :key="id">
             <CListGroupItem>
