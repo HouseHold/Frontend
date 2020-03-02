@@ -2,35 +2,38 @@
     <div id="stock-product-create-form">
         <CCard>
             <CCardHeader>
-                <strong>Create Product</strong>
+                <strong>{{ $t('stock.title.product-create') }}</strong>
             </CCardHeader>
             <CCardBody>
                 <CForm>
                     <CCardBody>
                         <CInput
-                            v-model="productName"
+                            v-model="product"
                             :description="$t('stock.form.desc.please-give-product-name')"
                             :label="$t('stock.label.product-name')"
                             :placeholder="$t('stock.form.hint.enter-product-name')"
                             required
                         />
                         <CSelect
-                            v-model="collection"
                             :label="$t('stock.label.product-collection')"
                             :description="$t('stock.form.desc.please-give-product-collection')"
                             :options="collections"
-                            @update:value="collection = $event"
+                            @update:value="collection = $event.toString()"
+                            value="placeholder"
                         />
-                        <dynamic-input-list ref="dynInput" :data="ean" :label="$t('stock.label.barcodes')" field="number" @update:data="ean = $event" />
-                    </ccardbody>
+                        <dynamic-input-list ref="dynInput" :data="ean" :label="$t('stock.label.barcodes')"
+                                            field="number" @update:data="ean = $event" placeholder="12344567"
+                                            :valid="isBarcodeValid()" :empty="$t('stock.form.hint.no-barcodes')"
+                                            :invalid-feedback="$t('stock.form.error.barcode-empty')" />
+
+                        <CInputCheckbox :label="$t('stock.form.hint.product-expiring')" custom
+                                        :checked="expiring" @click="expiring = !expiring"/>
+                    </CCardBody>
                     <CRow>
                         <CCol col="12">
                             <div class="float-right">
-                                <CButton color="warning" style="margin-right: 10px" @click="reset()">
-                                    {{ $t('global.button.reset') }}
-                                </CButton>
-                                <CButton color="success" @click="save()">
-                                    {{ $t('global.button.save') }}
+                                <CButton color="success" style="margin-right: 10px" @click="save()">
+                                    {{ $t('global.button.submit') }}
                                 </CButton>
                             </div>
                         </CCol>
@@ -42,10 +45,8 @@
 </template>
 
 <script lang="ts">
-  import { Component, Prop, Vue } from "vue-property-decorator";
-  import { Productjsonld } from "@household/api-client";
+  import { Component, Vue } from "vue-property-decorator";
   import DynamicInputList from "@/components/form/DynamicInputList.vue";
-  import _ from "lodash";
 
     @Component({
         components: { DynamicInputList }
@@ -58,18 +59,35 @@
         expiring: boolean = true;
 
         save(): void {
+            console.log(this.product);
+            console.log(this.ean);
+            console.log(this.collection);
+            console.log(this.expiring);
             // let payload: x =
             // this.$store.dispatch('stockCreateProduct', payload);
         }
 
-        get collections(): Array<{label: string, value: string}> {
-            let data: Array<{label: string, value: string}> = [];
+        isBarcodeValid(): boolean {
+            let valid: boolean = true;
+            this.ean.forEach((item: string) => {
+                if (item === '') {
+                    valid = false;
+                }
+            });
+
+            return valid;
+        }
+
+        get collections(): Array<{label: string, value: string, disabled: boolean}> {
+            let data: Array<{label: string, value: string, disabled: boolean}> = [];
             for (let id in this.$store.state.Stock.collections) {
-                data.push({ label: this.$store.state.Stock.collections[id].name, value: id });
+                data.push({ label: this.$store.state.Stock.collections[id].name, value: id, disabled: false });
             }
 
-            // Short items alphabetically.
-            return data.sort((a,b) => a.label.localeCompare(b.label));
+            const hint = '=== ' + this.$t('global.form.select-one').toString() + ' ===';
+            data = data.sort((a,b) => a.label.localeCompare(b.label)); // Short items alphabetically.
+            data.unshift({ label: hint, value: 'placeholder', disabled: true }); // Need to add this due ios.
+            return data;
         }
     }
 </script>

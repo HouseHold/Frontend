@@ -76,7 +76,7 @@ function configRoutes() {
                 },
                 {
                     path: 'dashboard',
-                    name: i18n.t('nav.dashboard').toString(),
+                    name: i18n.t('nav.dashboard').toString()+' ',
                     component: FrontDashboard
                 },/**
                 {

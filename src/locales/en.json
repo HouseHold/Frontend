@@ -31,12 +31,14 @@
     "form": {
       "items-per-page": "Items per page:",
       "filter": "Filter:",
-      "type-string": "type string..."
+      "type-string": "type string...",
+      "select-one": "Please select one"
     }
   },
   "stock": {
     "title": {
       "product": "Product",
+      "product-create": "Create Product",
       "product-overview": "Product Overview",
       "storage-overview": "Storage Overview",
       "stock": "Stock",
@@ -75,10 +77,13 @@
       "hint": {
         "enter-amount": "Enter amount",
         "enter-price": "Enter price",
-        "enter-product-name": "Enter product name"
+        "enter-product-name": "Enter product name",
+        "no-barcodes": "No barcodes set",
+        "product-expiring": "Is product expiring?"
       },
       "error": {
         "amount-in-numbers": "Please provide amount in numbers.",
+        "barcode-empty": "Barcode cannot be empty.",
         "price-in-numbers": "Please provide price in numbers."
       },
       "desc": {

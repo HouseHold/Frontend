@@ -10,6 +10,9 @@
                 </div>
             </CCol>
         </CRow>
+        <div v-if="noRows">
+            <CInput readonly :value="errorNoRows" :type="inputType" />
+        </div>
         <div v-for="(input, index) in rows" :key="index">
             <CRow>
                 <CCol>
@@ -20,6 +23,12 @@
                         style="margin-bottom: 2px"
                         :type="inputType"
                         @input="updateRow(index, $event)"
+                        :placeholder="placeholder"
+                        :validFeedback="validFeedback"
+                        :invalidFeedback="invalidFeedback"
+                        :tooltipFeedback="tooltipFeedback"
+                        :description="description"
+                        :readonly="readonly"
                     >
                         <template #append-content>
                             <div class="clickable" @click="removeRow(index)">
@@ -45,6 +54,14 @@
         //@ts-ignore
         @Prop(String) readonly label: string;
         @Prop(String) readonly type?: string|undefined;
+        @Prop(String) readonly placeholder?: string;
+        @Prop(String) readonly validFeedback?: string|undefined;
+        @Prop(String) readonly invalidFeedback?: string|undefined;
+        @Prop(String) readonly tooltipFeedback?: string|undefined;
+        @Prop(String) readonly description?: string|undefined;
+        @Prop(String) readonly empty?: string|undefined;
+        @Prop(Boolean) readonly valid?: undefined|boolean;
+        @Prop(Boolean) readonly readonly: boolean = false;
 
         addRow(): void {
             this.rows.push('');
@@ -64,6 +81,21 @@
 
         get inputType(): string {
             return this.type === undefined ? 'text' : this.type;
+        }
+
+        get errorNoRows(): string {
+            console.log(this.empty);
+            return this.empty || '';
+        }
+
+        get noRows(): boolean {
+            return this.rows.length === 0;
+        }
+
+        get isValid(): boolean|undefined {
+            if (this.valid !== undefined) {
+                return this.valid;
+            }
         }
     }
 </script>

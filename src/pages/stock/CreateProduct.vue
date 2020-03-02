@@ -10,7 +10,8 @@
                         <strong>Hints for product</strong>
                     </CCardHeader>
                     <CCardBody>
-                        <p>Help text will be placed here.</p>
+                        {{ $t('stock.text.product-edit-hint-line-5') }}
+                        {{ $t('stock.text.product-edit-hint-line-6') }}
                     </CCardBody>
                 </CCard>
             </CCol>
