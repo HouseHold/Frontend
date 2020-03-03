@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "build": "encore production --progress",
+    "build": "encore production",
     "dev": "encore dev",
     "dev-server": "encore dev-server",
     "watch": "encore dev-server --port 8080 --progress --watch --hot --hot-only --disable-host-check --keep-public-path",
