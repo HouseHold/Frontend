@@ -84,7 +84,6 @@
         }
 
         get errorNoRows(): string {
-            console.log(this.empty);
             return this.empty || '';
         }
 

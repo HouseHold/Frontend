@@ -5,12 +5,13 @@ import {
     ProductLocationApi, ProductLocationjsonld,
     ProductCategoryApi, ProductCategoryjsonld,
     ProductCollectionApi, ProductCollectionjsonld, InlineObject2
-} from "@household/api-client";
+} from '@household/api-client';
 import { Helpers } from '@/lib/api';
 import _ from 'lodash';
-import ConsumeProduct from "@/store/Stock/ConsumeProduct.ts";
-import AddProductToStock from "@/store/Stock/AddProductToStock";
-import CreateProduct from "@/store/Stock/CreateProduct";
+import ConsumeProduct from '@/store/Stock/ConsumeProduct.ts';
+import AddProductToStock from '@/store/Stock/AddProductToStock';
+import CreateProduct from '@/store/Stock/CreateProduct';
+import CreateProductCollection from '@/store/Stock/CreateProductCollection';
 
 @Module
 export default class Stock extends VuexModule {
@@ -75,7 +76,12 @@ export default class Stock extends VuexModule {
 
     @Mutation
     SET_STOCK_PRODUCT(payload: Productjsonld): void {
-        this.products[payload["@id"]] = _.clone(payload);
+        this.products[payload['@id']] = _.clone(payload);
+    }
+
+    @Mutation
+    SET_STOCK_PRODUCT_COLLECTION(payload: ProductCollectionjsonld): void {
+        this.collections[payload['@id']] = _.clone(payload);
     }
 
     @Mutation
@@ -119,7 +125,7 @@ export default class Stock extends VuexModule {
     @Action
     stockUpdateProduct(payload: Productjsonld): void {
         // 1. Save current state into independent local variable.
-        let revertData = _.clone(this.products[payload["@id"]]);
+        let revertData = _.clone(this.products[payload['@id']]);
 
         // 2. Optimistic update. Update state, commit.
         this.context.commit('SET_STOCK_PRODUCT', payload);
@@ -152,6 +158,19 @@ export default class Stock extends VuexModule {
         this.context.commit('SET_STOCK_PRODUCT', res);
 
         return res.id;
+    }
+
+    @Action
+    async stockCreateProductCollection(payload: CreateProductCollection): Promise<ProductCollectionjsonld> {
+        const data: object = {
+            category: payload.category,
+            name: payload.name,
+            products: [],
+        };
+        const res: ProductCollectionjsonld = (await (new ProductCollectionApi()).postProductCollectionCollection((data as ProductCollectionjsonld))).data;
+        this.context.commit('SET_STOCK_PRODUCT_COLLECTION', res);
+
+        return res;
     }
 
     @Action

@@ -15,12 +15,15 @@
                             required
                         />
                         <CSelect
+                            :value.sync="collection"
                             :label="$t('stock.label.product-collection')"
                             :description="$t('stock.form.desc.please-give-product-collection')"
-                            :options="collections"
-                            @update:value="collection = $event.toString()"
-                            value="placeholder"
-                        />
+                            :options="collectionsData"
+                        >
+                            <template #append>
+                                <CButton color="success" @click="createCollectionModal = !createCollectionModal">New</CButton>
+                            </template>
+                        </CSelect>
                         <dynamic-input-list ref="dynInput" :data="ean" :label="$t('stock.label.barcodes')"
                                             field="number" @update:data="ean = $event" placeholder="12344567"
                                             :valid="isBarcodeValid()" :empty="$t('stock.form.hint.no-barcodes')"
@@ -40,6 +43,11 @@
                     </CRow>
                 </CForm>
             </CCardBody>
+            <h-stock-modal-create-collection
+                    :show-modal="createCollectionModal"
+                    @close="createCollectionModal = false"
+                    @created="onNewCollection"
+            />
         </CCard>
     </div>
 </template>
@@ -48,18 +56,26 @@
   import { Component, Vue } from "vue-property-decorator";
   import DynamicInputList from "@/components/form/DynamicInputList.vue";
   import CreateProduct from "@/store/Stock/CreateProduct";
-  import {ToastOptions} from "vue-toasted";
+  import { ToastOptions } from "vue-toasted";
+  import HStockModalCreateCollection from "@/components/stock/modal/HStockModalCreateCollection.vue";
+  import {ProductCollectionjsonld} from "@household/api-client";
 
     @Component({
-        components: { DynamicInputList }
+        components: { DynamicInputList, HStockModalCreateCollection }
     })
     export default class HStockFormProductCreate extends Vue {
         readonly name: string = 'HStockFormProductCreate';
         readonly toasted: ToastOptions = { duration: 5000, type: 'error' };
         product: string = '';
         ean: Array<string> = [];
-        collection: string = '';
+        collection: string = 'placeholder';
         expiring: boolean = true;
+        createCollectionModal: boolean = false;
+        collectionsData: Array<{label: string, value: string, disabled: boolean}> = [];
+
+        mounted() {
+            this.collections();
+        }
 
         async save(): Promise<void> {
             const payload: CreateProduct = {
@@ -94,7 +110,12 @@
             return valid;
         }
 
-        get collections(): Array<{label: string, value: string, disabled: boolean}> {
+        onNewCollection(collection: ProductCollectionjsonld): void {
+            this.collections();
+            this.collection = collection["@id"];
+        }
+
+        collections(): void {
             let data: Array<{label: string, value: string, disabled: boolean}> = [];
             for (let id in this.$store.state.Stock.collections) {
                 data.push({ label: this.$store.state.Stock.collections[id].name, value: id, disabled: false });
@@ -103,7 +124,8 @@
             const hint = '=== ' + this.$t('global.form.select-one').toString() + ' ===';
             data = data.sort((a,b) => a.label.localeCompare(b.label)); // Short items alphabetically.
             data.unshift({ label: hint, value: 'placeholder', disabled: true }); // Need to add this due ios.
-            return data;
+
+            this.collectionsData = data;
         }
     }
 </script>
