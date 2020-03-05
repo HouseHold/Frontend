@@ -32,13 +32,16 @@
       "items-per-page": "Items per page:",
       "filter": "Filter:",
       "type-string": "type string...",
-      "select-one": "Please select one"
+      "select-one": "Please select one",
+      "error-field-cannot-be-empty": "Field cannot be empty"
     }
   },
   "stock": {
     "title": {
       "product": "Produkt",
       "product-create": "Create Product",
+      "product-create-collection": "Create product collection",
+      "product-create-category": "Create product category",
       "product-overview": "Product Overview",
       "storage-overview": "Storage Overview",
       "stock": "Reserve",
@@ -65,6 +68,7 @@
       "expiring-not": "Not expiring",
       "price": "Preis",
       "product": "Produkt",
+      "product-category": "Product category",
       "product-collection": "Product collection",
       "product-consume-product": "Consume {product}",
       "product-consume": "Consume Product",
@@ -78,18 +82,21 @@
         "enter-amount": "Enter amount",
         "enter-price": "Enter price",
         "enter-product-name": "Enter product name",
+        "enter-collection-name": "Enter collection name",
         "no-barcodes": "No barcodes set",
         "product-expiring": "Is product expiring?"
       },
       "error": {
-        "amount-in-numbers": "Please provide amount in numbers.",
-        "barcode-empty": "Barcode cannot be empty.",
-        "price-in-numbers": "Please provide price in numbers.",
-        "product-name-empty": "Product name cannot be empty.",
-        "product-collection-invalid": "Product collection is not valid."
+        "amount-in-numbers": "Please provide amount in numbers",
+        "barcode-empty": "Barcode cannot be empty",
+        "price-in-numbers": "Please provide price in numbers",
+        "product-name-empty": "Product name cannot be empty",
+        "product-collection-invalid": "Product collection is not valid",
+        "product-collection-must-unique": "Product collection name must be unique"
       },
       "desc": {
         "please-give-product-name": "Please give product a name",
+        "please-give-product-category": "Please select a category where collection belongs",
         "please-give-product-collection": "Please select a collection where product belongs"
       },
       "button": {
