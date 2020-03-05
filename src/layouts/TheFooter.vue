@@ -1,7 +1,7 @@
 <template>
     <CFooter>
         <div>
-            <a href="https://github.com/HouseHold/HouseHold" target="_blank">HouseHold</a>
+            <a href="https://github.com/HouseHold/HouseHold" target="_blank">HouseHold</a> {{ edition }}
             <span class="ml-1">&copy; 2019-{{ year }} <a href="https://xn--gran-8qa.fi"> Niko Granö</a> </span>
         </div>
         <div class="ml-auto mr-auto">
@@ -21,6 +21,10 @@ import { Vue, Component } from "vue-property-decorator";
 export default class TheFooter extends Vue {
     get year(): number {
         return (new Date()).getFullYear();
+    }
+
+    get edition(): string {
+        return process.env.NODE_ENV === 'production' ? 'P' : 'D';
     }
 }
 </script>
