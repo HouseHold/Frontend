@@ -131,7 +131,7 @@
 
         onAddToStock(): void {
             if (typeof this.form.stock !== 'string') {
-                throw Error('Stock id cannot be null.');
+                return;
             }
             let payload: AddProductToStock = {
                 bestBefore: this.form.bestBefore,
