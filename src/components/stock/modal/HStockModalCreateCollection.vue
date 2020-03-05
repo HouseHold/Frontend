@@ -13,12 +13,18 @@
                             :is-valid="collectionValidator"
                     />
                     <CSelect
+                            :value.sync="category"
                             :label="$t('stock.label.product-category')"
                             :description="$t('stock.form.desc.please-give-product-category')"
-                            :options="categories"
-                            @update:value="category = $event.toString()"
+                            :options="categoriesData"
                             value="placeholder"
-                    />
+                    >
+                        <template #append>
+                            <CButton color="success" @click="createCategoryModal = !createCategoryModal">
+                                {{ $t('global.button.new') }}
+                            </CButton>
+                        </template>
+                    </CSelect>
                 </CForm>
             </CCol>
         </CRow>
@@ -36,21 +42,40 @@
                 {{ $t('global.button.submit') }}
             </CButton>
         </template>
+        <h-stock-modal-create-category
+                :show-modal="createCategoryModal"
+                @close="createCategoryModal = false"
+                @created="onNewCategory"
+        />
     </CModal>
 </template>
 
 <script lang="ts">
     import { Component, Prop, Emit, Vue } from "vue-property-decorator";
     import CreateProductCollection from "@/store/Stock/CreateProductCollection";
-    import {ProductCollectionjsonld} from "@household/api-client";
+    import HStockModalCreateCategory from "@/components/stock/modal/HStockModalCreateCategory.vue";
+    import {ProductCategoryjsonld, ProductCollectionjsonld} from "@household/api-client";
 
-    @Component
+    @Component({
+        components: { HStockModalCreateCategory }
+    })
     export default class HStockModalCreateCollection extends Vue {
         readonly name: string = 'HStockModalCreateCollection';
         @Prop(Boolean) showModal: boolean = false;
         collection: string = '';
         category: string = '';
         invalidCollection: string = '';
+        createCategoryModal: boolean = false;
+        categoriesData: Array<{label: string, value: string, disabled: boolean}> = [];
+
+        mounted() {
+            this.categories();
+        }
+
+        onNewCategory(category: ProductCategoryjsonld): void {
+            this.categories();
+            this.category = category["@id"];
+        }
 
         @Emit('close')
         closeModal(cancel: boolean) {
@@ -101,7 +126,7 @@
             return true;
         }
 
-        get categories(): Array<{label: string, value: string, disabled: boolean}> {
+        categories(): void {
             let category: Array<{label: string, value: string, disabled: boolean}> = [];
 
             for (let id in this.$store.state.Stock.categories) {
@@ -111,7 +136,8 @@
             const hint = '=== ' + this.$t('global.form.select-one').toString() + ' ===';
             category = category.sort((a,b) => a.label.localeCompare(b.label)); // Short items alphabetically.
             category.unshift({ label: hint, value: 'placeholder', disabled: true }); // Need to add this due ios.
-            return category;
+
+            this.categoriesData = category;
         }
     }
 </script>
