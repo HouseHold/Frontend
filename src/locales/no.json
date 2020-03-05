@@ -26,7 +26,8 @@
       "reset": "Reset",
       "save": "Lagre",
       "submit": "Sende",
-      "actions": "Handlinger"
+      "actions": "Handlinger",
+      "new": "New"
     },
     "form": {
       "items-per-page": "Items per page:",
@@ -82,6 +83,7 @@
         "enter-amount": "Enter amount",
         "enter-price": "Skriv inn prisen",
         "enter-product-name": "Enter product name",
+        "enter-category-name": "Enter category name",
         "enter-collection-name": "Enter collection name",
         "no-barcodes": "No barcodes set",
         "product-expiring": "Is product expiring?"
@@ -92,7 +94,8 @@
         "price-in-numbers": "Please provide price in numbers",
         "product-name-empty": "Product name cannot be empty",
         "product-collection-invalid": "Product collection is not valid",
-        "product-collection-must-unique": "Product collection name must be unique"
+        "product-collection-must-unique": "Product collection name must be unique",
+        "product-category-must-unique": "Product category name must be unique"
       },
       "desc": {
         "please-give-product-name": "Please give product a name",
