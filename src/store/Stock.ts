@@ -12,6 +12,7 @@ import ConsumeProduct from '@/store/Stock/ConsumeProduct.ts';
 import AddProductToStock from '@/store/Stock/AddProductToStock';
 import CreateProduct from '@/store/Stock/CreateProduct';
 import CreateProductCollection from '@/store/Stock/CreateProductCollection';
+import CreateProductCategory from "@/store/Stock/CreateProductCategory";
 
 @Module
 export default class Stock extends VuexModule {
@@ -82,6 +83,11 @@ export default class Stock extends VuexModule {
     @Mutation
     SET_STOCK_PRODUCT_COLLECTION(payload: ProductCollectionjsonld): void {
         this.collections[payload['@id']] = _.clone(payload);
+    }
+
+    @Mutation
+    SET_STOCK_PRODUCT_CATEGORY(payload: ProductCategoryjsonld): void {
+        this.categories[payload['@id']] = _.clone(payload);
     }
 
     @Mutation
@@ -169,6 +175,18 @@ export default class Stock extends VuexModule {
         };
         const res: ProductCollectionjsonld = (await (new ProductCollectionApi()).postProductCollectionCollection((data as ProductCollectionjsonld))).data;
         this.context.commit('SET_STOCK_PRODUCT_COLLECTION', res);
+
+        return res;
+    }
+
+    @Action
+    async stockCreateProductCategory(payload: CreateProductCategory): Promise<ProductCategoryjsonld> {
+        const data: object = {
+            name: payload.name,
+            collections: [],
+        };
+        const res: ProductCategoryjsonld = (await (new ProductCategoryApi()).postProductCategoryCollection((data as ProductCategoryjsonld))).data;
+        this.context.commit('SET_STOCK_PRODUCT_CATEGORY', res);
 
         return res;
     }

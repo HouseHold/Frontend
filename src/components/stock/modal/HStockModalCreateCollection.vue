@@ -61,8 +61,8 @@
         }
 
         @Emit('created')
-        createdCategory(category: ProductCollectionjsonld): ProductCollectionjsonld {
-            return category;
+        createdCollection(collection: ProductCollectionjsonld): ProductCollectionjsonld {
+            return collection;
         }
 
         cancelCreateCollection(): void {
@@ -79,7 +79,7 @@
                 name: this.collection,
             };
             const collectionId: ProductCollectionjsonld = (await (this.$store.dispatch('stockCreateProductCollection', payload)));
-            this.createdCategory(collectionId);
+            this.createdCollection(collectionId);
             this.closeModal(false);
         }
 
