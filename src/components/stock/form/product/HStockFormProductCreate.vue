@@ -21,7 +21,9 @@
                             :options="collectionsData"
                         >
                             <template #append>
-                                <CButton color="success" @click="createCollectionModal = !createCollectionModal">New</CButton>
+                                <CButton color="success" @click="createCollectionModal = !createCollectionModal">
+                                    {{ $t('global.button.new') }}
+                                </CButton>
                             </template>
                         </CSelect>
                         <dynamic-input-list ref="dynInput" :data="ean" :label="$t('stock.label.barcodes')"

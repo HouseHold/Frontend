@@ -26,7 +26,8 @@
       "reset": "Reset",
       "save": "Save",
       "submit": "Submit",
-      "actions": "Actions"
+      "actions": "Actions",
+      "new": "New"
     },
     "form": {
       "items-per-page": "Items per page:",
