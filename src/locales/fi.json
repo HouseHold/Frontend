@@ -26,22 +26,23 @@
       "reset": "Tyhjennä",
       "save": "Tallenna",
       "submit": "Lähetä",
-      "actions": "Toiminnot"
+      "actions": "Toiminnot",
+      "new": "New"
     },
     "form": {
       "items-per-page": "Kohteita sivulla:",
       "filter": "Suodata:",
       "type-string": "hakusana...",
       "select-one": "Valitse yksi vaihtoehdoista",
-      "error-field-cannot-be-empty": "Field cannot be empty"
+      "error-field-cannot-be-empty": "Kenttä ei voi olla tyhjä"
     }
   },
   "stock": {
     "title": {
       "product": "Tuote",
       "product-create": "Luo tuote",
-      "product-create-collection": "Create product collection",
-      "product-create-category": "Create product category",
+      "product-create-collection": "Luo tuotekokoelma",
+      "product-create-category": "Luo tuotekategoria",
       "product-overview": "Tuotenäkymä",
       "storage-overview": "Varaston yleiskatsaus",
       "stock": "Varasto",
@@ -68,7 +69,7 @@
       "expiring-not": "Ei vanhene",
       "price": "Hinta",
       "product": "Tuote",
-      "product-category": "Product category",
+      "product-category": "Tuotekategoria",
       "product-collection": "Tuotekokoelma",
       "product-consume-product": "Käytä {product}",
       "product-consume": "Käytä tuote",
@@ -82,21 +83,23 @@
         "enter-amount": "Anna määrä",
         "enter-price": "Anna hinta",
         "enter-product-name": "Anna tuotenimi",
-        "enter-collection-name": "Enter collection name",
+        "enter-category-name": "Enter category name",
+        "enter-collection-name": "Anna kokoelman nimi",
         "no-barcodes": "Ei viivakoodeja",
         "product-expiring": "Vanheneeko tuote?"
       },
       "error": {
-        "amount-in-numbers": "Please provide amount in numbers",
-        "barcode-empty": "Barcode cannot be empty",
-        "price-in-numbers": "Please provide price in numbers",
-        "product-name-empty": "Product name cannot be empty",
-        "product-collection-invalid": "Product collection is not valid",
-        "product-collection-must-unique": "Product collection name must be unique"
+        "amount-in-numbers": "Anna määrä numeroina",
+        "barcode-empty": "Viivakoodi ei voi olla tyhjä",
+        "price-in-numbers": "Anna hinta numeroina",
+        "product-name-empty": "Tuotenimi ei voi olla tyhjä",
+        "product-collection-invalid": "Tuotekokoelma on virheellinen",
+        "product-collection-must-unique": "Tuotekokoelman nimi tulee olla uniikki",
+        "product-category-must-unique": "Product category name must be unique"
       },
       "desc": {
         "please-give-product-name": "Anna tuotenimi",
-        "please-give-product-category": "Please select a category where collection belongs",
+        "please-give-product-category": "Valitse kategoria mihin tuotekokoelma kuuluu",
         "please-give-product-collection": "Valitse tuotekokoelma johon tuote kuuluu"
       },
       "button": {
