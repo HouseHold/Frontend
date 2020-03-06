@@ -43,6 +43,8 @@
       "product-create": "Luo tuote",
       "product-create-collection": "Luo tuotekokoelma",
       "product-create-category": "Luo tuotekategoria",
+      "product-create-location": "Create new location",
+      "product-create-stock": "Create new product stock",
       "product-overview": "Tuotenäkymä",
       "storage-overview": "Varaston yleiskatsaus",
       "stock": "Varasto",
@@ -67,10 +69,12 @@
       "best-before": "Parasta ennen",
       "expiring": "Vanhentumassa",
       "expiring-not": "Ei vanhene",
+      "new-location": "New location",
       "price": "Hinta",
       "product": "Tuote",
       "product-category": "Tuotekategoria",
       "product-collection": "Tuotekokoelma",
+      "product-location": "Product location",
       "product-consume-product": "Käytä {product}",
       "product-consume": "Käytä tuote",
       "product-name": "Tuotenimi",
@@ -85,6 +89,7 @@
         "enter-product-name": "Anna tuotenimi",
         "enter-category-name": "Enter category name",
         "enter-collection-name": "Anna kokoelman nimi",
+        "enter-location-name": "Enter location name",
         "no-barcodes": "Ei viivakoodeja",
         "product-expiring": "Vanheneeko tuote?"
       },
@@ -95,12 +100,14 @@
         "product-name-empty": "Tuotenimi ei voi olla tyhjä",
         "product-collection-invalid": "Tuotekokoelma on virheellinen",
         "product-collection-must-unique": "Tuotekokoelman nimi tulee olla uniikki",
-        "product-category-must-unique": "Product category name must be unique"
+        "product-category-must-unique": "Product category name must be unique",
+        "product-location-must-unique": "Product location name must be unique"
       },
       "desc": {
         "please-give-product-name": "Anna tuotenimi",
         "please-give-product-category": "Valitse kategoria mihin tuotekokoelma kuuluu",
-        "please-give-product-collection": "Valitse tuotekokoelma johon tuote kuuluu"
+        "please-give-product-collection": "Valitse tuotekokoelma johon tuote kuuluu",
+        "please-give-product-location": "Please select a location where stock belongs"
       },
       "button": {
         "consume": "Kuluta",
