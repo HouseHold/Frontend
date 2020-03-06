@@ -1,6 +1,6 @@
 {
   "locale": {
-    "name": "España",
+    "name": "Español",
     "flag": "cif-es"
   },
   "app": {
@@ -52,23 +52,23 @@
     },
     "text": {
       "product-part-of-category": "El producto es parte de la categoría {category}.",
-      "product-is-expiring": "Product is set to {0}expire{1}.",
-      "product-is-not-expiring": "Product is set to {0}not expire{1}.",
-      "product-edit-hint-line-1": "You cannot edit some fields like price. Price is generated based on adding products to the stock.",
-      "product-edit-hint-line-2": "It will be showing always latest price which is currently",
-      "product-edit-hint-line-3": "Also you cannot change the category of product here.",
-      "product-edit-hint-line-4": "To move this product into different category, you need to change product collection, which is under different category.",
-      "product-edit-hint-line-5": "You cannot change product from expiring to non-expiring or opposite.",
-      "product-edit-hint-line-6": "If you like to do that, you need to re-create product."
+      "product-is-expiring": "El producto está establecido para {0}caducar{1}.",
+      "product-is-not-expiring": "El producto está establecido para {0}no caducar{1}.",
+      "product-edit-hint-line-1": "No puedes editar algunos campos como precio. El precio se genera al agregar productos al stock.",
+      "product-edit-hint-line-2": "Se mostrará siempre el último precio que es el actual",
+      "product-edit-hint-line-3": "Tampoco puedes cambiar la categoría del producto aquí.",
+      "product-edit-hint-line-4": "Para mover este producto a una categoría diferente, debes cambiar la colección del producto, que se encuentra en una categoría diferente.",
+      "product-edit-hint-line-5": "No puedes cambiar el producto de caducar a no-caducar u opuesto.",
+      "product-edit-hint-line-6": "Si quieres hacer eso, debes volver a crear el producto."
     },
     "label": {
-      "add-product-to-stock": "Add Product to Stock",
+      "add-product-to-stock": "Añadir Producto al Stock",
       "amount": "Cantidad",
       "barcodes": "Códigos de barras",
-      "bellow-limit": "Bellow Limit",
+      "bellow-limit": "Bajo el Límite",
       "best-before": "Best Before",
-      "expiring": "Expirando",
-      "expiring-not": "Not expiring",
+      "expiring": "Caduca",
+      "expiring-not": "No caduca",
       "new-location": "Nueva localización",
       "price": "Precio",
       "product": "Producto",
@@ -105,14 +105,14 @@
       },
       "desc": {
         "please-give-product-name": "Por favor, dale un nombre al producto",
-        "please-give-product-category": "Please select a category where collection belongs",
-        "please-give-product-collection": "Please select a collection where product belongs",
-        "please-give-product-location": "Please select a location where stock belongs"
+        "please-give-product-category": "Por favor, seleccione una categoría a la que pertenece la colección",
+        "please-give-product-collection": "Por favor, seleccione una colección a la que pertenece el producto",
+        "please-give-product-location": "Por favor, seleccione una localización a la que pertenece el stock"
       },
       "button": {
         "consume": "Consumir",
         "show-in-stock": "Mostrar En Stock",
-        "show-bellow-limit": "Show Bellow Limit",
+        "show-bellow-limit": "Mostrar Bajo el Límite",
         "show-expiring": "Mostrar Expirando",
         "show-expired": "Mostrar Caducado"
       }
