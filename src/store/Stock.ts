@@ -4,7 +4,7 @@ import {
     ProductStockApi, ProductStockjsonld,
     ProductLocationApi, ProductLocationjsonld,
     ProductCategoryApi, ProductCategoryjsonld,
-    ProductCollectionApi, ProductCollectionjsonld, InlineObject2
+    ProductCollectionApi, ProductCollectionjsonld, InlineObject2, InlineObject
 } from '@household/api-client';
 import { Helpers } from '@/lib/api';
 import _ from 'lodash';
@@ -13,6 +13,8 @@ import AddProductToStock from '@/store/Stock/AddProductToStock';
 import CreateProduct from '@/store/Stock/CreateProduct';
 import CreateProductCollection from '@/store/Stock/CreateProductCollection';
 import CreateProductCategory from "@/store/Stock/CreateProductCategory";
+import CreateProductStock from "@/store/Stock/CreateProductStock";
+import CreateProductLocation from "@/store/Stock/CreateProductLocation";
 
 @Module
 export default class Stock extends VuexModule {
@@ -91,6 +93,16 @@ export default class Stock extends VuexModule {
     }
 
     @Mutation
+    SET_STOCK_PRODUCT_STOCK(payload: ProductStockjsonld): void {
+        this.stocks[payload['@id']] = _.clone(payload);
+    }
+
+    @Mutation
+    SET_STOCK_PRODUCT_LOCATION(payload: ProductLocationjsonld): void {
+        this.locations[payload['@id']] = _.clone(payload);
+    }
+
+    @Mutation
     ADD_PRODUCT_STOCK_QUANTITY(payload: AddProductToStock): void {
         this.stocks[payload.stock].quantity += payload.quantity;
     }
@@ -151,6 +163,12 @@ export default class Stock extends VuexModule {
     }
 
     @Action
+    async stockRefreshProduct(productId: string): Promise<void> {
+        const res: Productjsonld = (await (new ProductApi()).getProductItem(Helpers.normalizeIri(productId))).data;
+        this.context.commit('SET_STOCK_PRODUCT', res);
+    }
+
+    @Action
     async stockCreateProduct(payload: CreateProduct): Promise<string> {
         const data: object = {
             name: payload.product,
@@ -187,6 +205,29 @@ export default class Stock extends VuexModule {
         };
         const res: ProductCategoryjsonld = (await (new ProductCategoryApi()).postProductCategoryCollection((data as ProductCategoryjsonld))).data;
         this.context.commit('SET_STOCK_PRODUCT_CATEGORY', res);
+
+        return res;
+    }
+
+    @Action
+    async stockCreateProductStock(payload: CreateProductStock): Promise<ProductStockjsonld> {
+        const data: InlineObject = {
+            product: payload.product,
+            location: payload.location,
+        };
+        const res: ProductStockjsonld = (await (new ProductStockApi()).stockInitProductStockCollection(data)).data;
+        this.context.commit('SET_STOCK_PRODUCT_STOCK', res);
+
+        return res;
+    }
+
+    @Action
+    async stockCreateProductLocation(payload: CreateProductLocation): Promise<ProductLocationjsonld> {
+        const data: object = {
+            name: payload.name
+        };
+        const res: ProductLocationjsonld = (await (new ProductLocationApi()).postProductLocationCollection((data as ProductLocationjsonld))).data;
+        this.context.commit('SET_STOCK_PRODUCT_LOCATION', res);
 
         return res;
     }
