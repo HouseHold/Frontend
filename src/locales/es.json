@@ -8,50 +8,50 @@
   },
   "nav": {
     "dashboard": "Dashboard",
-    "inventory": "Inventory",
+    "inventory": "Inventario",
     "stock": "Stock",
-    "stock-overview": "Overview",
-    "stock-add": "Add inventory",
-    "stock-create-product": "Create product",
-    "stock-purchase": "Purchase",
-    "stock-product": "Product"
+    "stock-overview": "Resumen",
+    "stock-add": "Añadir inventario",
+    "stock-create-product": "Crear producto",
+    "stock-purchase": "Comprar",
+    "stock-product": "Producto"
   },
   "global": {
     "label": {
-      "name": "Name"
+      "name": "Nombre"
     },
     "button": {
-      "cancel": "Cancel",
-      "edit": "Edit",
-      "reset": "Reset",
-      "save": "Save",
-      "submit": "Submit",
-      "actions": "Actions",
-      "new": "New"
+      "cancel": "Cancelar",
+      "edit": "Editar",
+      "reset": "Resetear",
+      "save": "Guardar",
+      "submit": "Enviar",
+      "actions": "Acciones",
+      "new": "Nuevo"
     },
     "form": {
-      "items-per-page": "Items per page:",
-      "filter": "Filter:",
+      "items-per-page": "Artículos por página:",
+      "filter": "Filtro:",
       "type-string": "type string...",
-      "select-one": "Please select one",
-      "error-field-cannot-be-empty": "Field cannot be empty"
+      "select-one": "Por favor, selecciona una",
+      "error-field-cannot-be-empty": "El campo no puede estar vacío"
     }
   },
   "stock": {
     "title": {
-      "product": "Product",
-      "product-create": "Create Product",
-      "product-create-collection": "Create product collection",
-      "product-create-category": "Create product category",
-      "product-create-location": "Create new location",
-      "product-create-stock": "Create new product stock",
-      "product-overview": "Product Overview",
-      "storage-overview": "Storage Overview",
+      "product": "Producto",
+      "product-create": "Crear producto",
+      "product-create-collection": "Crear colección de productos",
+      "product-create-category": "Crear categoría de productos",
+      "product-create-location": "Crear nueva localización",
+      "product-create-stock": "Crear nuevo stock de productos",
+      "product-overview": "Resumen del Producto",
+      "storage-overview": "Resumen del Almacenamiento",
       "stock": "Stock",
       "stocks": "Stocks"
     },
     "text": {
-      "product-part-of-category": "Product is part of {category} category.",
+      "product-part-of-category": "El producto es parte de la categoría {category}.",
       "product-is-expiring": "Product is set to {0}expire{1}.",
       "product-is-not-expiring": "Product is set to {0}not expire{1}.",
       "product-edit-hint-line-1": "You cannot edit some fields like price. Price is generated based on adding products to the stock.",
@@ -63,8 +63,8 @@
     },
     "label": {
       "add-product-to-stock": "Add Product to Stock",
-      "amount": "Amount",
-      "barcodes": "Barcodes",
+      "amount": "Cantidad",
+      "barcodes": "Códigos de barras",
       "bellow-limit": "Bellow Limit",
       "best-before": "Best Before",
       "expiring": "Expiring",
