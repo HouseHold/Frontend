@@ -7,7 +7,7 @@
     "house-hold": "HouseHold"
   },
   "nav": {
-    "dashboard": "Dashboard",
+    "dashboard": "Panel de control",
     "inventory": "Inventario",
     "stock": "Stock",
     "stock-overview": "Resumen",
@@ -48,7 +48,7 @@
       "product-overview": "Resumen del Producto",
       "storage-overview": "Resumen del Almacenamiento",
       "stock": "Stock",
-      "stocks": "Stocks"
+      "stocks": "Almacenes"
     },
     "text": {
       "product-part-of-category": "El producto es parte de la categoría {category}.",
@@ -66,7 +66,7 @@
       "amount": "Cantidad",
       "barcodes": "Códigos de barras",
       "bellow-limit": "Bajo el Límite",
-      "best-before": "Best Before",
+      "best-before": "Consumir Preferentemente",
       "expiring": "Caduca",
       "expiring-not": "No caduca",
       "new-location": "Nueva localización",
@@ -91,7 +91,7 @@
         "enter-collection-name": "Introducir nombre de colección",
         "enter-location-name": "Introducir nombre de localización",
         "no-barcodes": "Sin códigos de barras establecidos",
-        "product-expiring": "Is product expiring?"
+        "product-expiring": "¿El producto expira?"
       },
       "error": {
         "amount-in-numbers": "Por favor, proporcione cantidad en números",
