@@ -43,6 +43,8 @@
       "product-create": "Create Product",
       "product-create-collection": "Create product collection",
       "product-create-category": "Create product category",
+      "product-create-location": "Create new location",
+      "product-create-stock": "Create new product stock",
       "product-overview": "Product Overview",
       "storage-overview": "Storage Overview",
       "stock": "Reserve",
@@ -67,10 +69,12 @@
       "best-before": "Best Before",
       "expiring": "Auslaufend",
       "expiring-not": "Not expiring",
+      "new-location": "New location",
       "price": "Preis",
       "product": "Produkt",
       "product-category": "Product category",
       "product-collection": "Product collection",
+      "product-location": "Product location",
       "product-consume-product": "Consume {product}",
       "product-consume": "Consume Product",
       "product-name": "Product name",
@@ -85,6 +89,7 @@
         "enter-product-name": "Enter product name",
         "enter-category-name": "Enter category name",
         "enter-collection-name": "Enter collection name",
+        "enter-location-name": "Enter location name",
         "no-barcodes": "No barcodes set",
         "product-expiring": "Is product expiring?"
       },
@@ -95,12 +100,14 @@
         "product-name-empty": "Product name cannot be empty",
         "product-collection-invalid": "Product collection is not valid",
         "product-collection-must-unique": "Product collection name must be unique",
-        "product-category-must-unique": "Product category name must be unique"
+        "product-category-must-unique": "Product category name must be unique",
+        "product-location-must-unique": "Product location name must be unique"
       },
       "desc": {
         "please-give-product-name": "Please give product a name",
         "please-give-product-category": "Please select a category where collection belongs",
-        "please-give-product-collection": "Please select a collection where product belongs"
+        "please-give-product-collection": "Please select a collection where product belongs",
+        "please-give-product-location": "Please select a location where stock belongs"
       },
       "button": {
         "consume": "Consume",

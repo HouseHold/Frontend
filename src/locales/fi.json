@@ -27,7 +27,7 @@
       "save": "Tallenna",
       "submit": "Lähetä",
       "actions": "Toiminnot",
-      "new": "New"
+      "new": "Uusi"
     },
     "form": {
       "items-per-page": "Kohteita sivulla:",
@@ -43,6 +43,8 @@
       "product-create": "Luo tuote",
       "product-create-collection": "Luo tuotekokoelma",
       "product-create-category": "Luo tuotekategoria",
+      "product-create-location": "Luo uusi sijainti",
+      "product-create-stock": "Luo uusi tuotevarasto",
       "product-overview": "Tuotenäkymä",
       "storage-overview": "Varaston yleiskatsaus",
       "stock": "Varasto",
@@ -67,10 +69,12 @@
       "best-before": "Parasta ennen",
       "expiring": "Vanhentumassa",
       "expiring-not": "Ei vanhene",
+      "new-location": "Uusi sijainti",
       "price": "Hinta",
       "product": "Tuote",
       "product-category": "Tuotekategoria",
       "product-collection": "Tuotekokoelma",
+      "product-location": "Tuotteen sijainti",
       "product-consume-product": "Käytä {product}",
       "product-consume": "Käytä tuote",
       "product-name": "Tuotenimi",
@@ -83,8 +87,9 @@
         "enter-amount": "Anna määrä",
         "enter-price": "Anna hinta",
         "enter-product-name": "Anna tuotenimi",
-        "enter-category-name": "Enter category name",
+        "enter-category-name": "Kirjoita kategorian nimi",
         "enter-collection-name": "Anna kokoelman nimi",
+        "enter-location-name": "Syötä sijainnin nimi",
         "no-barcodes": "Ei viivakoodeja",
         "product-expiring": "Vanheneeko tuote?"
       },
@@ -95,12 +100,14 @@
         "product-name-empty": "Tuotenimi ei voi olla tyhjä",
         "product-collection-invalid": "Tuotekokoelma on virheellinen",
         "product-collection-must-unique": "Tuotekokoelman nimi tulee olla uniikki",
-        "product-category-must-unique": "Product category name must be unique"
+        "product-category-must-unique": "Tuotekategorian nimi tulee olla uniikki",
+        "product-location-must-unique": "Tuotteen sijainnin nimi tulee olla uniikki"
       },
       "desc": {
         "please-give-product-name": "Anna tuotenimi",
         "please-give-product-category": "Valitse kategoria mihin tuotekokoelma kuuluu",
-        "please-give-product-collection": "Valitse tuotekokoelma johon tuote kuuluu"
+        "please-give-product-collection": "Valitse tuotekokoelma johon tuote kuuluu",
+        "please-give-product-location": "Valitse sijainti missä varasto sijaitsee"
       },
       "button": {
         "consume": "Kuluta",
