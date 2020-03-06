@@ -67,54 +67,54 @@
       "barcodes": "Códigos de barras",
       "bellow-limit": "Bellow Limit",
       "best-before": "Best Before",
-      "expiring": "Expiring",
+      "expiring": "Expirando",
       "expiring-not": "Not expiring",
-      "new-location": "New location",
-      "price": "Price",
-      "product": "Product",
-      "product-category": "Product category",
-      "product-collection": "Product collection",
-      "product-location": "Product location",
-      "product-consume-product": "Consume {product}",
-      "product-consume": "Consume Product",
-      "product-name": "Product name",
-      "spoiled": "Spoiled",
-      "stock-in": "In Stock",
-      "stock-total": "Total Stock"
+      "new-location": "Nueva localización",
+      "price": "Precio",
+      "product": "Producto",
+      "product-category": "Categoría del producto",
+      "product-collection": "Colección del producto",
+      "product-location": "Localización del producto",
+      "product-consume-product": "Consumir {product}",
+      "product-consume": "Consumir Producto",
+      "product-name": "Nombre del producto",
+      "spoiled": "Caducado",
+      "stock-in": "En Stock",
+      "stock-total": "Stock Total"
     },
     "form": {
       "hint": {
-        "enter-amount": "Enter amount",
-        "enter-price": "Enter price",
-        "enter-product-name": "Enter product name",
-        "enter-category-name": "Enter category name",
-        "enter-collection-name": "Enter collection name",
-        "enter-location-name": "Enter location name",
-        "no-barcodes": "No barcodes set",
+        "enter-amount": "Introducir cantidad",
+        "enter-price": "Introducir precio",
+        "enter-product-name": "Introducir nombre del producto",
+        "enter-category-name": "Introducir nombre de categoría",
+        "enter-collection-name": "Introducir nombre de colección",
+        "enter-location-name": "Introducir nombre de localización",
+        "no-barcodes": "Sin códigos de barras establecidos",
         "product-expiring": "Is product expiring?"
       },
       "error": {
-        "amount-in-numbers": "Please provide amount in numbers",
-        "barcode-empty": "Barcode cannot be empty",
-        "price-in-numbers": "Please provide price in numbers",
-        "product-name-empty": "Product name cannot be empty",
-        "product-collection-invalid": "Product collection is not valid",
-        "product-collection-must-unique": "Product collection name must be unique",
-        "product-category-must-unique": "Product category name must be unique",
-        "product-location-must-unique": "Product location name must be unique"
+        "amount-in-numbers": "Por favor, proporcione cantidad en números",
+        "barcode-empty": "El código de barras no puede estar vacío",
+        "price-in-numbers": "Por favor proporcione precio en números",
+        "product-name-empty": "Nombre del producto no puede estar vacío",
+        "product-collection-invalid": "La colección del producto no es válida",
+        "product-collection-must-unique": "El nombre de la colección del producto debe ser único",
+        "product-category-must-unique": "El nombre de la categoría del producto debe ser único",
+        "product-location-must-unique": "El nombre de la localización del producto debe ser único"
       },
       "desc": {
-        "please-give-product-name": "Please give product a name",
+        "please-give-product-name": "Por favor, dale un nombre al producto",
         "please-give-product-category": "Please select a category where collection belongs",
         "please-give-product-collection": "Please select a collection where product belongs",
         "please-give-product-location": "Please select a location where stock belongs"
       },
       "button": {
-        "consume": "Consume",
-        "show-in-stock": "Show In Stock",
+        "consume": "Consumir",
+        "show-in-stock": "Mostrar En Stock",
         "show-bellow-limit": "Show Bellow Limit",
-        "show-expiring": "Show Expiring",
-        "show-expired": "Show Expired"
+        "show-expiring": "Mostrar Expirando",
+        "show-expired": "Mostrar Caducado"
       }
     }
   }
