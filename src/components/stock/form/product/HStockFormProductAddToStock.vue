@@ -41,24 +41,41 @@
                 />
                 <CRow v-if="form.product !== null">
                     <CCol>
-                        <div class="col-xs-1 modal-row" align="center">
-                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                <label
-                                    v-for="stock in stocks"
-                                    :key="stock['@id']"
-                                    class="btn btn-primary"
-                                    :class="{ active: stock['@id'] === form.stock}"
-                                >
-                                    <input :id="stock['@id']"
-                                           type="radio"
-                                           name="options"
-                                           :checked="stock['@id'] === form.stock"
-                                           @click="onSelectedStock(stock)"
+                        <template v-if="stocksData.length !== 0">
+                            <div class="col-xs-1 modal-row" align="center">
+                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                    <label
+                                            v-for="stock in stocksData"
+                                            :key="stock['@id']"
+                                            class="btn btn-primary"
+                                            :class="{ active: stock['@id'] === form.stock}"
                                     >
-                                    {{ $store.state.Stock.locations[stock.location].name }}
-                                </label>
+                                        <input :id="stock['@id']"
+                                               type="radio"
+                                               name="options"
+                                               :checked="stock['@id'] === form.stock"
+                                               @click="onSelectedStock(stock)"
+                                        >
+                                        {{ $store.state.Stock.locations[stock.location].name }}
+                                    </label>
+                                    <label class="btn btn-success">
+                                        <input type="radio" name="options" :checked="false" @click="showCreateStockModal = !showCreateStockModal">
+                                        {{ $t('global.button.new') }}
+                                    </label>
+                                </div>
                             </div>
-                        </div>
+                        </template>
+                        <template v-else>
+                            <div class="col-xs-1 modal-row" align="center">
+                                <CButton color="success" @click="showCreateStockModal = !showCreateStockModal">{{ $t('stock.label.new-location') }}</CButton>
+                            </div>
+                        </template>
+                        <h-stock-modal-create-stock
+                                :show-modal="showCreateStockModal"
+                                :product="form.product"
+                                @close="showCreateStockModal = false"
+                                @created="stockCreated"
+                        />
                     </CCol>
                 </CRow>
                 <hr>
@@ -86,6 +103,7 @@
     import vSelect from "vue-select";
     import { ProductStockjsonld } from "@household/api-client";
     import AddProductToStock from "@/store/Stock/AddProductToStock";
+    import HStockModalCreateStock from "@/components/stock/modal/HStockModalCreateStock.vue";
 
     interface AddProductToStockData {
         stock: string | null;
@@ -96,7 +114,7 @@
     }
 
     @Component({
-        components: { vSelect }
+        components: { HStockModalCreateStock, vSelect }
     })
     export default class HStockFormProductAddToStock extends Vue {
         readonly name: string = 'HStockFormProductAddToStock';
@@ -108,6 +126,9 @@
             },
         ];
 
+        showCreateStockModal: boolean = false;
+        stocksData: Array<ProductStockjsonld> = [];
+
         form: AddProductToStockData = {
             stock: null,
             product: null,
@@ -115,6 +136,12 @@
             price: null,
             bestBefore: null,
         };
+
+        stockCreated(stock: ProductStockjsonld): void {
+            this.stocks();
+            this.form.stock = stock["@id"];
+            console.log(this.stocks.length);
+        }
 
         onProductInput(event: {label: string, code: string}|null): void {
             if (event === null) {
@@ -127,6 +154,7 @@
                 return;
             }
             this.form.product = event.code;
+            this.stocks();
         }
 
         onAddToStock(): void {
@@ -164,18 +192,18 @@
             return data;
         }
 
-        get stocks(): Array<ProductStockjsonld> {
+        stocks(): void {
             if (this.form.product === null) {
-                return [];
+                console.log('fail');
+                return;
             }
 
             let data: Array<ProductStockjsonld> = [];
-            // @ts-ignore
             this.$store.state.Stock.products[this.form.product].stocks.forEach((key: string) => {
                 data.push(this.$store.state.Stock.stocks[key]);
             });
 
-            return data;
+            this.stocksData = data;
         }
     }
 </script>
