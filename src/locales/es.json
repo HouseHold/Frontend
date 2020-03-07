@@ -1,120 +1,120 @@
 {
   "locale": {
-    "name": "España",
+    "name": "Español",
     "flag": "cif-es"
   },
   "app": {
     "house-hold": "HouseHold"
   },
   "nav": {
-    "dashboard": "Dashboard",
-    "inventory": "Inventory",
+    "dashboard": "Panel de control",
+    "inventory": "Inventario",
     "stock": "Stock",
-    "stock-overview": "Overview",
-    "stock-add": "Add inventory",
-    "stock-create-product": "Create product",
-    "stock-purchase": "Purchase",
-    "stock-product": "Product"
+    "stock-overview": "Resumen",
+    "stock-add": "Añadir inventario",
+    "stock-create-product": "Crear producto",
+    "stock-purchase": "Comprar",
+    "stock-product": "Producto"
   },
   "global": {
     "label": {
-      "name": "Name"
+      "name": "Nombre"
     },
     "button": {
-      "cancel": "Cancel",
-      "edit": "Edit",
-      "reset": "Reset",
-      "save": "Save",
-      "submit": "Submit",
-      "actions": "Actions",
-      "new": "New"
+      "cancel": "Cancelar",
+      "edit": "Editar",
+      "reset": "Resetear",
+      "save": "Guardar",
+      "submit": "Enviar",
+      "actions": "Acciones",
+      "new": "Nuevo"
     },
     "form": {
-      "items-per-page": "Items per page:",
-      "filter": "Filter:",
+      "items-per-page": "Artículos por página:",
+      "filter": "Filtro:",
       "type-string": "type string...",
-      "select-one": "Please select one",
-      "error-field-cannot-be-empty": "Field cannot be empty"
+      "select-one": "Por favor, selecciona una",
+      "error-field-cannot-be-empty": "El campo no puede estar vacío"
     }
   },
   "stock": {
     "title": {
-      "product": "Product",
-      "product-create": "Create Product",
-      "product-create-collection": "Create product collection",
-      "product-create-category": "Create product category",
-      "product-create-location": "Create new location",
-      "product-create-stock": "Create new product stock",
-      "product-overview": "Product Overview",
-      "storage-overview": "Storage Overview",
+      "product": "Producto",
+      "product-create": "Crear producto",
+      "product-create-collection": "Crear colección de productos",
+      "product-create-category": "Crear categoría de productos",
+      "product-create-location": "Crear nueva localización",
+      "product-create-stock": "Crear nuevo stock de productos",
+      "product-overview": "Resumen del Producto",
+      "storage-overview": "Resumen del Almacenamiento",
       "stock": "Stock",
-      "stocks": "Stocks"
+      "stocks": "Almacenes"
     },
     "text": {
-      "product-part-of-category": "Product is part of {category} category.",
-      "product-is-expiring": "Product is set to {0}expire{1}.",
-      "product-is-not-expiring": "Product is set to {0}not expire{1}.",
-      "product-edit-hint-line-1": "You cannot edit some fields like price. Price is generated based on adding products to the stock.",
-      "product-edit-hint-line-2": "It will be showing always latest price which is currently",
-      "product-edit-hint-line-3": "Also you cannot change the category of product here.",
-      "product-edit-hint-line-4": "To move this product into different category, you need to change product collection, which is under different category.",
-      "product-edit-hint-line-5": "You cannot change product from expiring to non-expiring or opposite.",
-      "product-edit-hint-line-6": "If you like to do that, you need to re-create product."
+      "product-part-of-category": "El producto es parte de la categoría {category}.",
+      "product-is-expiring": "El producto está establecido para {0}caducar{1}.",
+      "product-is-not-expiring": "El producto está establecido para {0}no caducar{1}.",
+      "product-edit-hint-line-1": "No puedes editar algunos campos como precio. El precio se genera al agregar productos al stock.",
+      "product-edit-hint-line-2": "Se mostrará siempre el último precio que es el actual",
+      "product-edit-hint-line-3": "Tampoco puedes cambiar la categoría del producto aquí.",
+      "product-edit-hint-line-4": "Para mover este producto a una categoría diferente, debes cambiar la colección del producto, que se encuentra en una categoría diferente.",
+      "product-edit-hint-line-5": "No puedes cambiar el producto de caducar a no-caducar u opuesto.",
+      "product-edit-hint-line-6": "Si quieres hacer eso, debes volver a crear el producto."
     },
     "label": {
-      "add-product-to-stock": "Add Product to Stock",
-      "amount": "Amount",
-      "barcodes": "Barcodes",
-      "bellow-limit": "Bellow Limit",
-      "best-before": "Best Before",
-      "expiring": "Expiring",
-      "expiring-not": "Not expiring",
-      "new-location": "New location",
-      "price": "Price",
-      "product": "Product",
-      "product-category": "Product category",
-      "product-collection": "Product collection",
-      "product-location": "Product location",
-      "product-consume-product": "Consume {product}",
-      "product-consume": "Consume Product",
-      "product-name": "Product name",
-      "spoiled": "Spoiled",
-      "stock-in": "In Stock",
-      "stock-total": "Total Stock"
+      "add-product-to-stock": "Añadir Producto al Stock",
+      "amount": "Cantidad",
+      "barcodes": "Códigos de barras",
+      "bellow-limit": "Bajo el Límite",
+      "best-before": "Consumir Preferentemente",
+      "expiring": "Caduca",
+      "expiring-not": "No caduca",
+      "new-location": "Nueva localización",
+      "price": "Precio",
+      "product": "Producto",
+      "product-category": "Categoría del producto",
+      "product-collection": "Colección del producto",
+      "product-location": "Localización del producto",
+      "product-consume-product": "Consumir {product}",
+      "product-consume": "Consumir Producto",
+      "product-name": "Nombre del producto",
+      "spoiled": "Caducado",
+      "stock-in": "En Stock",
+      "stock-total": "Stock Total"
     },
     "form": {
       "hint": {
-        "enter-amount": "Enter amount",
-        "enter-price": "Enter price",
-        "enter-product-name": "Enter product name",
-        "enter-category-name": "Enter category name",
-        "enter-collection-name": "Enter collection name",
-        "enter-location-name": "Enter location name",
-        "no-barcodes": "No barcodes set",
-        "product-expiring": "Is product expiring?"
+        "enter-amount": "Introducir cantidad",
+        "enter-price": "Introducir precio",
+        "enter-product-name": "Introducir nombre del producto",
+        "enter-category-name": "Introducir nombre de categoría",
+        "enter-collection-name": "Introducir nombre de colección",
+        "enter-location-name": "Introducir nombre de localización",
+        "no-barcodes": "Sin códigos de barras establecidos",
+        "product-expiring": "¿El producto expira?"
       },
       "error": {
-        "amount-in-numbers": "Please provide amount in numbers",
-        "barcode-empty": "Barcode cannot be empty",
-        "price-in-numbers": "Please provide price in numbers",
-        "product-name-empty": "Product name cannot be empty",
-        "product-collection-invalid": "Product collection is not valid",
-        "product-collection-must-unique": "Product collection name must be unique",
-        "product-category-must-unique": "Product category name must be unique",
-        "product-location-must-unique": "Product location name must be unique"
+        "amount-in-numbers": "Por favor, proporcione cantidad en números",
+        "barcode-empty": "El código de barras no puede estar vacío",
+        "price-in-numbers": "Por favor proporcione precio en números",
+        "product-name-empty": "Nombre del producto no puede estar vacío",
+        "product-collection-invalid": "La colección del producto no es válida",
+        "product-collection-must-unique": "El nombre de la colección del producto debe ser único",
+        "product-category-must-unique": "El nombre de la categoría del producto debe ser único",
+        "product-location-must-unique": "El nombre de la localización del producto debe ser único"
       },
       "desc": {
-        "please-give-product-name": "Please give product a name",
-        "please-give-product-category": "Please select a category where collection belongs",
-        "please-give-product-collection": "Please select a collection where product belongs",
-        "please-give-product-location": "Please select a location where stock belongs"
+        "please-give-product-name": "Por favor, dale un nombre al producto",
+        "please-give-product-category": "Por favor, seleccione una categoría a la que pertenece la colección",
+        "please-give-product-collection": "Por favor, seleccione una colección a la que pertenece el producto",
+        "please-give-product-location": "Por favor, seleccione una localización a la que pertenece el stock"
       },
       "button": {
-        "consume": "Consume",
-        "show-in-stock": "Show In Stock",
-        "show-bellow-limit": "Show Bellow Limit",
-        "show-expiring": "Show Expiring",
-        "show-expired": "Show Expired"
+        "consume": "Consumir",
+        "show-in-stock": "Mostrar En Stock",
+        "show-bellow-limit": "Mostrar Bajo el Límite",
+        "show-expiring": "Mostrar Expirando",
+        "show-expired": "Mostrar Caducado"
       }
     }
   }
