@@ -55,7 +55,7 @@
                     <CIcon name="cil-list" />
                 </CHeaderNavLink>
             </CHeaderNavItem>
-            <CHeaderNavItem class="d-md-down-none mx-2">
+            <CHeaderNavItem class="mx-2">
                 <CHeaderNavLink>
                     <div v-if="this.$store.state.Stock.lock">
                         <CIcon class="spinning" name="cil-reload" />
