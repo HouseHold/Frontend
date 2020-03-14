@@ -11,7 +11,7 @@
     "inventory": "Lagerbestand",
     "stock": "Reserve",
     "stock-overview": "Übersicht",
-    "stock-add": "Add inventory",
+    "stock-add": "Inventar hinzufügen",
     "stock-create-product": "Produkt erstellen",
     "stock-purchase": "Kaufen",
     "stock-product": "Produkt"
@@ -27,33 +27,33 @@
       "save": "Speichern",
       "submit": "Senden",
       "actions": "Aktionen",
-      "new": "New"
+      "new": "Neu"
     },
     "form": {
-      "items-per-page": "Items per page:",
+      "items-per-page": "Artikel pro Seite:",
       "filter": "Filter:",
-      "type-string": "type string...",
-      "select-one": "Please select one",
-      "error-field-cannot-be-empty": "Field cannot be empty"
+      "type-string": "hier schreiben...",
+      "select-one": "Bitte eine(n) auswählen",
+      "error-field-cannot-be-empty": "Feld darf nicht leer sein"
     }
   },
   "stock": {
     "title": {
       "product": "Produkt",
-      "product-create": "Create Product",
-      "product-create-collection": "Create product collection",
-      "product-create-category": "Create product category",
-      "product-create-location": "Create new location",
-      "product-create-stock": "Create new product stock",
-      "product-overview": "Product Overview",
-      "storage-overview": "Storage Overview",
+      "product-create": "Produkt Erstellen",
+      "product-create-collection": "Produktsammlung erstellen",
+      "product-create-category": "Produktkategorie erstellen",
+      "product-create-location": "Neuen Ort erstellen",
+      "product-create-stock": "Neuen Produktbestand hinzufügen",
+      "product-overview": "Produktübersicht",
+      "storage-overview": "Lagerungsübersicht",
       "stock": "Reserve",
-      "stocks": "Stocks"
+      "stocks": "Vorräte"
     },
     "text": {
-      "product-part-of-category": "Product is part of {category} category.",
-      "product-is-expiring": "Product is set to {0}expire{1}.",
-      "product-is-not-expiring": "Product is set to {0}not expire{1}.",
+      "product-part-of-category": "Produkt ist Teil der {category} Kategorie.",
+      "product-is-expiring": "Produkt ist gesetzt {0}abzulaufen{1}.",
+      "product-is-not-expiring": "Produkt ist gesetzt {0}nicht abzulaufen{1}.",
       "product-edit-hint-line-1": "You cannot edit some fields like price. Price is generated based on adding products to the stock.",
       "product-edit-hint-line-2": "It will be showing always latest price which is currently",
       "product-edit-hint-line-3": "Also you cannot change the category of product here.",
