@@ -35,6 +35,9 @@
       "type-string": "type string...",
       "select-one": "Por favor, selecciona una",
       "error-field-cannot-be-empty": "El campo no puede estar vacío"
+    },
+    "error": {
+      "generic": "Something went wrong!"
     }
   },
   "stock": {
@@ -51,6 +54,7 @@
       "stocks": "Almacenes"
     },
     "text": {
+      "product-added-to-stock": "Product has been added into the stock!",
       "product-part-of-category": "El producto es parte de la categoría {category}.",
       "product-is-expiring": "El producto está establecido para {0}caducar{1}.",
       "product-is-not-expiring": "El producto está establecido para {0}no caducar{1}.",
