@@ -35,6 +35,9 @@
       "type-string": "type string...",
       "select-one": "Por favor, selecciona una",
       "error-field-cannot-be-empty": "El campo no puede estar vacío"
+    },
+    "error": {
+      "generic": "Something went wrong!"
     }
   },
   "stock": {
@@ -44,6 +47,7 @@
       "product-create-collection": "Crear colección de productos",
       "product-create-category": "Crear categoría de productos",
       "product-create-location": "Crear nueva localización",
+      "product-create-manufacturer": "Create new product manufacturer",
       "product-create-stock": "Crear nuevo stock de productos",
       "product-overview": "Resumen del Producto",
       "storage-overview": "Resumen del Almacenamiento",
@@ -51,6 +55,7 @@
       "stocks": "Almacenes"
     },
     "text": {
+      "product-added-to-stock": "Product has been added into the stock!",
       "product-part-of-category": "El producto es parte de la categoría {category}.",
       "product-is-expiring": "El producto está establecido para {0}caducar{1}.",
       "product-is-not-expiring": "El producto está establecido para {0}no caducar{1}.",
@@ -78,6 +83,7 @@
       "product-consume-product": "Consumir {product}",
       "product-consume": "Consumir Producto",
       "product-name": "Nombre del producto",
+      "product-manufacturer": "Product manufacturer",
       "spoiled": "Caducado",
       "stock-in": "En Stock",
       "stock-total": "Stock Total"
@@ -87,6 +93,7 @@
         "enter-amount": "Introducir cantidad",
         "enter-price": "Introducir precio",
         "enter-product-name": "Introducir nombre del producto",
+        "enter-manufacturer-name": "Enter manufacturer name",
         "enter-category-name": "Introducir nombre de categoría",
         "enter-collection-name": "Introducir nombre de colección",
         "enter-location-name": "Introducir nombre de localización",
@@ -101,12 +108,14 @@
         "product-collection-invalid": "La colección del producto no es válida",
         "product-collection-must-unique": "El nombre de la colección del producto debe ser único",
         "product-category-must-unique": "El nombre de la categoría del producto debe ser único",
-        "product-location-must-unique": "El nombre de la localización del producto debe ser único"
+        "product-location-must-unique": "El nombre de la localización del producto debe ser único",
+        "product-manufacturer-must-unique": "Product manufacturer name must be unique"
       },
       "desc": {
         "please-give-product-name": "Por favor, dale un nombre al producto",
         "please-give-product-category": "Por favor, seleccione una categoría a la que pertenece la colección",
         "please-give-product-collection": "Por favor, seleccione una colección a la que pertenece el producto",
+        "please-give-product-manufacturer": "Please select a manufacturer for the product",
         "please-give-product-location": "Por favor, seleccione una localización a la que pertenece el stock"
       },
       "button": {

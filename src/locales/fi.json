@@ -35,6 +35,9 @@
       "type-string": "hakusana...",
       "select-one": "Valitse yksi vaihtoehdoista",
       "error-field-cannot-be-empty": "Kenttä ei voi olla tyhjä"
+    },
+    "error": {
+      "generic": "Something went wrong!"
     }
   },
   "stock": {
@@ -44,6 +47,7 @@
       "product-create-collection": "Luo tuotekokoelma",
       "product-create-category": "Luo tuotekategoria",
       "product-create-location": "Luo uusi sijainti",
+      "product-create-manufacturer": "Create new product manufacturer",
       "product-create-stock": "Luo uusi tuotevarasto",
       "product-overview": "Tuotenäkymä",
       "storage-overview": "Varaston yleiskatsaus",
@@ -51,6 +55,7 @@
       "stocks": "Varastot"
     },
     "text": {
+      "product-added-to-stock": "Product has been added into the stock!",
       "product-part-of-category": "Tuote on osa {category} kategoriaa.",
       "product-is-expiring": "Tuote {0}erääntyy{1}.",
       "product-is-not-expiring": "Tuote {0}ei eräänny{1}.",
@@ -78,6 +83,7 @@
       "product-consume-product": "Käytä {product}",
       "product-consume": "Käytä tuote",
       "product-name": "Tuotenimi",
+      "product-manufacturer": "Product manufacturer",
       "spoiled": "Vanhentuneet",
       "stock-in": "Varastossa",
       "stock-total": "Yhteensä varastossa"
@@ -87,6 +93,7 @@
         "enter-amount": "Anna määrä",
         "enter-price": "Anna hinta",
         "enter-product-name": "Anna tuotenimi",
+        "enter-manufacturer-name": "Enter manufacturer name",
         "enter-category-name": "Kirjoita kategorian nimi",
         "enter-collection-name": "Anna kokoelman nimi",
         "enter-location-name": "Syötä sijainnin nimi",
@@ -101,12 +108,14 @@
         "product-collection-invalid": "Tuotekokoelma on virheellinen",
         "product-collection-must-unique": "Tuotekokoelman nimi tulee olla uniikki",
         "product-category-must-unique": "Tuotekategorian nimi tulee olla uniikki",
-        "product-location-must-unique": "Tuotteen sijainnin nimi tulee olla uniikki"
+        "product-location-must-unique": "Tuotteen sijainnin nimi tulee olla uniikki",
+        "product-manufacturer-must-unique": "Product manufacturer name must be unique"
       },
       "desc": {
         "please-give-product-name": "Anna tuotenimi",
         "please-give-product-category": "Valitse kategoria mihin tuotekokoelma kuuluu",
         "please-give-product-collection": "Valitse tuotekokoelma johon tuote kuuluu",
+        "please-give-product-manufacturer": "Please select a manufacturer for the product",
         "please-give-product-location": "Valitse sijainti missä varasto sijaitsee"
       },
       "button": {
