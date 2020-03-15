@@ -47,6 +47,7 @@
       "product-create-collection": "Produktsammlung erstellen",
       "product-create-category": "Produktkategorie erstellen",
       "product-create-location": "Neuen Ort erstellen",
+      "product-create-manufacturer": "Create new product manufacturer",
       "product-create-stock": "Neuen Produktbestand hinzufügen",
       "product-overview": "Produktübersicht",
       "storage-overview": "Lagerungsübersicht",
@@ -82,6 +83,7 @@
       "product-consume-product": "Consume {product}",
       "product-consume": "Consume Product",
       "product-name": "Product name",
+      "product-manufacturer": "Product manufacturer",
       "spoiled": "Verdorbenes",
       "stock-in": "Lager",
       "stock-total": "Total Stock"
@@ -91,6 +93,7 @@
         "enter-amount": "Enter amount",
         "enter-price": "Enter price",
         "enter-product-name": "Enter product name",
+        "enter-manufacturer-name": "Enter manufacturer name",
         "enter-category-name": "Enter category name",
         "enter-collection-name": "Enter collection name",
         "enter-location-name": "Enter location name",
@@ -105,12 +108,14 @@
         "product-collection-invalid": "Product collection is not valid",
         "product-collection-must-unique": "Product collection name must be unique",
         "product-category-must-unique": "Product category name must be unique",
-        "product-location-must-unique": "Product location name must be unique"
+        "product-location-must-unique": "Product location name must be unique",
+        "product-manufacturer-must-unique": "Product manufacturer name must be unique"
       },
       "desc": {
         "please-give-product-name": "Please give product a name",
         "please-give-product-category": "Please select a category where collection belongs",
         "please-give-product-collection": "Please select a collection where product belongs",
+        "please-give-product-manufacturer": "Please select a manufacturer for the product",
         "please-give-product-location": "Please select a location where stock belongs"
       },
       "button": {
