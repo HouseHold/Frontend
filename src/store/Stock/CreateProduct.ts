@@ -12,6 +12,10 @@ export default interface CreateProduct {
      */
     collection: string;
     /**
+     * @type {string}
+     */
+    manufacturer: string;
+    /**
      * @type {boolean}
      */
     expiring: boolean;

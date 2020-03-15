@@ -12,11 +12,16 @@
                             required
                         />
                         <CSelect
-                            v-model="collection"
+                                :value.sync="manufacturer"
+                                :label="$t('stock.label.product-manufacturer')"
+                                :description="$t('stock.form.desc.please-give-product-manufacturer')"
+                                :options="manufacturers"
+                        />
+                        <CSelect
+                            :value.sync="collection"
                             :label="$t('stock.label.product-collection')"
                             :description="$t('stock.form.desc.please-give-product-collection')"
                             :options="collections"
-                            @update:value="collection = $event"
                         />
                         <dynamic-input-list ref="dynInput" :data="ean" :label="$t('stock.label.barcodes')" field="number"
                                             :empty="$t('stock.form.hint.no-barcodes')" @update:data="ean = $event"
@@ -70,6 +75,7 @@
         ean: Array<string> = [];
         productName: string = '';
         collection: string = '';
+        manufacturer: string = '';
         //@ts-ignore Would cause is do otherwise extra checking for nothing...
         @Prop(String) readonly productId: string;
 
@@ -81,6 +87,7 @@
             this.ean = _.clone(this.$store.state.Stock.products[this.productId].ean);
             this.productName = _.clone(this.$store.state.Stock.products[this.productId].name);
             this.collection = _.clone(this.$store.state.Stock.products[this.productId].collection);
+            this.manufacturer = _.clone(this.$store.state.Stock.products[this.productId].manufacturer);
         }
 
         reset(): void {
@@ -94,17 +101,34 @@
             payload.ean = this.ean;
             payload.name = this.productName;
             payload.collection = this.collection;
+            payload.manufacturer = this.manufacturer;
             this.$store.dispatch('stockUpdateProduct', payload);
         }
 
-        get collections(): Array<{label: string, value: string}> {
-            let data: Array<{label: string, value: string}> = [];
+        get collections(): Array<{label: string, value: string, disabled: boolean}> {
+            let data: Array<{label: string, value: string, disabled: boolean}> = [];
             for (let id in this.$store.state.Stock.collections) {
-                data.push({ label: this.$store.state.Stock.collections[id].name, value: id });
+                data.push({ label: this.$store.state.Stock.collections[id].name, value: id, disabled: false });
             }
 
-            // Short items alphabetically.
-            return data.sort((a,b) => a.label.localeCompare(b.label));
+            const hint = '=== ' + this.$t('global.form.select-one').toString() + ' ===';
+            data = data.sort((a,b) => a.label.localeCompare(b.label)); // Short items alphabetically.
+            data.unshift({ label: hint, value: 'placeholder', disabled: true }); // Need to add this due ios.
+
+            return data;
+        }
+
+        get manufacturers(): Array<{label: string, value: string, disabled: boolean}> {
+            let data: Array<{label: string, value: string, disabled: boolean}> = [];
+            for (let id in this.$store.state.Stock.manufacturers) {
+                data.push({ label: this.$store.state.Stock.manufacturers[id].name, value: id, disabled: false });
+            }
+
+            const hint = '=== ' + this.$t('global.form.select-one').toString() + ' ===';
+            data = data.sort((a,b) => a.label.localeCompare(b.label)); // Short items alphabetically.
+            data.unshift({ label: hint, value: 'placeholder', disabled: true }); // Need to add this due ios.
+
+            return data;
         }
 
         get category(): string {

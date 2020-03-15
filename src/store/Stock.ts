@@ -4,7 +4,9 @@ import {
     ProductStockApi, ProductStockjsonld,
     ProductLocationApi, ProductLocationjsonld,
     ProductCategoryApi, ProductCategoryjsonld,
-    ProductCollectionApi, ProductCollectionjsonld, InlineObject2, InlineObject
+    ProductCollectionApi, ProductCollectionjsonld,
+    ProductManufacturerApi, ProductManufacturerjsonld,
+    InlineObject2, InlineObject
 } from '@household/api-client';
 import { Helpers } from '@/lib/api';
 import _ from 'lodash';
@@ -24,9 +26,10 @@ export default class Stock extends VuexModule {
     locations: { [key: string]: ProductLocationjsonld } = {};
     collections: { [key: string]: ProductCollectionjsonld } = {};
     categories: { [key: string]: ProductCategoryjsonld } = {};
+    manufacturers: { [key: string]: ProductManufacturerjsonld } = {};
     lock: boolean = false;
 
-    @MutationAction({ mutate:['updated','lock','products','stocks','locations','collections','categories'] })
+    @MutationAction({ mutate:['updated','lock','products','stocks','locations','collections','categories', 'manufacturers'] })
     async fetchStocks() {
         return {
             lock: false,
@@ -49,6 +52,9 @@ export default class Stock extends VuexModule {
             locations: await Helpers.fetchAllData(async (page: number) => {
                 return (await (new ProductLocationApi()).getProductLocationCollection(page)).data;
             }),
+            manufacturers: await Helpers.fetchAllData(async (page: number) => {
+                return (await (new ProductManufacturerApi()).getProductManufacturerCollection(page)).data;
+            })
         };
     }
 
@@ -155,6 +161,7 @@ export default class Stock extends VuexModule {
                 ean: payload.ean,
                 name: payload.name,
                 collection: payload.collection,
+                manufacturer: payload.manufacturer,
             }
         ).catch((/** e **/) => {
             // 4. Revert update to stock, if API update fails.
@@ -175,6 +182,7 @@ export default class Stock extends VuexModule {
             price: 0.00,
             expiring: payload.expiring,
             collection: payload.collection,
+            manufacturer: payload.manufacturer,
             ean: payload.ean,
             stocks: [],
         };
