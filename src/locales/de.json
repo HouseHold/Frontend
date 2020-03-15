@@ -35,6 +35,9 @@
       "type-string": "hier schreiben...",
       "select-one": "Bitte eine(n) auswählen",
       "error-field-cannot-be-empty": "Feld darf nicht leer sein"
+    },
+    "error": {
+      "generic": "Something went wrong!"
     }
   },
   "stock": {
@@ -51,6 +54,7 @@
       "stocks": "Vorräte"
     },
     "text": {
+      "product-added-to-stock": "Product has been added into the stock!",
       "product-part-of-category": "Produkt ist Teil der {category} Kategorie.",
       "product-is-expiring": "Produkt ist gesetzt {0}abzulaufen{1}.",
       "product-is-not-expiring": "Produkt ist gesetzt {0}nicht abzulaufen{1}.",
