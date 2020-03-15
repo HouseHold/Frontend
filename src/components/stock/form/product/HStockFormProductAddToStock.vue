@@ -15,7 +15,6 @@
                     <label style="margin-top: 10px">
                         {{ $t('stock.label.best-before') }}
                     </label>
-                    <!-- Placeholder issue: https://github.com/nathanreyes/v-calendar/issues/493 -->
                     <date-picker
                         v-model="form.bestBefore"
                         mode="single"
@@ -110,7 +109,7 @@
         product: string | null;
         quantity: number | null;
         price: number | null;
-        bestBefore: string | null;
+        bestBefore: Date | null;
     }
 
     @Component({
@@ -140,7 +139,6 @@
         stockCreated(stock: ProductStockjsonld): void {
             this.stocks();
             this.form.stock = stock["@id"];
-            console.log(this.stocks.length);
         }
 
         onProductInput(event: {label: string, code: string}|null): void {
@@ -161,9 +159,10 @@
             if (typeof this.form.stock !== 'string') {
                 return;
             }
+
             let payload: AddProductToStock = {
-                bestBefore: this.form.bestBefore,
-                price: Number(this.form.price),
+                bestBefore: this.form.bestBefore === null ? null : this.form.bestBefore.toISOString(),
+                price: (Number(this.form.price).toFixed(2) as unknown) as number,
                 quantity: Number(this.form.quantity),
                 stock: this.form.stock
             };
@@ -194,7 +193,6 @@
 
         stocks(): void {
             if (this.form.product === null) {
-                console.log('fail');
                 return;
             }
 

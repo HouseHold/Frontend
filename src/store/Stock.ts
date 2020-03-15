@@ -243,6 +243,7 @@ export default class Stock extends VuexModule {
             {
                 quantity: payload.quantity,
                 price: payload.price,
+                bestBefore: payload.bestBefore,
             }
         ).catch((/** e **/) => {
             // 3. Revert update to stock, if API update fails.
