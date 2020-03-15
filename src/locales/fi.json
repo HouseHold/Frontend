@@ -35,6 +35,9 @@
       "type-string": "hakusana...",
       "select-one": "Valitse yksi vaihtoehdoista",
       "error-field-cannot-be-empty": "Kenttä ei voi olla tyhjä"
+    },
+    "error": {
+      "generic": "Something went wrong!"
     }
   },
   "stock": {
@@ -51,6 +54,7 @@
       "stocks": "Varastot"
     },
     "text": {
+      "product-added-to-stock": "Product has been added into the stock!",
       "product-part-of-category": "Tuote on osa {category} kategoriaa.",
       "product-is-expiring": "Tuote {0}erääntyy{1}.",
       "product-is-not-expiring": "Tuote {0}ei eräänny{1}.",
