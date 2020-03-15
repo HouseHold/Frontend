@@ -12,10 +12,10 @@
                             required
                         />
                         <CSelect
-                                :value.sync="manufacturer"
-                                :label="$t('stock.label.product-manufacturer')"
-                                :description="$t('stock.form.desc.please-give-product-manufacturer')"
-                                :options="manufacturers"
+                            :value.sync="manufacturer"
+                            :label="$t('stock.label.product-manufacturer')"
+                            :description="$t('stock.form.desc.please-give-product-manufacturer')"
+                            :options="manufacturers"
                         />
                         <CSelect
                             :value.sync="collection"

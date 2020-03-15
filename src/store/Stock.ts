@@ -109,6 +109,11 @@ export default class Stock extends VuexModule {
     }
 
     @Mutation
+    SET_STOCK_PRODUCT_MANUFACTURER(payload: ProductManufacturerjsonld): void {
+        this.manufacturers[payload['@id']] = _.clone(payload);
+    }
+
+    @Mutation
     ADD_PRODUCT_STOCK_QUANTITY(payload: AddProductToStock): void {
         this.stocks[payload.stock].quantity += payload.quantity;
     }
@@ -213,6 +218,15 @@ export default class Stock extends VuexModule {
         };
         const res: ProductCategoryjsonld = (await (new ProductCategoryApi()).postProductCategoryCollection((data as ProductCategoryjsonld))).data;
         this.context.commit('SET_STOCK_PRODUCT_CATEGORY', res);
+
+        return res;
+    }
+
+    @Action
+    async stockCreateProductManufacturer(payload: string) {
+        const data: object = { name: payload };
+        const res: ProductManufacturerjsonld = (await (new ProductManufacturerApi()).postProductManufacturerCollection(data as ProductManufacturerjsonld)).data;
+        this.context.commit('SET_STOCK_PRODUCT_MANUFACTURER', res);
 
         return res;
     }

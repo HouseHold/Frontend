@@ -15,11 +15,11 @@
                             required
                         />
                         <CSelect
-                                :value.sync="manufacturer"
-                                :label="$t('stock.label.product-manufacturer')"
-                                :description="$t('stock.form.desc.please-give-product-manufacturer')"
-                                :options="manufacturersData"
-                                :is-valid="selectValidator"
+                            :value.sync="manufacturer"
+                            :label="$t('stock.label.product-manufacturer')"
+                            :description="$t('stock.form.desc.please-give-product-manufacturer')"
+                            :options="manufacturersData"
+                            :is-valid="selectValidator"
                         >
                             <template #append>
                                 <CButton color="success" @click="createManufacturerModal = !createManufacturerModal">
@@ -81,7 +81,7 @@
   import CreateProduct from "@/store/Stock/CreateProduct";
   import HStockModalCreateCollection from "@/components/stock/modal/HStockModalCreateCollection.vue";
   import HStockModalCreateManufacturer from "@/components/stock/modal/HStockModalCreateManufacturer.vue";
-  import {ProductCollectionjsonld, ProductManufacturerjsonld} from "@household/api-client";
+  import { ProductCollectionjsonld, ProductManufacturerjsonld } from "@household/api-client";
   import { errorToast } from "@/lib/Toast";
 
     @Component({
