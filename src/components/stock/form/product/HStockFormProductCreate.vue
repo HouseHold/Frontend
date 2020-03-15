@@ -27,12 +27,14 @@
                             </template>
                         </CSelect>
                         <dynamic-input-list ref="dynInput" :data="ean" :label="$t('stock.label.barcodes')"
-                                            field="number" @update:data="ean = $event" placeholder="12344567"
-                                            :valid="isBarcodeValid()" :empty="$t('stock.form.hint.no-barcodes')"
-                                            :invalid-feedback="$t('stock.form.error.barcode-empty')" />
+                                            field="number" placeholder="12344567" :valid="isBarcodeValid()"
+                                            :empty="$t('stock.form.hint.no-barcodes')" :invalid-feedback="$t('stock.form.error.barcode-empty')"
+                                            @update:data="ean = $event"
+                        />
 
                         <CInputCheckbox :label="$t('stock.form.hint.product-expiring')" custom
-                                        :checked="expiring" @click="expiring = !expiring"/>
+                                        :checked="expiring" @click="expiring = !expiring"
+                        />
                     </CCardBody>
                     <CRow>
                         <CCol col="12">
@@ -46,9 +48,9 @@
                 </CForm>
             </CCardBody>
             <h-stock-modal-create-collection
-                    :show-modal="createCollectionModal"
-                    @close="createCollectionModal = false"
-                    @created="onNewCollection"
+                :show-modal="createCollectionModal"
+                @close="createCollectionModal = false"
+                @created="onNewCollection"
             />
         </CCard>
     </div>
@@ -58,16 +60,15 @@
   import { Component, Vue } from "vue-property-decorator";
   import DynamicInputList from "@/components/form/DynamicInputList.vue";
   import CreateProduct from "@/store/Stock/CreateProduct";
-  import { ToastOptions } from "vue-toasted";
   import HStockModalCreateCollection from "@/components/stock/modal/HStockModalCreateCollection.vue";
-  import {ProductCollectionjsonld} from "@household/api-client";
+  import { ProductCollectionjsonld } from "@household/api-client";
+  import { errorToast } from "@/lib/Toast";
 
     @Component({
         components: { DynamicInputList, HStockModalCreateCollection }
     })
     export default class HStockFormProductCreate extends Vue {
         readonly name: string = 'HStockFormProductCreate';
-        readonly toasted: ToastOptions = { duration: 5000, type: 'error' };
         product: string = '';
         ean: Array<string> = [];
         collection: string = 'placeholder';
@@ -88,12 +89,12 @@
             };
 
             if (payload.product === '') {
-                this.$toasted.show(this.$t('stock.form.error.product-name-empty').toString(), this.toasted);
+                this.$toasted.show(this.$t('stock.form.error.product-name-empty').toString(), errorToast);
                 return;
             }
 
             if (payload.collection === '' || payload.collection === 'placeholder') {
-                this.$toasted.show(this.$t('stock.form.error.product-collection-invalid').toString(), this.toasted);
+                this.$toasted.show(this.$t('stock.form.error.product-collection-invalid').toString(), errorToast);
                 return;
             }
 

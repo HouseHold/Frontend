@@ -3,13 +3,13 @@
         <CRow>
             <CCol>
                 <CForm>
-                    <CInput required
-                            v-model="category"
+                    <CInput v-model="category"
+                            required
                             type="text"
                             :label="$t('stock.label.product-category')"
                             :placeholder="$t('stock.form.hint.enter-category-name')"
                             inline
-                            :invalidFeedback="invalidCategory"
+                            :invalid-feedback="invalidCategory"
                             :is-valid="categoryValidator"
                     />
                 </CForm>

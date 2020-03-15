@@ -11,7 +11,9 @@
                     </label>
                     <v-select :options="products" @input="onProductInput" />
                 </div>
-                <div v-if="form.product !== null && this.$store.state.Stock.products[form.product].expiring" class="form-group">
+                <div v-if="form.product !== null && this.$store.state.Stock.products[form.product].expiring"
+                     class="form-group"
+                >
                     <label style="margin-top: 10px">
                         {{ $t('stock.label.best-before') }}
                     </label>
@@ -44,10 +46,10 @@
                             <div class="col-xs-1 modal-row" align="center">
                                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                     <label
-                                            v-for="stock in stocksData"
-                                            :key="stock['@id']"
-                                            class="btn btn-primary"
-                                            :class="{ active: stock['@id'] === form.stock}"
+                                        v-for="stock in stocksData"
+                                        :key="stock['@id']"
+                                        class="btn btn-primary"
+                                        :class="{ active: stock['@id'] === form.stock}"
                                     >
                                         <input :id="stock['@id']"
                                                type="radio"
@@ -58,7 +60,9 @@
                                         {{ $store.state.Stock.locations[stock.location].name }}
                                     </label>
                                     <label class="btn btn-success">
-                                        <input type="radio" name="options" :checked="false" @click="showCreateStockModal = !showCreateStockModal">
+                                        <input type="radio" name="options" :checked="false"
+                                               @click="showCreateStockModal = !showCreateStockModal"
+                                        >
                                         {{ $t('global.button.new') }}
                                     </label>
                                 </div>
@@ -66,14 +70,17 @@
                         </template>
                         <template v-else>
                             <div class="col-xs-1 modal-row" align="center">
-                                <CButton color="success" @click="showCreateStockModal = !showCreateStockModal">{{ $t('stock.label.new-location') }}</CButton>
+                                <CButton color="success" @click="showCreateStockModal = !showCreateStockModal">
+                                    {{
+                                        $t('stock.label.new-location') }}
+                                </CButton>
                             </div>
                         </template>
                         <h-stock-modal-create-stock
-                                :show-modal="showCreateStockModal"
-                                :product="form.product"
-                                @close="showCreateStockModal = false"
-                                @created="stockCreated"
+                            :show-modal="showCreateStockModal"
+                            :product="form.product"
+                            @close="showCreateStockModal = false"
+                            @created="stockCreated"
                         />
                     </CCol>
                 </CRow>
@@ -103,6 +110,7 @@
     import { ProductStockjsonld } from "@household/api-client";
     import AddProductToStock from "@/store/Stock/AddProductToStock";
     import HStockModalCreateStock from "@/components/stock/modal/HStockModalCreateStock.vue";
+    import { errorToast, successToast } from "@/lib/Toast";
 
     interface AddProductToStockData {
         stock: string | null;
@@ -128,7 +136,7 @@
         showCreateStockModal: boolean = false;
         stocksData: Array<ProductStockjsonld> = [];
 
-        form: AddProductToStockData = {
+        private form: AddProductToStockData = {
             stock: null,
             product: null,
             quantity: null,
@@ -141,7 +149,7 @@
             this.form.stock = stock["@id"];
         }
 
-        onProductInput(event: {label: string, code: string}|null): void {
+        onProductInput(event: { label: string, code: string } | null): void {
             if (event === null) {
                 this.form.stock = null;
                 this.form.product = null;
@@ -162,12 +170,19 @@
 
             let payload: AddProductToStock = {
                 bestBefore: this.form.bestBefore === null ? null : this.form.bestBefore.toISOString(),
-                price: (Number(this.form.price).toFixed(2) as unknown) as number,
+                price: Number(this.form.price),
                 quantity: Number(this.form.quantity),
                 stock: this.form.stock
             };
 
-            this.$store.dispatch('stockAddToStock', payload);
+            this.$store.dispatch('stockAddToStock', payload).then((success: boolean) => {
+                if (success) {
+                    this.$toasted.show(this.$t('stock.text.product-added-to-stock').toString(), successToast);
+                    this.reset();
+                } else {
+                    this.$toasted.show(this.$t('global.error.generic').toString(), errorToast);
+                }
+            });
         }
 
         isNumber(val: any) {
@@ -202,6 +217,16 @@
             });
 
             this.stocksData = data;
+        }
+
+        reset(): void {
+            this.form = {
+                stock: null,
+                product: null,
+                quantity: null,
+                price: null,
+                bestBefore: null,
+            };
         }
     }
 </script>

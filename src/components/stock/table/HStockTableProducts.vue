@@ -10,8 +10,6 @@
                         :items="items"
                         :fields="fields"
                         column-filter
-                        table-filter
-                        items-per-page-select
                         hover
                         sorter
                         pagination

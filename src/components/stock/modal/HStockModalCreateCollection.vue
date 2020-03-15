@@ -3,21 +3,20 @@
         <CRow>
             <CCol>
                 <CForm>
-                    <CInput required
-                            v-model="collection"
+                    <CInput v-model="collection"
+                            required
                             type="text"
                             :label="$t('stock.label.product-collection')"
                             :placeholder="$t('stock.form.hint.enter-collection-name')"
                             inline
-                            :invalidFeedback="invalidCollection"
+                            :invalid-feedback="invalidCollection"
                             :is-valid="collectionValidator"
                     />
                     <CSelect
-                            :value.sync="category"
-                            :label="$t('stock.label.product-category')"
-                            :description="$t('stock.form.desc.please-give-product-category')"
-                            :options="categoriesData"
-                            value="placeholder"
+                        :value.sync="category"
+                        :label="$t('stock.label.product-category')"
+                        :description="$t('stock.form.desc.please-give-product-category')"
+                        :options="categoriesData"
                     >
                         <template #append>
                             <CButton color="success" @click="createCategoryModal = !createCategoryModal">
@@ -43,9 +42,9 @@
             </CButton>
         </template>
         <h-stock-modal-create-category
-                :show-modal="createCategoryModal"
-                @close="createCategoryModal = false"
-                @created="onNewCategory"
+            :show-modal="createCategoryModal"
+            @close="createCategoryModal = false"
+            @created="onNewCategory"
         />
     </CModal>
 </template>
@@ -54,7 +53,7 @@
     import { Component, Prop, Emit, Vue } from "vue-property-decorator";
     import CreateProductCollection from "@/store/Stock/CreateProductCollection";
     import HStockModalCreateCategory from "@/components/stock/modal/HStockModalCreateCategory.vue";
-    import {ProductCategoryjsonld, ProductCollectionjsonld} from "@household/api-client";
+    import { ProductCategoryjsonld, ProductCollectionjsonld } from "@household/api-client";
 
     @Component({
         components: { HStockModalCreateCategory }
@@ -63,7 +62,7 @@
         readonly name: string = 'HStockModalCreateCollection';
         @Prop(Boolean) showModal: boolean = false;
         collection: string = '';
-        category: string = '';
+        category: string = 'placeholder';
         invalidCollection: string = '';
         createCategoryModal: boolean = false;
         categoriesData: Array<{label: string, value: string, disabled: boolean}> = [];

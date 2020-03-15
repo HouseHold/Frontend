@@ -233,7 +233,7 @@ export default class Stock extends VuexModule {
     }
 
     @Action
-    stockAddToStock(payload: AddProductToStock): void {
+    stockAddToStock(payload: AddProductToStock): boolean {
         // 1. Optimistic update. Update state, commit.
         this.context.commit('ADD_PRODUCT_STOCK_QUANTITY', payload);
 
@@ -248,7 +248,10 @@ export default class Stock extends VuexModule {
         ).catch((/** e **/) => {
             // 3. Revert update to stock, if API update fails.
             this.context.commit('REVERT_ADD_PRODUCT_STOCK_QUANTITY', payload);
-        })
+            return false;
+        });
+
+        return true;
     }
 
     get stockById(): (id: string) => ProductStockjsonld {

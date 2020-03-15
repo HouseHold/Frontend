@@ -22,13 +22,13 @@
                         :value="input"
                         style="margin-bottom: 2px"
                         :type="inputType"
-                        @input="updateRow(index, $event)"
                         :placeholder="placeholder"
-                        :validFeedback="validFeedback"
-                        :invalidFeedback="invalidFeedback"
-                        :tooltipFeedback="tooltipFeedback"
+                        :valid-feedback="validFeedback"
+                        :invalid-feedback="invalidFeedback"
+                        :tooltip-feedback="tooltipFeedback"
                         :description="description"
                         :readonly="readonly"
+                        @input="updateRow(index, $event)"
                     >
                         <template #append-content>
                             <div class="clickable" @click="removeRow(index)">

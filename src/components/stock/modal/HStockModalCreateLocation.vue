@@ -3,13 +3,13 @@
         <CRow>
             <CCol>
                 <CForm>
-                    <CInput required
-                            v-model="location"
+                    <CInput v-model="location"
+                            required
                             type="text"
                             :label="$t('stock.label.product-location')"
                             :placeholder="$t('stock.form.hint.enter-location-name')"
                             inline
-                            :invalidFeedback="invalidLocation"
+                            :invalid-feedback="invalidLocation"
                             :is-valid="locationValidator"
                     />
                 </CForm>

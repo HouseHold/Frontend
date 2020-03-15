@@ -4,11 +4,10 @@
             <CCol>
                 <CForm>
                     <CSelect
-                            :value.sync="location"
-                            :label="$t('stock.label.product-location')"
-                            :description="$t('stock.form.desc.please-give-product-location')"
-                            :options="locationsData"
-                            value="placeholder"
+                        :value.sync="location"
+                        :label="$t('stock.label.product-location')"
+                        :description="$t('stock.form.desc.please-give-product-location')"
+                        :options="locationsData"
                     >
                         <template #append>
                             <CButton color="success" @click="showCreateLocationModal = !showCreateLocationModal">
@@ -34,16 +33,16 @@
             </CButton>
         </template>
         <h-stock-modal-create-location
-                :show-modal="showCreateLocationModal"
-                @created="locationCreated"
-                @close="showCreateLocationModal = false"
+            :show-modal="showCreateLocationModal"
+            @created="locationCreated"
+            @close="showCreateLocationModal = false"
         />
     </CModal>
 </template>
 
 <script lang="ts">
     import { Component, Prop, Emit, Vue } from "vue-property-decorator";
-    import {ProductLocationjsonld, ProductStockjsonld} from "@household/api-client";
+    import { ProductLocationjsonld, ProductStockjsonld } from "@household/api-client";
     import CreateProductStock from "@/store/Stock/CreateProductStock";
     import HStockModalCreateLocation from "@/components/stock/modal/HStockModalCreateLocation.vue";
     @Component({
@@ -55,7 +54,7 @@
         //@ts-ignore This should cause fatal if not set, due it will be programmer error to not define this.
         @Prop(String) product: string;
         @Prop(Boolean) showModal: boolean = false;
-        location: string = '';
+        location: string = 'placeholder';
         locationsData: Array<{label: string, value: string, disabled: boolean}> = [];
         invalidLocation: string = '';
         showCreateLocationModal: boolean = false;
