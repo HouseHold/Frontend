@@ -100,10 +100,17 @@
                     }
                 });
 
+                const bestBeforeDate: string =
+                    products[key].expiring
+                        ? (bestBefore === 0 // Edge Case: If product has no stocks yet.
+                            ? this.$t('stock.label.out-of-stock').toString() // True: Message no stocks.
+                            : (new Date(bestBefore)).toLocaleDateString()) // False: Return date
+                        : this.$t('stock.label.expiring-not').toString(); // Not expiring.
+
                 data.push({
                     name: products[key].name,
                     inStock: quantity,
-                    bestBefore: products[key].expiring ? (new Date(bestBefore)).toLocaleDateString() : this.$t('stock.label.expiring-not').toString(),
+                    bestBefore: bestBeforeDate,
                     id: products[key]["@id"]
                 });
             }
