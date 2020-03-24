@@ -102,7 +102,7 @@
 
                 const bestBeforeDate: string =
                     products[key].expiring
-                        ? (bestBefore === 0 // Edge Case: If product has no stocks yet.
+                        ? (bestBefore === 0 && quantity === 0 // Edge Case: If product has no stocks yet.
                             ? this.$t('stock.label.out-of-stock').toString() // True: Message no stocks.
                             : (new Date(bestBefore)).toLocaleDateString()) // False: Return date
                         : this.$t('stock.label.expiring-not').toString(); // Not expiring.
