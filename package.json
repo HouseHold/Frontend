@@ -66,7 +66,7 @@
     "core-js": "^3.6",
     "eslint": "^6.7",
     "eslint-plugin-vue": "^6.2",
-    "node-sass": "^4.13",
+    "node-sass": "^7.0",
     "npm-run-all": "^4.1",
     "sass-loader": "^7.3",
     "ts-loader": "^5.4",
